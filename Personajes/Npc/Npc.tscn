@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://bjgiw36offthf"]
+
+[ext_resource type="Script" path="res://Personajes/Npc/Npc.cs" id="1_inylg"]
+[ext_resource type="Texture2D" uid="uid://dpnbnlo17kboi" path="res://Personajes/Npc/Npc.png" id="1_myypg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkdhj"]
+atlas = ExtResource("1_myypg")
+region = Rect2(0, 0, 31, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lr4eq"]
+atlas = ExtResource("1_myypg")
+region = Rect2(31, 0, 31, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ftxms"]
+atlas = ExtResource("1_myypg")
+region = Rect2(62, 0, 31, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orlsu"]
+atlas = ExtResource("1_myypg")
+region = Rect2(93, 0, 31, 44)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vydb8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rkdhj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lr4eq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ftxms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orlsu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Npc" type="Node2D"]
+script = ExtResource("1_inylg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vydb8")
+autoplay = "default"
+frame = 2
+frame_progress = 0.552368
+
+[node name="Label" type="Label" parent="AnimatedSprite2D"]
+visible = false
+offset_left = -47.0
+offset_top = -49.0
+offset_right = 118.0
+offset_bottom = -26.0
+text = "Eh tú, pestoso"

@@ -1,0 +1,19 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSPJuego", "PSPJuego.csproj", "{DBE7A186-A65C-4D5C-88D4-04113CA58FE9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|Any CPU = Debug|Any CPU
+	ExportDebug|Any CPU = ExportDebug|Any CPU
+	ExportRelease|Any CPU = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DBE7A186-A65C-4D5C-88D4-04113CA58FE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBE7A186-A65C-4D5C-88D4-04113CA58FE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBE7A186-A65C-4D5C-88D4-04113CA58FE9}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{DBE7A186-A65C-4D5C-88D4-04113CA58FE9}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{DBE7A186-A65C-4D5C-88D4-04113CA58FE9}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{DBE7A186-A65C-4D5C-88D4-04113CA58FE9}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,87 @@
+[gd_scene load_steps=12 format=3 uid="uid://88hhrsdxavxq"]
+
+[ext_resource type="Texture2D" uid="uid://6mutm7tq3fix" path="res://Enemigos/Boss/sunny-dragon-fly.png" id="1_kchgg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqso1"]
+atlas = ExtResource("1_kchgg")
+region = Rect2(0, 5, 192, 171)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rn2rd"]
+atlas = ExtResource("1_kchgg")
+region = Rect2(192, 5, 192, 171)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dc50k"]
+atlas = ExtResource("1_kchgg")
+region = Rect2(384, 5, 192, 171)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cia27"]
+atlas = ExtResource("1_kchgg")
+region = Rect2(576, 5, 192, 171)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fst7l"]
+atlas = ExtResource("1_kchgg")
+region = Rect2(768, 5, 192, 171)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_def36"]
+atlas = ExtResource("1_kchgg")
+region = Rect2(960, 5, 192, 171)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvsdv"]
+atlas = ExtResource("1_kchgg")
+region = Rect2(1152, 5, 192, 171)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_co3ch"]
+atlas = ExtResource("1_kchgg")
+region = Rect2(1344, 5, 192, 171)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6jaa"]
+atlas = ExtResource("1_kchgg")
+region = Rect2(1536, 5, 192, 171)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_66ewu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mqso1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rn2rd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dc50k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cia27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fst7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_def36")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvsdv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_co3ch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6jaa")
+}],
+"loop": true,
+"name": &"Boss",
+"speed": 10.0
+}]
+
+[node name="Boss" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_66ewu")
+animation = &"Boss"
+autoplay = "Boss"
+frame_progress = 0.657058
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+build_mode = 1
+polygon = PackedVector2Array(-12, 0, -64, -19, -83, 14, -38, 41, 14, 43, 57, 73, 60, 20)

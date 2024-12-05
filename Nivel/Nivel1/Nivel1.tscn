@@ -1,0 +1,103 @@
+[gd_scene load_steps=15 format=3 uid="uid://bp4tt6e0rjtg"]
+
+[ext_resource type="Texture2D" uid="uid://bkirxmiie2juk" path="res://Nivel/Nivel1/Fondo.png" id="1_u3or0"]
+[ext_resource type="PackedScene" uid="uid://dxh765y85dhbj" path="res://UI.tscn" id="2_j2pah"]
+[ext_resource type="PackedScene" uid="uid://c3yed6a1dp0xf" path="res://Menú/pause.tscn" id="3_4k8vo"]
+[ext_resource type="PackedScene" uid="uid://yun2gfbkemxv" path="res://Personajes/Principal/Character.tscn" id="4_n6wde"]
+[ext_resource type="PackedScene" uid="uid://cyi6y3m1marje" path="res://Proyectiles/ItemAmmo/Item_ammo.tscn" id="5_a423a"]
+[ext_resource type="PackedScene" uid="uid://bjgiw36offthf" path="res://Personajes/Npc/Npc.tscn" id="6_62uog"]
+[ext_resource type="Script" path="res://Nivel/Nivel1/Mensaje1.cs" id="7_1kw85"]
+[ext_resource type="PackedScene" uid="uid://bklwa8odkkth1" path="res://Portales/Portal.tscn" id="8_txuuf"]
+[ext_resource type="Script" path="res://Portales/Portal1.cs" id="9_5mhwa"]
+
+[sub_resource type="TileSet" id="TileSet_u75e0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_073nw"]
+size = Vector2(662.386, 9.95868)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_chsjy"]
+size = Vector2(22, 369.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_peyxu"]
+size = Vector2(1152.56, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d3ty0"]
+size = Vector2(154, 20)
+
+[node name="Nivel1" type="TileMapLayer"]
+tile_set = SubResource("TileSet_u75e0")
+
+[node name="Nivel1" type="Sprite2D" parent="."]
+position = Vector2(574.25, 325)
+scale = Vector2(1.13623, 1.46429)
+texture = ExtResource("1_u3or0")
+
+[node name="UI" parent="." instance=ExtResource("2_j2pah")]
+position = Vector2(11, 6)
+
+[node name="Pause" parent="." instance=ExtResource("3_4k8vo")]
+offset_left = 555.0
+offset_top = 291.0
+offset_right = 555.0
+offset_bottom = 291.0
+
+[node name="Wall" type="StaticBody2D" parent="."]
+collision_mask = 255
+
+[node name="LeftWall" type="CollisionShape2D" parent="Wall"]
+position = Vector2(-5.96673, 326.978)
+rotation = -1.57397
+shape = SubResource("RectangleShape2D_073nw")
+
+[node name="Player" parent="." instance=ExtResource("4_n6wde")]
+position = Vector2(57, 587)
+scale = Vector2(2, 2)
+speedDagger = 300.0
+
+[node name="ItemAmmo" parent="." instance=ExtResource("5_a423a")]
+position = Vector2(251, 605)
+
+[node name="Lvl2" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lvl2"]
+position = Vector2(1160, 320)
+shape = SubResource("RectangleShape2D_chsjy")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+collision_layer = 64
+collision_mask = 255
+
+[node name="Floor" type="CollisionShape2D" parent="Floor"]
+position = Vector2(576, 654)
+shape = SubResource("RectangleShape2D_peyxu")
+
+[node name="Npc" parent="." instance=ExtResource("6_62uog")]
+position = Vector2(515, 594)
+scale = Vector2(2, 2)
+
+[node name="Mensaje1" type="Area2D" parent="."]
+collision_layer = 65536
+collision_mask = 2
+script = ExtResource("7_1kw85")
+
+[node name="spritemensaje" type="Sprite2D" parent="Mensaje1"]
+position = Vector2(765.966, 586.123)
+rotation = -1.5889
+
+[node name="mensaje1" type="CollisionShape2D" parent="Mensaje1"]
+position = Vector2(828, 568)
+rotation = -1.5755
+shape = SubResource("RectangleShape2D_d3ty0")
+
+[node name="Portal" parent="." instance=ExtResource("8_txuuf")]
+position = Vector2(1134, 565)
+scale = Vector2(3, 3)
+collision_layer = 128
+collision_mask = 2
+script = ExtResource("9_5mhwa")
+
+[connection signal="body_entered" from="Lvl2" to="Lvl2" method="_on_body_entered"]
+[connection signal="body_entered" from="Mensaje1" to="Mensaje1" method="_on_body_entered"]
+[connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]

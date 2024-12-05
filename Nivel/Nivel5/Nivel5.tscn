@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvqrlbtt50mka"]
+
+[ext_resource type="Texture2D" uid="uid://d2uti0qxe0mll" path="res://Nivel/Nivel5/SwampScreen.png" id="1_ot40p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0x3ck"]
+size = Vector2(1151, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qbwb8"]
+size = Vector2(22, 670)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8plav"]
+size = Vector2(21, 661)
+
+[node name="Lvl5" type="TileMapLayer"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(725.125, 404.375)
+scale = Vector2(2.27148, 2.24097)
+texture = ExtResource("1_ot40p")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(576.5, 651)
+shape = SubResource("RectangleShape2D_0x3ck")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1, 325)
+shape = SubResource("RectangleShape2D_qbwb8")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1153.5, 329.5)
+shape = SubResource("RectangleShape2D_8plav")

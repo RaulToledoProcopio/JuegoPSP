@@ -1,0 +1,130 @@
+[gd_scene load_steps=16 format=3 uid="uid://dk3jl0q2hqjrr"]
+
+[ext_resource type="Script" path="res://Nivel/Nivel2/Nivel2.cs" id="1_8s7qx"]
+[ext_resource type="Texture2D" uid="uid://iecp6mv1igc3" path="res://Nivel/Nivel2/Nivel2.png" id="1_w56vj"]
+[ext_resource type="PackedScene" uid="uid://dxh765y85dhbj" path="res://UI.tscn" id="2_ko36k"]
+[ext_resource type="PackedScene" uid="uid://c3yed6a1dp0xf" path="res://Menú/pause.tscn" id="3_7d3d7"]
+[ext_resource type="PackedScene" uid="uid://yun2gfbkemxv" path="res://Personajes/Principal/Character.tscn" id="4_st8vl"]
+[ext_resource type="PackedScene" uid="uid://cva20wuxpfaok" path="res://Enemigos/Zombie - Enemy1/Enemy1.tscn" id="5_cg1w5"]
+[ext_resource type="PackedScene" uid="uid://m8qxwcp7e0a7" path="res://Enemigos/Esqueleto - Enemy3/Enemy_3.tscn" id="6_3wjtk"]
+[ext_resource type="PackedScene" uid="uid://cyi6y3m1marje" path="res://Proyectiles/ItemAmmo/Item_ammo.tscn" id="7_thhf4"]
+[ext_resource type="PackedScene" uid="uid://bklwa8odkkth1" path="res://Portales/Portal.tscn" id="8_wl6hy"]
+[ext_resource type="Script" path="res://Portales/Portal2.cs" id="9_jfu6b"]
+[ext_resource type="PackedScene" uid="uid://ck7us3a1jjgky" path="res://Proyectiles/ItemHeal/Item_heal.tscn" id="10_83cty"]
+[ext_resource type="PackedScene" uid="uid://d26onvvoeq3jr" path="res://Enemigos/Mago - Enemy2/Enemy_2.tscn" id="11_72mpy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ej0xh"]
+size = Vector2(601.073, 23.1201)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t8lpu"]
+size = Vector2(90, 3.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_se2nb"]
+size = Vector2(1152.56, 14)
+
+[node name="Nivel2" type="TileMapLayer"]
+script = ExtResource("1_8s7qx")
+
+[node name="Nivel2" type="Sprite2D" parent="."]
+position = Vector2(580, 335)
+scale = Vector2(1.8375, 1.86111)
+texture = ExtResource("1_w56vj")
+
+[node name="UI" parent="." instance=ExtResource("2_ko36k")]
+
+[node name="Pause" parent="." instance=ExtResource("3_7d3d7")]
+offset_left = 555.0
+offset_top = 291.0
+offset_right = 555.0
+offset_bottom = 291.0
+
+[node name="Wall" type="StaticBody2D" parent="."]
+collision_mask = 255
+
+[node name="RightWall" type="CollisionShape2D" parent="Wall"]
+position = Vector2(1156.49, 294.501)
+rotation = -1.57397
+shape = SubResource("RectangleShape2D_ej0xh")
+
+[node name="Player" parent="." instance=ExtResource("4_st8vl")]
+position = Vector2(78, 527)
+scale = Vector2(2, 2)
+
+[node name="Enemy1" parent="." groups=["Enemies"] instance=ExtResource("5_cg1w5")]
+position = Vector2(857, 522)
+scale = Vector2(2, 2)
+
+[node name="Enemy2" parent="." groups=["Enemies"] instance=ExtResource("5_cg1w5")]
+position = Vector2(518, 523)
+scale = Vector2(2, 2)
+
+[node name="Enemy3" parent="." groups=["Enemies"] instance=ExtResource("6_3wjtk")]
+position = Vector2(1005, 529)
+
+[node name="Enemy4" parent="." groups=["Enemies"] instance=ExtResource("6_3wjtk")]
+position = Vector2(677, 531)
+
+[node name="Enemy5" parent="." groups=["Enemies"] instance=ExtResource("6_3wjtk")]
+position = Vector2(1069, 528)
+
+[node name="Enemy6" parent="." groups=["Enemies"] instance=ExtResource("11_72mpy")]
+position = Vector2(828, 274)
+scale = Vector2(1.5, 1.5)
+
+[node name="ItemAmmo" parent="." instance=ExtResource("7_thhf4")]
+position = Vector2(479, 409)
+
+[node name="ItemAmmo2" parent="." instance=ExtResource("7_thhf4")]
+position = Vector2(176, 261)
+
+[node name="PLayerCollision" type="StaticBody2D" parent="."]
+collision_layer = 320
+collision_mask = 2
+
+[node name="Columna2" type="CollisionShape2D" parent="PLayerCollision"]
+position = Vector2(508, 429)
+shape = SubResource("RectangleShape2D_t8lpu")
+
+[node name="Columna3" type="CollisionShape2D" parent="PLayerCollision"]
+position = Vector2(803, 327)
+shape = SubResource("RectangleShape2D_t8lpu")
+
+[node name="Columna1" type="CollisionShape2D" parent="PLayerCollision"]
+position = Vector2(212, 279)
+shape = SubResource("RectangleShape2D_t8lpu")
+
+[node name="Suelo" type="CollisionShape2D" parent="PLayerCollision"]
+position = Vector2(575, 590)
+shape = SubResource("RectangleShape2D_se2nb")
+
+[node name="LeftWall" type="CollisionShape2D" parent="PLayerCollision"]
+position = Vector2(-6.04011, 303.855)
+rotation = -1.57397
+shape = SubResource("RectangleShape2D_ej0xh")
+
+[node name="Portal" parent="." instance=ExtResource("8_wl6hy")]
+position = Vector2(801, 251)
+scale = Vector2(3, 3)
+collision_layer = 128
+collision_mask = 2
+script = ExtResource("9_jfu6b")
+
+[node name="ItemHeal" parent="." instance=ExtResource("10_83cty")]
+position = Vector2(240, 262)
+
+[node name="ItemHeal2" parent="." instance=ExtResource("10_83cty")]
+position = Vector2(538, 407)
+
+[node name="ItemAmmo3" parent="." instance=ExtResource("7_thhf4")]
+position = Vector2(201, 261)
+
+[node name="ItemAmmo4" parent="." instance=ExtResource("7_thhf4")]
+position = Vector2(209, 556)
+
+[node name="ItemAmmo5" parent="." instance=ExtResource("7_thhf4")]
+position = Vector2(230, 556)
+
+[node name="ItemAmmo6" parent="." instance=ExtResource("7_thhf4")]
+position = Vector2(255, 555)
+
+[connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]

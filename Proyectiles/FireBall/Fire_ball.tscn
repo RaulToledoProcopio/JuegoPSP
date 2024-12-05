@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://yc1ek1i47cc8"]
+
+[ext_resource type="Script" path="res://Proyectiles/FireBall/FireBall.cs" id="1_7gdfn"]
+[ext_resource type="Texture2D" uid="uid://ceojcvvp5tx2q" path="res://Proyectiles/FireBall/wizard-fireball.png" id="2_82ewb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2penv"]
+atlas = ExtResource("2_82ewb")
+region = Rect2(0, 0, 26, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_csdbp"]
+atlas = ExtResource("2_82ewb")
+region = Rect2(26, 0, 26, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dc0ip"]
+atlas = ExtResource("2_82ewb")
+region = Rect2(52, 0, 26, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g0smd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2penv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_csdbp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dc0ip")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6v2do"]
+
+[node name="FireBall" type="Area2D"]
+collision_layer = 1024
+collision_mask = 2
+script = ExtResource("1_7gdfn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_g0smd")
+animation = &"Default"
+autoplay = "Default"
+frame_progress = 0.36427
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_6v2do")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

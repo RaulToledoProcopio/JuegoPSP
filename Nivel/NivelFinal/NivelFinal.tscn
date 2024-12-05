@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://b353gt4fmlwx5"]
+
+[ext_resource type="Texture2D" uid="uid://ix1g5e6aombt" path="res://Nivel/NivelFinal/preview.png" id="1_fl0mo"]
+[ext_resource type="PackedScene" uid="uid://yun2gfbkemxv" path="res://Personajes/Principal/Character.tscn" id="2_2fwkg"]
+[ext_resource type="PackedScene" uid="uid://88hhrsdxavxq" path="res://Enemigos/Boss/boss.tscn" id="3_me07a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6owcd"]
+size = Vector2(465, 7.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kban1"]
+size = Vector2(662.386, 9.95868)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2b5di"]
+size = Vector2(350, 3.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jg6lo"]
+size = Vector2(291, 6)
+
+[node name="Node2D" type="TileMapLayer"]
+
+[node name="Fondo" type="Sprite2D" parent="."]
+position = Vector2(552, 328)
+scale = Vector2(2.725, 2.725)
+texture = ExtResource("1_fl0mo")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(230.5, 507.25)
+shape = SubResource("RectangleShape2D_6owcd")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-5.96673, 326.978)
+rotation = -1.57397
+shape = SubResource("RectangleShape2D_kban1")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(684, 461.25)
+shape = SubResource("RectangleShape2D_2b5di")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1005.5, 387)
+shape = SubResource("RectangleShape2D_jg6lo")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_2fwkg")]
+position = Vector2(35, 443)
+scale = Vector2(2, 2)
+
+[node name="Boss" parent="." instance=ExtResource("3_me07a")]
+position = Vector2(981, 111)
+rotation = -0.362166
+scale = Vector2(2.5, 2.5)

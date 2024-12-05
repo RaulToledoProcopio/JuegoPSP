@@ -1,0 +1,134 @@
+[gd_scene load_steps=28 format=3 uid="uid://p8kfjlqsvyar"]
+
+[ext_resource type="Texture2D" uid="uid://twgf2nwk0fu2" path="res://Enemigos/Miniboss/frame1.png" id="1_islho"]
+[ext_resource type="Texture2D" uid="uid://c8rhov80v47wg" path="res://Enemigos/Miniboss/frame2.png" id="2_7fbap"]
+[ext_resource type="Texture2D" uid="uid://d1jvfq2vqd8h2" path="res://Enemigos/Miniboss/frame3.png" id="3_kykoq"]
+[ext_resource type="Texture2D" uid="uid://ccio10wlbdbfx" path="res://Enemigos/Miniboss/frame4.png" id="4_4xkkp"]
+[ext_resource type="Texture2D" uid="uid://guaraa7v488q" path="res://Enemigos/Miniboss/frame5.png" id="5_nyu28"]
+[ext_resource type="Texture2D" uid="uid://cs8kmglfgimjb" path="res://Enemigos/Miniboss/frame6.png" id="6_scmto"]
+[ext_resource type="Texture2D" uid="uid://cxkhv3gbs0phm" path="res://Enemigos/Miniboss/frame7.png" id="7_11l4w"]
+[ext_resource type="Texture2D" uid="uid://dexciuyke3qqw" path="res://Enemigos/Miniboss/frame8.png" id="8_s4kj7"]
+[ext_resource type="Texture2D" uid="uid://b37lj3xer3m8u" path="res://Enemigos/Miniboss/frame9.png" id="9_i2jhm"]
+[ext_resource type="Texture2D" uid="uid://csfgvhgaktxwe" path="res://Enemigos/Miniboss/frame10.png" id="10_lcngg"]
+[ext_resource type="Texture2D" uid="uid://dw4kwhwb75aw0" path="res://Enemigos/Miniboss/frame11.png" id="11_osgmq"]
+[ext_resource type="Texture2D" uid="uid://c2wvyjrn38xlj" path="res://Enemigos/Miniboss/frame12.png" id="12_w7g3c"]
+[ext_resource type="Texture2D" uid="uid://dysehwb4gt52p" path="res://Enemigos/Miniboss/frame13.png" id="13_nqxnb"]
+[ext_resource type="Texture2D" uid="uid://vt4mr7skocgn" path="res://Enemigos/Miniboss/frame14.png" id="14_1dno0"]
+[ext_resource type="Texture2D" uid="uid://cxgrdw7o6f3km" path="res://Enemigos/Miniboss/frame15.png" id="15_r4i7m"]
+[ext_resource type="Texture2D" uid="uid://bfnhg5qbew1hn" path="res://Enemigos/Miniboss/frame16.png" id="16_cds3l"]
+[ext_resource type="Texture2D" uid="uid://n8bhfm204mix" path="res://Enemigos/Miniboss/frame17.png" id="17_alhry"]
+[ext_resource type="Texture2D" uid="uid://b8dwsj5b5eo03" path="res://Enemigos/Miniboss/frame18.png" id="18_8n7x2"]
+[ext_resource type="Texture2D" uid="uid://copl0fic2vsct" path="res://Enemigos/Miniboss/idle1.png" id="19_1evvh"]
+[ext_resource type="Texture2D" uid="uid://cxbr25lo1ju87" path="res://Enemigos/Miniboss/idle2.png" id="20_aurvs"]
+[ext_resource type="Texture2D" uid="uid://dih421nqptb16" path="res://Enemigos/Miniboss/idle3.png" id="21_s4uhw"]
+[ext_resource type="Texture2D" uid="uid://dtdvj2glt301s" path="res://Enemigos/Miniboss/idle4.png" id="22_64rbf"]
+[ext_resource type="Texture2D" uid="uid://d20a020wuh3h1" path="res://Enemigos/Miniboss/idle5.png" id="23_cqp78"]
+[ext_resource type="Texture2D" uid="uid://oc7vm62u3w3f" path="res://Enemigos/Miniboss/idle6.png" id="24_r5s8g"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fqii8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_islho")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_7fbap")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kykoq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4xkkp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_nyu28")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_scmto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_11l4w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_s4kj7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_i2jhm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_lcngg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_osgmq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_w7g3c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_nqxnb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_1dno0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_r4i7m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_cds3l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_alhry")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_8n7x2")
+}],
+"loop": true,
+"name": &"Attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_1evvh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_aurvs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_s4uhw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_64rbf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_cqp78")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_r5s8g")
+}],
+"loop": true,
+"name": &"Static",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e01yv"]
+radius = 36.0
+height = 102.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0igr3"]
+radius = 46.0977
+
+[node name="Miniboss" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_fqii8")
+animation = &"Attack"
+autoplay = "Attack"
+
+[node name="Body" type="CollisionShape2D" parent="."]
+position = Vector2(-16, 8)
+shape = SubResource("CapsuleShape2D_e01yv")
+
+[node name="Breath" type="CollisionShape2D" parent="."]
+position = Vector2(-69, 50)
+shape = SubResource("CircleShape2D_0igr3")
