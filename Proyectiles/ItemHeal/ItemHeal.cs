@@ -18,9 +18,10 @@ public partial class ItemHeal : Area2D
 		// Comprobamos si el nodo que entra es el jugador (o cualquier nodo que quieras detectar)
 		if (body is Player player)
 		{
+			if (player.hp < 100){
 			// Recargar la munición del jugador al valor máximo
 			player.hp += 25;
-
+			}
 			QueueFree();
 		}
 	}
