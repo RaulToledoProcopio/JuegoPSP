@@ -98,6 +98,14 @@ collision_layer = 128
 collision_mask = 2
 script = ExtResource("9_5mhwa")
 
+[node name="Label" type="Label" parent="."]
+offset_left = 87.0
+offset_top = 355.0
+offset_right = 1062.0
+offset_bottom = 445.0
+text = "Aquí iría un diálogo que está en desarrollo pero la mecánica está implementada al pasar por el Area2D con un texto de prueba"
+horizontal_alignment = 1
+
 [connection signal="body_entered" from="Lvl2" to="Lvl2" method="_on_body_entered"]
 [connection signal="body_entered" from="Mensaje1" to="Mensaje1" method="_on_body_entered"]
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]

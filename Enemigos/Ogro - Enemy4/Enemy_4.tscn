@@ -98,9 +98,8 @@ size = Vector2(16.1636, 73.0121)
 [node name="Walking" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_guiob")
-animation = &"enemy3walking"
-autoplay = "enemy3static"
-frame_progress = 0.314407
+animation = &"enemy3attack"
+autoplay = "enemy3attack"
 
 [node name="Body" type="CollisionShape2D" parent="."]
 position = Vector2(-0.708679, 16.36)

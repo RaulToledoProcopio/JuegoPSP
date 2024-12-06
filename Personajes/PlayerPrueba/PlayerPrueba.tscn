@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://cpcmj3v2bteef"]
+
+[ext_resource type="Texture2D" uid="uid://dpc87m3j5gkqy" path="res://Personajes/PlayerPrueba/MainChar - ladderclimb.png" id="1_oyy1t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xtfu"]
+atlas = ExtResource("1_oyy1t")
+region = Rect2(0, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srykc"]
+atlas = ExtResource("1_oyy1t")
+region = Rect2(192, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfl8e"]
+atlas = ExtResource("1_oyy1t")
+region = Rect2(384, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6m0md"]
+atlas = ExtResource("1_oyy1t")
+region = Rect2(576, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tnb0j"]
+atlas = ExtResource("1_oyy1t")
+region = Rect2(768, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fne6"]
+atlas = ExtResource("1_oyy1t")
+region = Rect2(960, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hc4cu"]
+atlas = ExtResource("1_oyy1t")
+region = Rect2(1152, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yb13c"]
+atlas = ExtResource("1_oyy1t")
+region = Rect2(1344, 0, 192, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8n267"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xtfu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_srykc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfl8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6m0md")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tnb0j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2fne6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hc4cu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yb13c")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y4j2m"]
+height = 48.0
+
+[node name="PlayerPrueba" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8n267")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.148616
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("CapsuleShape2D_y4j2m")

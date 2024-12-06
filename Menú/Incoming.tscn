@@ -1,0 +1,107 @@
+[gd_scene load_steps=11 format=3 uid="uid://86sn4ulqjbpl"]
+
+[ext_resource type="Script" path="res://Menú/Incoming.cs" id="1_6lqrd"]
+[ext_resource type="Texture2D" uid="uid://dundutrb7rqkn" path="res://Menú/thumb-1920-1349938.png" id="1_na4cu"]
+[ext_resource type="PackedScene" uid="uid://bhwfp65whwj46" path="res://Enemigos/Ogro - Enemy4/Enemy_4.tscn" id="2_luy5o"]
+[ext_resource type="PackedScene" uid="uid://p8kfjlqsvyar" path="res://Enemigos/Miniboss/Miniboss.tscn" id="3_t5rqq"]
+[ext_resource type="PackedScene" uid="uid://88hhrsdxavxq" path="res://Enemigos/Boss/boss.tscn" id="4_w8yef"]
+[ext_resource type="Texture2D" uid="uid://bjjvjnqmal8cs" path="res://Nivel/Nivel4/ChurchScreen.png" id="5_qtid5"]
+[ext_resource type="Texture2D" uid="uid://d2uti0qxe0mll" path="res://Nivel/Nivel5/SwampScreen.png" id="6_vapsq"]
+[ext_resource type="PackedScene" uid="uid://cpcmj3v2bteef" path="res://Personajes/PlayerPrueba/PlayerPrueba.tscn" id="7_32uuw"]
+
+[sub_resource type="SystemFont" id="SystemFont_vkiyi"]
+font_names = PackedStringArray("Impact")
+
+[sub_resource type="SystemFont" id="SystemFont_3chme"]
+font_names = PackedStringArray("Impact")
+
+[node name="Incoming" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1152.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6lqrd")
+
+[node name="Sprite2D" type="TextureRect" parent="."]
+layout_mode = 1
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_na4cu")
+
+[node name="Button" type="Button" parent="Sprite2D"]
+layout_mode = 0
+offset_left = 482.0
+offset_top = 560.0
+offset_right = 704.0
+offset_bottom = 568.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = SubResource("SystemFont_vkiyi")
+theme_override_font_sizes/font_size = 25
+text = "Volver"
+
+[node name="Label" type="Label" parent="Sprite2D"]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 63.0
+offset_right = 278.0
+offset_bottom = 95.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = SubResource("SystemFont_3chme")
+theme_override_font_sizes/font_size = 25
+text = "Nuevo enemigos"
+
+[node name="enemy3" parent="Sprite2D" instance=ExtResource("2_luy5o")]
+position = Vector2(121, 166)
+scale = Vector2(1.7, 1.7)
+
+[node name="Miniboss" parent="Sprite2D" instance=ExtResource("3_t5rqq")]
+position = Vector2(304, 173)
+
+[node name="Label2" type="Label" parent="Sprite2D"]
+layout_mode = 0
+offset_left = 524.0
+offset_top = 69.0
+offset_right = 670.0
+offset_bottom = 101.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = SubResource("SystemFont_3chme")
+theme_override_font_sizes/font_size = 25
+text = "Nuevo niveles"
+
+[node name="Label3" type="Label" parent="Sprite2D"]
+layout_mode = 0
+offset_left = 873.0
+offset_top = 71.0
+offset_right = 1086.0
+offset_bottom = 103.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = SubResource("SystemFont_3chme")
+theme_override_font_sizes/font_size = 25
+text = "Nuevas animaciones"
+
+[node name="Boss" parent="." instance=ExtResource("4_w8yef")]
+position = Vector2(185, 342)
+
+[node name="ChurchScreen" type="Sprite2D" parent="."]
+position = Vector2(605, 195)
+scale = Vector2(0.409821, 0.377778)
+texture = ExtResource("5_qtid5")
+
+[node name="SwampScreen" type="Sprite2D" parent="."]
+position = Vector2(605, 351)
+scale = Vector2(0.410764, 0.410764)
+texture = ExtResource("6_vapsq")
+
+[node name="PlayerPrueba" parent="." instance=ExtResource("7_32uuw")]
+position = Vector2(910, 246)
+scale = Vector2(2, 2)
+
+[connection signal="pressed" from="Sprite2D/Button" to="." method="_on_button_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://drhdvm0rgfh4a"]
+[gd_scene load_steps=9 format=3 uid="uid://drhdvm0rgfh4a"]
 
 [ext_resource type="Script" path="res://Menú/Final.cs" id="1_isok6"]
 [ext_resource type="Texture2D" uid="uid://dung7tk6ktu18" path="res://Menú/Menú.jpg" id="2_eckwu"]
@@ -9,6 +9,10 @@ subpixel_positioning = 0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y3uoc"]
 draw_center = false
+
+[sub_resource type="SystemFont" id="SystemFont_q043o"]
+font_names = PackedStringArray("Impact")
+subpixel_positioning = 0
 
 [sub_resource type="SystemFont" id="SystemFont_582lp"]
 font_names = PackedStringArray("Impact")
@@ -55,7 +59,19 @@ theme_override_constants/outline_size = 12
 theme_override_fonts/font = SubResource("SystemFont_pwbhq")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_y3uoc")
-text = "Enhorabuena, has acabado el juego."
+text = "Enhorabuena, has acabado la demo."
+
+[node name="Button4" type="Button" parent="."]
+layout_mode = 2
+offset_left = 421.0
+offset_top = 233.0
+offset_right = 731.0
+offset_bottom = 264.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = SubResource("SystemFont_q043o")
+theme_override_font_sizes/font_size = 25
+text = "Lo que está por venir"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -97,6 +113,7 @@ theme_override_fonts/font = SubResource("SystemFont_wyj5v")
 theme_override_font_sizes/font_size = 30
 text = "Salir"
 
+[connection signal="pressed" from="Button4" to="." method="_on_button_4_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_button_3_pressed"]

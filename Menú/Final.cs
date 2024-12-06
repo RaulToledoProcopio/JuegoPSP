@@ -18,4 +18,9 @@ public partial class Final : Godot.Control
 	private void _on_button_3_pressed(){
 		GetTree().Quit();
 	}
+	
+	// Cambiar de escena al pulsar el botón lo que está por venir
+	private void _on_button_4_pressed(){
+		GetTree().ChangeSceneToFile("res://Menú/Incoming.tscn");
+	}
 }
