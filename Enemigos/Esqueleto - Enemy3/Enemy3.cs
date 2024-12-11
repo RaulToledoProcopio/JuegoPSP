@@ -86,7 +86,14 @@ public partial class Enemy3 : CharacterBody2D
 	public void TakeDamage(int damage)
 	{
 		hp -= damage;
-		// Calcula el retroceso en la dirección opuesta al jugador
-		this.Position = new Vector2(this.Position.X + (animation.FlipH ? -50 : 50), this.Position.Y);
+
+		// Obtener la posición del jugador dinámicamente
+		var player = GetNode<Player>("../Player"); // Asegúrate de que la ruta sea correcta
+
+		// Calcula la dirección del retroceso en función de la posición del jugador
+		float direction = (player.Position.X < this.Position.X) ? 1.0f : -1.0f;
+
+		// Retroceder en la dirección opuesta al jugador
+		this.Position = new Vector2(this.Position.X + (direction * 50), this.Position.Y);
 	}
 }

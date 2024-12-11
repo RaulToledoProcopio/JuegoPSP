@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dkqxo15nsd6g1"]
 
-[ext_resource type="Script" path="res://Menú/Menu.cs" id="1_n0a6d"]
-[ext_resource type="Texture2D" uid="uid://dung7tk6ktu18" path="res://Menú/Menú.jpg" id="2_w2pup"]
+[ext_resource type="Script" path="res://Menú/Menu.cs" id="1_eursq"]
+[ext_resource type="Texture2D" uid="uid://dung7tk6ktu18" path="res://Menú/Menú.jpg" id="2_eyv1b"]
 
 [sub_resource type="SystemFont" id="SystemFont_nq8w4"]
 font_names = PackedStringArray("Impact")
@@ -29,7 +29,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_n0a6d")
+script = ExtResource("1_eursq")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -38,16 +38,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_w2pup")
+texture = ExtResource("2_eyv1b")
 
-[node name="TextEdit" type="TextEdit" parent="."]
+[node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -323.5
-offset_right = 323.5
-offset_bottom = 66.0
+offset_left = -298.0
+offset_top = 14.0
+offset_right = 349.0
+offset_bottom = 80.0
 grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12

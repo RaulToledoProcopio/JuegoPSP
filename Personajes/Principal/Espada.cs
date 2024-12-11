@@ -19,9 +19,7 @@ public partial class Espada : Area2D
 		GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;  // Activamos la colisión de la espada.
 	}
 
-
-	/* Para desactivar la espada creamos un método para llamarlo de manera diferida al igual que en 
-	los portales porque tiraba un error flushing queries por la sincronización de las físicas*/
+	/* Para desactivar la espada creamos un método para llamarlo de manera diferida */
 	public void DesactivarEspada()
 	{
 		CallDeferred(nameof(DeferredDesactivarEspada));
@@ -39,17 +37,22 @@ public partial class Espada : Area2D
 		if (body is Enemy1 enemy1)  // Si el cuerpo es un enemigo del tipo 'Enemy1'.
 		{
 			enemy1.TakeDamage(damage);  // Inflige daño al enemigo.
-			DesactivarEspada();  // Desactiva el área de la espada después de infligir el daño.
+			CallDeferred(nameof(DesactivarEspada));  // Desactiva el área de la espada después de infligir el daño.
 		}
 		else if (body is Enemy2 enemy2)
 		{
 			enemy2.TakeDamage(damage);
-			DesactivarEspada();
+			CallDeferred(nameof(DesactivarEspada));
 		}
 		else if (body is Enemy3 enemy3)
 		{
 			enemy3.TakeDamage(damage);
-			DesactivarEspada();
+			CallDeferred(nameof(DesactivarEspada));
+		}
+		else if (body is Dummy dummy)
+		{
+			dummy.TakeDamage(damage);
+			dummy.CallDeferred("DesactivarEspada");
 		}
 	}
 }

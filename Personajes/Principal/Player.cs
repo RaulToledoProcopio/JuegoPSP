@@ -8,7 +8,7 @@ public partial class Player : CharacterBody2D
 	[Export]
 	public float JumpVelocity = -500f; // Velocidad aplicada al personaje al saltar.
 	[Export]
-	public float Gravity = 1250f; // Fuerza de gravedad aplicada al personaje.
+	public float Gravity = 1000f; // Fuerza de gravedad aplicada al personaje.
 	[Export]
 	public float speedDagger = 300f; // Velocidad a la que se lanza la daga.
 	[Export]
@@ -191,7 +191,7 @@ public partial class Player : CharacterBody2D
 	public void Attack()
 	{
 		_espada.ActivarEspada(); // Activa el nodo del área de la espada.
-		GetTree().CreateTimer(0.3f).Timeout += () => _espada.DesactivarEspada(); // Desactiva la espada después de un tiempo.
+		GetTree().CreateTimer(0.1f).Timeout += () => _espada.DesactivarEspada(); // Desactiva la espada después de un tiempo.
 	}
 
 	// Cambia a la escena de Game Over cuando el temporizador finaliza.
@@ -202,9 +202,14 @@ public partial class Player : CharacterBody2D
 
 	// Función de recibir daño
 	public void TakeDamage(int damage)
-	{
-		if (_isDead) return; // Si está muerto, no recibe daño.
-		hp -= damage; // Reduce los puntos de vida.
-		animation.Play("Hit");
-	}
+{
+	if (_isDead || isAttacking) return; // Si está muerto, no recibe daño.
+
+	hp -= damage; // Reduce los puntos de vida.
+	animation.Play("Hit"); // Reproduce la animación de recibir daño.
+
+	// Retroceso simple: mover al jugador hacia atrás cuando recibe daño
+	this.Position = new Vector2(this.Position.X - 50, this.Position.Y);
+}
+
 }

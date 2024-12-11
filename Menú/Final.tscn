@@ -44,7 +44,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_eckwu")
 
-[node name="TextEdit" type="TextEdit" parent="."]
+[node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -52,7 +52,7 @@ anchor_right = 0.5
 offset_left = -320.0
 offset_top = 103.0
 offset_right = 420.0
-offset_bottom = 280.0
+offset_bottom = 171.0
 grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12

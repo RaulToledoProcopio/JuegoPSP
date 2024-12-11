@@ -14,13 +14,13 @@
 [ext_resource type="PackedScene" uid="uid://d26onvvoeq3jr" path="res://Enemigos/Mago - Enemy2/Enemy_2.tscn" id="11_72mpy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ej0xh"]
-size = Vector2(601.073, 23.1201)
+size = Vector2(601.073, 26.514)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t8lpu"]
 size = Vector2(90, 3.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_se2nb"]
-size = Vector2(1152.56, 22)
+size = Vector2(1169.28, 22)
 
 [node name="Nivel2" type="TileMapLayer"]
 script = ExtResource("1_8s7qx")
@@ -91,11 +91,11 @@ position = Vector2(212, 279)
 shape = SubResource("RectangleShape2D_t8lpu")
 
 [node name="Suelo" type="CollisionShape2D" parent="PLayerCollision"]
-position = Vector2(575, 594)
+position = Vector2(566.64, 594)
 shape = SubResource("RectangleShape2D_se2nb")
 
 [node name="LeftWall" type="CollisionShape2D" parent="PLayerCollision"]
-position = Vector2(-6.04011, 303.855)
+position = Vector2(-7.73704, 303.86)
 rotation = -1.57397
 shape = SubResource("RectangleShape2D_ej0xh")
 
