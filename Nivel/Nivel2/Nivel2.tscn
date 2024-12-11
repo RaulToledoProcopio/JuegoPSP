@@ -20,7 +20,7 @@ size = Vector2(601.073, 23.1201)
 size = Vector2(90, 3.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_se2nb"]
-size = Vector2(1152.56, 14)
+size = Vector2(1152.56, 22)
 
 [node name="Nivel2" type="TileMapLayer"]
 script = ExtResource("1_8s7qx")
@@ -59,10 +59,7 @@ position = Vector2(518, 523)
 scale = Vector2(2, 2)
 
 [node name="Enemy3" parent="." groups=["Enemies"] instance=ExtResource("6_3wjtk")]
-position = Vector2(1005, 529)
-
-[node name="Enemy4" parent="." groups=["Enemies"] instance=ExtResource("6_3wjtk")]
-position = Vector2(677, 531)
+position = Vector2(699, 530)
 
 [node name="Enemy5" parent="." groups=["Enemies"] instance=ExtResource("6_3wjtk")]
 position = Vector2(1069, 528)
@@ -94,7 +91,7 @@ position = Vector2(212, 279)
 shape = SubResource("RectangleShape2D_t8lpu")
 
 [node name="Suelo" type="CollisionShape2D" parent="PLayerCollision"]
-position = Vector2(575, 590)
+position = Vector2(575, 594)
 shape = SubResource("RectangleShape2D_se2nb")
 
 [node name="LeftWall" type="CollisionShape2D" parent="PLayerCollision"]
@@ -119,12 +116,18 @@ position = Vector2(538, 407)
 position = Vector2(201, 261)
 
 [node name="ItemAmmo4" parent="." instance=ExtResource("7_thhf4")]
-position = Vector2(209, 556)
+position = Vector2(212, 560)
 
 [node name="ItemAmmo5" parent="." instance=ExtResource("7_thhf4")]
-position = Vector2(230, 556)
+position = Vector2(230, 559)
 
 [node name="ItemAmmo6" parent="." instance=ExtResource("7_thhf4")]
-position = Vector2(255, 555)
+position = Vector2(248, 560)
+
+[node name="ItemAmmo7" parent="." instance=ExtResource("7_thhf4")]
+position = Vector2(184, 559)
+
+[node name="ItemAmmo8" parent="." instance=ExtResource("7_thhf4")]
+position = Vector2(164, 560)
 
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]

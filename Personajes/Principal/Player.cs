@@ -29,6 +29,8 @@ public partial class Player : CharacterBody2D
 	private ProgressBar _healthBar; // Barra de salud en la interfaz.
 	private Label _ammoLabel; // Etiqueta que muestra la cantidad de munición disponible.
 	private int jumpCount = 0; // Contador de saltos realizados para el doble salto.
+	private CollisionShape2D _idleCollisionShape; // Collision para cuando está de pie
+	private CollisionShape2D _crouchCollisionShape; // Collision para cuando está agachado
 
 	public override void _Ready()
 	{
@@ -41,6 +43,11 @@ public partial class Player : CharacterBody2D
 		_healthBar = GetNode<ProgressBar>("../UI/HealthBar"); // Barra de salud.
 		_healthBar.Value = hp; // Iguala el valor inicial de la barra a la vida del pj.
 		_ammoLabel = GetNode<Label>("../UI/Ammo"); // Munición en la interfaz.
+		_idleCollisionShape = GetNode<CollisionShape2D>("idleCollisionShape2D");
+		_crouchCollisionShape = GetNode<CollisionShape2D>("crouchCollisionShape2D");
+
+		_idleCollisionShape.Disabled = false; // Activa la colisión en "idle"
+		_crouchCollisionShape.Disabled = true; // Desactiva la colisión en "crouch"
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -52,6 +59,20 @@ public partial class Player : CharacterBody2D
 
 		_healthBar.Value = hp; // Actualiza la barra de salud.
 		_ammoLabel.Text = $": {Ammo}"; // Actualiza la etiqueta de munición.
+		// Detecta si el jugador está agachado
+		isCrouching = Input.IsActionPressed("ui_down");
+
+		// Cambia el CollisionShape dependiendo del estado
+		if (isCrouching)
+		{
+			_idleCollisionShape.Disabled = true;  // Desactiva la colisión de pie
+			_crouchCollisionShape.Disabled = false; // Activa la colisión agachada
+		}
+		else
+		{
+			_idleCollisionShape.Disabled = false; // Activa la colisión de pie
+			_crouchCollisionShape.Disabled = true; // Desactiva la colisión agachada
+		}
 
 		// Aplica gravedad si el personaje no está en el suelo para el salto.
 		if (!IsOnFloor())
@@ -98,10 +119,6 @@ public partial class Player : CharacterBody2D
 				GetParent().AddChild(instDagger); // Agrega la daga a la escena.
 				Ammo--; // Reduce la munición disponible.
 			}
-		}
-		else
-		{
-			GD.Print("No quedan dagas"); // Muestra un mensaje en la consola si no hay munición.
 		}
 
 		// Verifica si la animación de ataque ha terminado.
@@ -188,7 +205,6 @@ public partial class Player : CharacterBody2D
 	{
 		if (_isDead) return; // Si está muerto, no recibe daño.
 		hp -= damage; // Reduce los puntos de vida.
-		GD.Print($"Recibió {damage} de daño, vida restante: {hp}");
 		animation.Play("Hit");
 	}
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=145 format=3 uid="uid://yun2gfbkemxv"]
+[gd_scene load_steps=146 format=3 uid="uid://yun2gfbkemxv"]
 
 [ext_resource type="Script" path="res://Personajes/Principal/Player.cs" id="1_onsn2"]
 [ext_resource type="Texture2D" uid="uid://bgm3q0mmuwq6w" path="res://Personajes/Principal/MainChar - idle.png" id="2_1jxms"]
@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://w52n8j50dggc" path="res://Personajes/Principal/MainChar - interact(grab).png" id="11_8lc8i"]
 [ext_resource type="Texture2D" uid="uid://4wup7ht2txwc" path="res://Personajes/Principal/MainChar - walk.png" id="12_h7kly"]
 [ext_resource type="Script" path="res://Personajes/Principal/Espada.cs" id="14_af6u3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2yksp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gyish"]
 atlas = ExtResource("2_kcve5")
@@ -707,7 +709,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Hit",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -963,7 +965,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y6nkd"]
 radius = 11.0
-height = 42.0
+height = 52.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_73og2"]
 size = Vector2(46.5, 61)
@@ -974,16 +976,19 @@ collision_mask = 198641
 script = ExtResource("1_onsn2")
 speedDagger = 500.0
 
+[node name="crouchCollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 10)
+shape = SubResource("CapsuleShape2D_2yksp")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+position = Vector2(-1, 0)
 sprite_frames = SubResource("SpriteFrames_opfo0")
-animation = &"Hit"
+animation = &"Item Buff"
 autoplay = "Idle"
-frame = 4
-frame_progress = 1.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 4)
+[node name="idleCollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 0)
 shape = SubResource("CapsuleShape2D_y6nkd")
 
 [node name="Espada" type="Area2D" parent="."]

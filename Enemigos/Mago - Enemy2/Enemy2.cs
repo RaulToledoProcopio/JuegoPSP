@@ -71,6 +71,5 @@ public partial class Enemy2 : CharacterBody2D
 	public void TakeDamage(int damage)
 	{
 		hp -= damage;
-		GD.Print($"Enemy2 recibió {damage} de daño. HP restante: {hp}");
 	}
 }

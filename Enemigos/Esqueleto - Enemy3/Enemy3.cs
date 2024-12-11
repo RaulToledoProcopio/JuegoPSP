@@ -10,7 +10,7 @@ public partial class Enemy3 : CharacterBody2D
 	private Vector2 _movementDirection = new Vector2(-1, 0);   // Dirección inicial del movimiento (izquierda).
 	private int hp = 100; // Puntos de vida del enemigo.
 	private bool _timerStarted = false; // Bandera para evitar que se reinicie el temporizador.
-	[Export] public int damage = 50; // Daño que inflinge el enemigo
+	[Export] public int damage = 10; // Daño que inflinge el enemigo
 
 	public override void _Ready()
 	{
@@ -87,7 +87,6 @@ public partial class Enemy3 : CharacterBody2D
 	{
 		hp -= damage;
 		// Calcula el retroceso en la dirección opuesta al jugador
-		this.Position = new Vector2(this.Position.X + (animation.FlipH ? -20 : 20), this.Position.Y);
-		GD.Print($"Enemy3 recibió {damage} de daño. HP restante: {hp}");
+		this.Position = new Vector2(this.Position.X + (animation.FlipH ? -50 : 50), this.Position.Y);
 	}
 }
