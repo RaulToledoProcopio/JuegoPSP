@@ -152,22 +152,23 @@ public partial class Player : CharacterBody2D
 					animation.FlipH = direction.X < 0; // Cambia la dirección de la animación.
 
 					// Ajusta la posición de la espada.
-					if (direction.X > 0) 
-					_espada.Position = new Vector2(0, 0); // Derecha.
-					else 
-					_espada.Position = new Vector2(-70, 0); // Izquierda.
-					animation.Play("Run"); // Reproduce la animación de correr.
+					if (direction.X > 0) {
+						_espada.Position = new Vector2(0, 0); // Derecha.
+						}else{
+						_espada.Position = new Vector2(-70, 0); // Izquierda.
+						animation.Play("Run");
+					}
 				}
 				else
 				{
-					velocity.X = 0; // Detiene el movimiento horizontal.
+					velocity.X = 0;
 		
-					// Mantén la posición de la espada acorde a la última dirección.
-				if (animation.FlipH)
-				_espada.Position = new Vector2(-70, 0);
-				else
-				_espada.Position = new Vector2(0, 0);
-				animation.Play("Idle"); // Reproduce la animación de estar quieto.
+					if (animation.FlipH){
+						_espada.Position = new Vector2(-70, 0);
+						}else{
+						_espada.Position = new Vector2(0, 0);
+						animation.Play("Idle");
+					}
 				}
 			}
 		}
