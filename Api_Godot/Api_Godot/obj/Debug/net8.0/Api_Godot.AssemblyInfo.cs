@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Api_Godot")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+651dff946e21203f461b72c6e1d65c9713cfe257")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6cbc5dba9f4c0fa106630b136fc239a63d2a4804")]
 [assembly: System.Reflection.AssemblyProductAttribute("Api_Godot")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Api_Godot")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

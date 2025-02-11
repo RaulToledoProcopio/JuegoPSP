@@ -1,0 +1,5 @@
+C:\Users\r_cad\Godot_v4.3-stable_mono_win64\pspjuego\Api_Godot\Api_Godot\obj\Debug\net8.0\Api_Godot.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\r_cad\Godot_v4.3-stable_mono_win64\pspjuego\Api_Godot\Api_Godot\obj\Debug\net8.0\Api_Godot.AssemblyInfoInputs.cache
+C:\Users\r_cad\Godot_v4.3-stable_mono_win64\pspjuego\Api_Godot\Api_Godot\obj\Debug\net8.0\Api_Godot.AssemblyInfo.cs
+C:\Users\r_cad\Godot_v4.3-stable_mono_win64\pspjuego\Api_Godot\Api_Godot\obj\Debug\net8.0\Api_Godot.csproj.CoreCompileInputs.cache
+C:\Users\r_cad\Godot_v4.3-stable_mono_win64\pspjuego\Api_Godot\Api_Godot\obj\Debug\net8.0\Api_Godot.sourcelink.json
