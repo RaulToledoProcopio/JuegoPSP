@@ -15,10 +15,10 @@ class Program
         var client = new MongoClient(connectionString);
 
         // Seleccionar la base de datos (ajústalo con el nombre de tu BD)
-        var database = client.GetDatabase("MiBaseDeDatos");
+        var database = client.GetDatabase("Api_Godot");
 
         // Obtener una colección (tabla)
-        var collection = database.GetCollection<dynamic>("MiColeccion");
+        var collection = database.GetCollection<dynamic>("CollCrono");
 
         Console.WriteLine("Conexión a MongoDB establecida correctamente.");
     }
