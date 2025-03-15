@@ -1,0 +1,89 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0sefp2v60ert"]
+
+[ext_resource type="Script" path="res://Register.cs" id="1_i344y"]
+[ext_resource type="Texture2D" uid="uid://dung7tk6ktu18" path="res://Menú/Menú.jpg" id="1_n4g4f"]
+
+[sub_resource type="SystemFont" id="SystemFont_xu3ag"]
+font_names = PackedStringArray("Impact")
+subpixel_positioning = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hth46"]
+draw_center = false
+
+[node name="Register" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i344y")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_n4g4f")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -117.0
+offset_top = 64.0
+offset_right = 98.0
+offset_bottom = 130.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = SubResource("SystemFont_xu3ag")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_hth46")
+text = "Regístrate
+"
+
+[node name="UsernameLineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 321.0
+offset_right = 698.0
+offset_bottom = 352.0
+placeholder_text = "Usuario"
+
+[node name="PasswordLineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 366.0
+offset_right = 698.0
+offset_bottom = 397.0
+placeholder_text = "Contraseña"
+
+[node name="RegisterButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 500.0
+offset_top = 431.0
+offset_right = 657.0
+offset_bottom = 469.0
+text = "Regístrar"
+
+[node name="ErrorLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 484.0
+offset_right = 698.0
+offset_bottom = 520.0
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 0
+offset_left = 939.0
+offset_top = 30.0
+offset_right = 1125.0
+offset_bottom = 70.0
+text = "Volver al login"
+
+[connection signal="pressed" from="RegisterButton" to="." method="_on_register_button_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

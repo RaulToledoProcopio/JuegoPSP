@@ -1,0 +1,88 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0b8sqjuo45ls"]
+
+[ext_resource type="Texture2D" uid="uid://dung7tk6ktu18" path="res://Menú/Menú.jpg" id="1_31y7h"]
+[ext_resource type="Script" path="res://Login.cs" id="1_e8mmp"]
+
+[sub_resource type="SystemFont" id="SystemFont_1odf7"]
+font_names = PackedStringArray("Impact")
+subpixel_positioning = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7qcul"]
+draw_center = false
+
+[node name="Login" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e8mmp")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_31y7h")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -130.0
+offset_top = 68.0
+offset_right = 110.0
+offset_bottom = 134.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = SubResource("SystemFont_1odf7")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_7qcul")
+text = "Identifícate"
+
+[node name="UsernameLineEdit" type="LineEdit" parent="."]
+layout_mode = 2
+offset_left = 448.0
+offset_top = 335.0
+offset_right = 698.0
+offset_bottom = 366.0
+placeholder_text = "Usuario"
+
+[node name="PasswordLineEdit" type="LineEdit" parent="."]
+layout_mode = 2
+offset_left = 448.0
+offset_top = 387.0
+offset_right = 698.0
+offset_bottom = 418.0
+placeholder_text = "Contraseña"
+
+[node name="ErrorLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 378.0
+offset_top = 552.0
+offset_right = 628.0
+offset_bottom = 598.0
+
+[node name="LoginButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 500.0
+offset_top = 449.0
+offset_right = 657.0
+offset_bottom = 487.0
+text = "Log in"
+
+[node name="RegisterButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 500.0
+offset_top = 494.0
+offset_right = 657.0
+offset_bottom = 532.0
+text = "Regístrate"
+
+[connection signal="pressed" from="LoginButton" to="." method="_on_login_button_pressed"]
+[connection signal="pressed" from="RegisterButton" to="." method="_on_register_button_pressed"]
