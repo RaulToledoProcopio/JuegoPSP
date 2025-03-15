@@ -15,12 +15,14 @@ public partial class Register : Godot.Control
 
 	private LineEdit _usernameField;
 	private LineEdit _passwordField;
+	private LineEdit _emailField;
 	private Label _errorLabel;
 
 	public override void _Ready()
 	{
 		_usernameField = GetNode<LineEdit>("UsernameLineEdit");
 		_passwordField = GetNode<LineEdit>("PasswordLineEdit");
+		_emailField = GetNode<LineEdit>("EmailLineEdit");
 		_errorLabel = GetNode<Label>("ErrorLabel");
 	}
 
@@ -28,8 +30,9 @@ public partial class Register : Godot.Control
 	{
 		string username = _usernameField.Text;
 		string password = _passwordField.Text;
+		string email = _emailField.Text;
 
-		if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+		if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(email))
 		{
 			_errorLabel.Text = "Por favor, llena todos los campos.";
 			return;
@@ -37,7 +40,8 @@ public partial class Register : Godot.Control
 
 		var registerData = new {
 			username = username,
-			passwordHash = password
+			passwordHash = password,
+			email = email
 		};
 
 		try
@@ -55,7 +59,7 @@ public partial class Register : Godot.Control
 			else
 			{
 				GD.PrintErr("Error en el registro: " + response.StatusCode);
-				_errorLabel.Text = "Error: El usuario ya existe o hubo un problema.";
+				_errorLabel.Text = "Error: El usuario/email ya existe o hubo un problema.";
 			}
 		}
 		catch (Exception ex)

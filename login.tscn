@@ -48,17 +48,17 @@ text = "Identifícate"
 [node name="UsernameLineEdit" type="LineEdit" parent="."]
 layout_mode = 2
 offset_left = 448.0
-offset_top = 335.0
+offset_top = 339.0
 offset_right = 698.0
-offset_bottom = 366.0
+offset_bottom = 370.0
 placeholder_text = "Usuario"
 
 [node name="PasswordLineEdit" type="LineEdit" parent="."]
 layout_mode = 2
 offset_left = 448.0
-offset_top = 387.0
+offset_top = 380.0
 offset_right = 698.0
-offset_bottom = 418.0
+offset_bottom = 411.0
 placeholder_text = "Contraseña"
 
 [node name="ErrorLabel" type="Label" parent="."]
