@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d03q1g8mw7vbw"]
+
+[ext_resource type="Script" path="res://Crono.cs" id="1_evm0l"]
+
+[node name="Crono" type="Node"]
+script = ExtResource("1_evm0l")
