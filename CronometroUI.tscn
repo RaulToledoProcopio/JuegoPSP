@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bojyephlgtv2o"]
+
+[node name="CronometroUI" type="CanvasLayer"]
+
+[node name="CronoUI" type="Label" parent="."]
+visible = false
+offset_left = 1062.0
+offset_top = 23.0
+offset_right = 1128.0
+offset_bottom = 46.0
+text = "00:00:00"

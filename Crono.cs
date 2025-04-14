@@ -8,10 +8,20 @@ public partial class Crono : Node
 
 	public override void _Process(double delta)
 	{
-		// Si el cronómetro está activo, se incrementa el tiempo transcurrido.
+		// Si el cronómetro está activo, se incrementa.
 		if (timerRunning)
 		{
 			elapsedTime += (float)delta;
+
+			// Formateamos el tiempo
+			int minutes = (int)(elapsedTime / 60);  // Minutos
+			int seconds = (int)(elapsedTime % 60);  // Segundos
+			int decimas = (int)((elapsedTime % 1) * 10); // Décimas
+
+			var tiempoLabel = GetNode<Label>("/root/CronometroUI/CronoUI");
+			
+			tiempoLabel.Text = $"{minutes:D2}:{seconds:D2}:{decimas:D2}";
+			
 		}
 	}
 

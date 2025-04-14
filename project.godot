@@ -18,6 +18,7 @@ config/icon="res://Personajes/Principal/icon.svg"
 [autoload]
 
 Crono="*res://Crono.cs"
+CronometroUI="*res://CronometroUI.tscn"
 
 [display]
 
