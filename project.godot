@@ -19,6 +19,7 @@ config/icon="res://Personajes/Principal/icon.svg"
 
 Crono="*res://Crono.cs"
 CronometroUI="*res://CronometroUI.tscn"
+SessionManager="*res://SessionManager.cs"
 
 [display]
 

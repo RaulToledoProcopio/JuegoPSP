@@ -44,6 +44,8 @@ public partial class Login : Godot.Control
 			{
 				// Si la respuesta es exitosa, carga la escena del menú
 				GD.Print("Login exitoso");
+				var session = GetNode<SessionManager>("/root/SessionManager");
+					session.Username = username;
 				GetTree().ChangeSceneToFile("res://Menú/Menu.tscn");
 			}
 			else
