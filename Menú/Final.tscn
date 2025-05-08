@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://drhdvm0rgfh4a"]
+[gd_scene load_steps=12 format=3 uid="uid://drhdvm0rgfh4a"]
 
 [ext_resource type="Script" path="res://Menú/Final.cs" id="1_isok6"]
 [ext_resource type="Texture2D" uid="uid://dung7tk6ktu18" path="res://Menú/Menú.jpg" id="2_eckwu"]
+[ext_resource type="AudioStream" uid="uid://bptj0ekba7wdy" path="res://BSO/12-Créditos.mp3" id="2_u408f"]
 
 [sub_resource type="SystemFont" id="SystemFont_pwbhq"]
 font_names = PackedStringArray("Impact")
@@ -39,6 +40,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_isok6")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_u408f")
+autoplay = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://dk3jl0q2hqjrr"]
+[gd_scene load_steps=17 format=3 uid="uid://dk3jl0q2hqjrr"]
 
 [ext_resource type="Script" path="res://Nivel/Nivel2/Nivel2.cs" id="1_8s7qx"]
 [ext_resource type="Texture2D" uid="uid://iecp6mv1igc3" path="res://Nivel/Nivel2/Nivel2.png" id="1_w56vj"]
+[ext_resource type="AudioStream" uid="uid://dvj6eqoxfjs6m" path="res://BSO/2-Fase1.mp3" id="2_47r8i"]
 [ext_resource type="PackedScene" uid="uid://dxh765y85dhbj" path="res://UI.tscn" id="2_ko36k"]
 [ext_resource type="PackedScene" uid="uid://c3yed6a1dp0xf" path="res://Menú/pause.tscn" id="3_7d3d7"]
 [ext_resource type="PackedScene" uid="uid://yun2gfbkemxv" path="res://Personajes/Principal/Character.tscn" id="4_st8vl"]
@@ -24,6 +25,10 @@ size = Vector2(1169.28, 22)
 
 [node name="Nivel2" type="TileMapLayer"]
 script = ExtResource("1_8s7qx")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_47r8i")
+autoplay = true
 
 [node name="Nivel2" type="Sprite2D" parent="."]
 position = Vector2(580, 335)
