@@ -8,9 +8,9 @@ public partial class Crono : Node
 {
 	private float elapsedTime = 0f;
 	private bool timerRunning = false;
+	private bool canSubmitScore = false;  // Controla si se puede enviar la puntuación
 
 	private readonly System.Net.Http.HttpClient _http = new System.Net.Http.HttpClient();
-
 
 	public override void _Process(double delta)
 	{
@@ -33,23 +33,52 @@ public partial class Crono : Node
 	{
 		elapsedTime = 0f;
 		timerRunning = true;
+		canSubmitScore = false;  // No se puede enviar puntuación aún
 		GD.Print("Cronómetro iniciado.");
 	}
 
-	public void StopTimer()
+	public void StopTimer(bool submitScore = false)
 	{
 		timerRunning = false;
-		GD.Print("Cronómetro detenido: " + elapsedTime + " segundos.");
+		if (submitScore && canSubmitScore)  // Solo enviar puntuación si se debe
+		{
+			GD.Print("Cronómetro detenido: " + elapsedTime + " segundos.");
+			_ = SubmitScoreAsync(elapsedTime);
+		}
+	}
+	
+	public void ResetTimer()
+	{
+		elapsedTime = 0f;
+		GD.Print("Cronómetro reiniciado.");
 
-		// Lanza la tarea de envío sin bloquear el hilo principal
-		_ = SubmitScoreAsync(elapsedTime);
+		var tiempoLabel = GetNode<Label>("/root/CronometroUI/CronoUI");
+		if (tiempoLabel != null)
+		{
+			tiempoLabel.Text = "00:00:00";
+		}
+	}
+
+	public void HideTimer()
+	{
+		var tiempoLabel = GetNode<Label>("/root/CronometroUI/CronoUI");
+		if (tiempoLabel != null)
+		{
+			tiempoLabel.Visible = false;
+		}
+		GD.Print("Cronómetro ocultado.");
+	}
+
+	public void SetCanSubmitScore(bool value)
+	{
+		canSubmitScore = value;  // Activar o desactivar el envío de puntuaciones
 	}
 
 	public float GetElapsedTime() => elapsedTime;
 
 	private async Task SubmitScoreAsync(float timeSeconds)
 	{
-		// 1) Recuperar el username del Autoload SessionManager
+		// Recuperar el username del Autoload SessionManager
 		var session = GetNode<SessionManager>("/root/SessionManager");
 		string username = session?.Username;
 		if (string.IsNullOrEmpty(username))
@@ -58,7 +87,7 @@ public partial class Crono : Node
 			return;
 		}
 
-		// 2) Construir el DTO anónimo y enviarlo
+		// Construir el DTO anónimo y enviarlo
 		var scoreDto = new
 		{
 			username = username,

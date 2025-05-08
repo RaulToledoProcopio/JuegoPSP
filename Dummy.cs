@@ -11,7 +11,6 @@ public partial class Dummy : CharacterBody2D
 	{
 		// Obtención de los nodos necesarios
 		animation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		animation.Play("Walk");
 	}
 	
 	public override void _PhysicsProcess(double delta)

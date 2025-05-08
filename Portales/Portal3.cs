@@ -10,7 +10,8 @@ public partial class Portal3 : Area2D
 		{
 			
 			Crono crono = GetNode<Crono>("/root/Crono");
-			crono.StopTimer();
+			crono.SetCanSubmitScore(true);
+			crono.StopTimer(submitScore: true);
 			
 			float totalTime = crono.GetElapsedTime();
 			GD.Print("Tiempo total en niveles: " + totalTime + " segundos.");

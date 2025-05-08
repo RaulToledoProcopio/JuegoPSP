@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 using System.Collections.Generic;
 
 public partial class Nivel1 : TileMapLayer
@@ -25,9 +26,6 @@ public partial class Nivel1 : TileMapLayer
 		foreach (Node enemy in GetTree().GetNodesInGroup("Enemies"))
 		{
 			enemies.Add(enemy);
-
-			// Conecta la señal "tree_exiting" de cada enemigo
-			enemy.Connect("tree_exiting", Callable.From<Node>(OnEnemyDefeated));
 		}
 	}
 

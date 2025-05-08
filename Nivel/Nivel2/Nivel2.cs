@@ -24,9 +24,6 @@ public partial class Nivel2 : TileMapLayer
 		foreach (Node enemy in GetTree().GetNodesInGroup("Enemies"))
 		{
 			enemies.Add(enemy);
-
-			// Conecta la señal "tree_exiting" de cada enemigo
-			enemy.Connect("tree_exiting", Callable.From<Node>(OnEnemyDefeated));
 		}
 	}
 
