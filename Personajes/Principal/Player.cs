@@ -12,9 +12,7 @@ public partial class Player : CharacterBody2D
 	[Export] public float Gravity = 1000f;       // Fuerza de gravedad aplicada al personaje.
 	[Export] public float speedDagger = 300f;    // Velocidad a la que se lanza la daga.
 	[Export] public float CrouchSpeed = 100f;    // Velocidad de movimiento cuando el personaje está agachado.
-	[Export] public int Ammo = 5;                // Cantidad de dagas disponibles.
-	[Export] public int MaxJumps = 2;            // Número máximo de saltos permitidos para el doble salto.
-	public int hp = 100;                         // Vida del personaje.
+	[Export] public int MaxJumps = 2;             // Número máximo de saltos permitidos para el doble salto.
 
 	private AnimatedSprite2D animation;          // Controla las animaciones del personaje.
 	private bool isCrouching = false;            // Indica si el personaje está agachado.
@@ -28,9 +26,14 @@ public partial class Player : CharacterBody2D
 	private int jumpCount = 0;                   // Contador de saltos para doble salto.
 	private CollisionShape2D _idleCollisionShape;   // Collision para "idle"
 	private CollisionShape2D _crouchCollisionShape; // Collision para "crouch"
+	
+	//Sonidos
+	private AudioStreamPlayer jumpSoundPlayer; // Salto
+	
 
 	public override void _Ready()
 	{
+
 		// Referencias a los nodos necesarios
 		animation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		dagger = GD.Load<PackedScene>("res://Proyectiles/Daga/daga.tscn");
@@ -38,12 +41,14 @@ public partial class Player : CharacterBody2D
 		_gameOverTimer = GetNode<Timer>("Timer");
 		_gameOverTimer.Stop();  // Detiene el temporizador inicialmente.
 		_healthBar = GetNode<ProgressBar>("../UI/HealthBar"); 
-		_healthBar.Value = hp;  // Inicializa la barra de salud.
+		_healthBar.Value = GameState.Health;  // Inicializa la barra de salud.
 		_ammoLabel = GetNode<Label>("../UI/Ammo");
 		_idleCollisionShape = GetNode<CollisionShape2D>("idleCollisionShape2D");
 		_crouchCollisionShape = GetNode<CollisionShape2D>("crouchCollisionShape2D");
 		_idleCollisionShape.Disabled = false;  // Colisión de pie activa.
 		_crouchCollisionShape.Disabled = true; // Colisión agachado desactivada.
+		
+		jumpSoundPlayer = GetNode<AudioStreamPlayer>("Jump");
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -57,8 +62,9 @@ public partial class Player : CharacterBody2D
 
 		Vector2 velocity = Velocity;  // Velocidad actual del personaje.
 
-		_healthBar.Value = hp;                  // Actualiza la barra de salud.
-		_ammoLabel.Text = $": {Ammo}";          // Actualiza etiqueta de munición.
+		_healthBar.Value = GameState.Health;
+		_ammoLabel.Text = GameState.Ammo.ToString();
+
 
 		// Comprobar si está agachado
 		isCrouching = Input.IsActionPressed("ui_down");
@@ -83,16 +89,17 @@ public partial class Player : CharacterBody2D
 		}
 
 		// Ataque con daga
-		if (Ammo > 0 && Input.IsActionJustPressed("ui_daga") && !isAttacking && !isCrouching)
+		if (GameState.Ammo > 0 && Input.IsActionJustPressed("ui_daga") && !isAttacking && !isCrouching)
 		{
-			var instDagger = (Daga)dagger.Instantiate();
-			instDagger.Position = GlobalPosition + new Vector2(animation.FlipH ? -15 : 15, -15);
-			instDagger.RotationDegrees = RotationDegrees;
-			instDagger.speedDagger = animation.FlipH ? -speedDagger : speedDagger;
-			if (animation.FlipH)
+				var instDagger = (Daga)dagger.Instantiate();
+				instDagger.Position = GlobalPosition + new Vector2(animation.FlipH ? -15 : 15, -15);
+				instDagger.RotationDegrees = RotationDegrees;
+				instDagger.speedDagger = animation.FlipH ? -speedDagger : speedDagger;
+				if (animation.FlipH)
 				instDagger.Scale = new Vector2(-Mathf.Abs(instDagger.Scale.X), instDagger.Scale.Y);
-			GetParent().AddChild(instDagger);
-			Ammo--;  // Reduce munición.
+				GetParent().AddChild(instDagger);
+	
+				GameState.ChangeAmmo(-1);
 		}
 
 		// Comprueba fin de animación de ataque
@@ -104,6 +111,7 @@ public partial class Player : CharacterBody2D
 		{
 			velocity.Y = JumpVelocity; 
 			jumpCount++;  // Incrementa contador de saltos.
+			jumpSoundPlayer.Play();
 		}
 
 		// Ajusta velocidad horizontal según input y agachar
@@ -120,7 +128,7 @@ public partial class Player : CharacterBody2D
 	{
 		PlayerState state;
 
-		if (hp <= 0 && IsOnFloor())
+		if (GameState.Health <= 0 && IsOnFloor())
 		{
 			state = PlayerState.Death;
 			if (!_isDead)
@@ -201,9 +209,9 @@ public partial class Player : CharacterBody2D
 	// Función de recibir daño
 	public void TakeDamage(int damage)
 	{
-		if (_isDead || isAttacking) return;
-		hp -= damage;                // Reduce puntos de vida
-		animation.Play("Hit");       // Reproduce animación de daño
-		Position += new Vector2(animation.FlipH ? 50 : -50, 0); // Retroceso
+			if (_isDead || isAttacking) return;
+			GameState.ChangeHp(-damage);
+			animation.Play("Hit");
+			Position += new Vector2(animation.FlipH ? 50 : -50, 0);
 	}
 }

@@ -1,8 +1,9 @@
-[gd_scene load_steps=146 format=3 uid="uid://yun2gfbkemxv"]
+[gd_scene load_steps=147 format=3 uid="uid://yun2gfbkemxv"]
 
 [ext_resource type="Script" path="res://Personajes/Principal/Player.cs" id="1_onsn2"]
 [ext_resource type="Texture2D" uid="uid://bgm3q0mmuwq6w" path="res://Personajes/Principal/MainChar - idle.png" id="2_1jxms"]
 [ext_resource type="Texture2D" uid="uid://snrnlvdecsl3" path="res://Personajes/Principal/MainChar - attack(first).png" id="2_kcve5"]
+[ext_resource type="AudioStream" uid="uid://wtvig6wnekk3" path="res://BSO/Jump.mp3" id="2_y3apm"]
 [ext_resource type="Texture2D" uid="uid://di4uorva2768d" path="res://Personajes/Principal/MainChar - crouch(idle).png" id="4_jc20y"]
 [ext_resource type="Texture2D" uid="uid://elsp3wtfm822" path="res://Personajes/Principal/MainChar - Buff.png" id="4_lf1lv"]
 [ext_resource type="Texture2D" uid="uid://dcqunuedjvmui" path="res://Personajes/Principal/MainChar - crouch(walk).png" id="5_em6ls"]
@@ -976,6 +977,9 @@ collision_mask = 198641
 script = ExtResource("1_onsn2")
 speedDagger = 500.0
 
+[node name="Jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_y3apm")
+
 [node name="crouchCollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-3, 10)
 shape = SubResource("CapsuleShape2D_2yksp")
@@ -984,7 +988,7 @@ shape = SubResource("CapsuleShape2D_2yksp")
 texture_filter = 1
 position = Vector2(-1, 0)
 sprite_frames = SubResource("SpriteFrames_opfo0")
-animation = &"Item Heal"
+animation = &"Jump"
 autoplay = "Idle"
 
 [node name="idleCollisionShape2D" type="CollisionShape2D" parent="."]

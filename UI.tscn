@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxh765y85dhbj"]
+[gd_scene load_steps=4 format=3 uid="uid://dxh765y85dhbj"]
 
 [ext_resource type="Texture2D" uid="uid://cohp4vpoapv3n" path="res://Proyectiles/ItemHeal/heart.png" id="1_mannt"]
+[ext_resource type="Script" path="res://UI.cs" id="1_wx21k"]
 [ext_resource type="Texture2D" uid="uid://dlebcnenqnhly" path="res://Proyectiles/ItemAmmo/dagger.png" id="2_i6jsr"]
 
 [node name="UI" type="Node2D"]
+script = ExtResource("1_wx21k")
 
 [node name="HealthBarIcon" type="Sprite2D" parent="."]
 position = Vector2(54, 30)
