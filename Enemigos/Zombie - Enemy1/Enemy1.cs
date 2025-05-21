@@ -10,6 +10,7 @@ public partial class Enemy1 : CharacterBody2D
 	private int hp = 100;  // Puntos de vida del enemigo.
 	private bool _timerStarted = false;  // Bandera para evitar que se reinicie el temporizador.
 	[Export] public int damage = 10; // Daño que inflinge el enemigo
+	private AudioStreamPlayer deathSound;
 
 	public override void _Ready()
 	{
@@ -19,6 +20,7 @@ public partial class Enemy1 : CharacterBody2D
 		
 		animation.Play("Walk");// Reproducir la animación de caminar al inicio
 		_deathTimer.Stop(); // Asegurar de que el Timer no esté corriendo al principio
+		deathSound = GetNode<AudioStreamPlayer>("Dead");
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -39,6 +41,8 @@ public partial class Enemy1 : CharacterBody2D
 			if (animation.Animation != "Death")
 			{
 				animation.Play("Death");
+				if (deathSound != null)
+					deathSound.Play();
 			}
 
 			// Detener el movimiento del enemigo

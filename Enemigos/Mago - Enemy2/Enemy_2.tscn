@@ -1,9 +1,10 @@
-[gd_scene load_steps=29 format=3 uid="uid://d26onvvoeq3jr"]
+[gd_scene load_steps=30 format=3 uid="uid://d26onvvoeq3jr"]
 
 [ext_resource type="Script" path="res://Enemigos/Mago - Enemy2/Enemy2.cs" id="1_gy8p4"]
 [ext_resource type="Texture2D" uid="uid://cuc4cjilr67a8" path="res://Enemigos/Mago - Enemy2/magonivel2.png" id="1_twso5"]
 [ext_resource type="PackedScene" uid="uid://yc1ek1i47cc8" path="res://Proyectiles/FireBall/Fire_ball.tscn" id="2_ky06l"]
 [ext_resource type="Texture2D" uid="uid://dl6u68hx5swa3" path="res://Enemigos/Zombie - Enemy1/Enemy-death.png" id="3_mo3x0"]
+[ext_resource type="AudioStream" uid="uid://cis2k54scys4n" path="res://BSO/EnemyDead.mp3" id="3_su3g3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_etma5"]
 atlas = ExtResource("3_mo3x0")
@@ -181,6 +182,9 @@ collision_layer = 4
 collision_mask = 16449
 script = ExtResource("1_gy8p4")
 FireBallScene = ExtResource("2_ky06l")
+
+[node name="Dead" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_su3g3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://m8qxwcp7e0a7"]
+[gd_scene load_steps=22 format=3 uid="uid://m8qxwcp7e0a7"]
 
 [ext_resource type="Texture2D" uid="uid://kpgpj5n51kl4" path="res://Enemigos/Esqueleto - Enemy3/skeleton-rise-1.png" id="1_6e7w6"]
 [ext_resource type="Script" path="res://Enemigos/Esqueleto - Enemy3/Enemy3.cs" id="1_wn3s6"]
+[ext_resource type="AudioStream" uid="uid://cis2k54scys4n" path="res://BSO/EnemyDead.mp3" id="2_etb6e"]
 [ext_resource type="Texture2D" uid="uid://dxgor8by0nn51" path="res://Enemigos/Esqueleto - Enemy3/skeleton-rise-2.png" id="2_j0xao"]
 [ext_resource type="Texture2D" uid="uid://cwculg18m1oln" path="res://Enemigos/Esqueleto - Enemy3/explosion-animation7.png" id="2_xy555"]
 [ext_resource type="Texture2D" uid="uid://blnmxjq6syrqf" path="res://Enemigos/Esqueleto - Enemy3/explosion-animation8.png" id="3_gay0a"]
@@ -97,6 +98,9 @@ scale = Vector2(2, 2)
 collision_layer = 4
 collision_mask = 16449
 script = ExtResource("1_wn3s6")
+
+[node name="Dead" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_etb6e")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

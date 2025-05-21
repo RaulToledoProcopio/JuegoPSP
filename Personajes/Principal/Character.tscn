@@ -1,11 +1,13 @@
-[gd_scene load_steps=147 format=3 uid="uid://yun2gfbkemxv"]
+[gd_scene load_steps=149 format=3 uid="uid://yun2gfbkemxv"]
 
 [ext_resource type="Script" path="res://Personajes/Principal/Player.cs" id="1_onsn2"]
 [ext_resource type="Texture2D" uid="uid://bgm3q0mmuwq6w" path="res://Personajes/Principal/MainChar - idle.png" id="2_1jxms"]
 [ext_resource type="Texture2D" uid="uid://snrnlvdecsl3" path="res://Personajes/Principal/MainChar - attack(first).png" id="2_kcve5"]
-[ext_resource type="AudioStream" uid="uid://wtvig6wnekk3" path="res://BSO/Jump.mp3" id="2_y3apm"]
+[ext_resource type="AudioStream" uid="uid://ci53c8wxsrqdv" path="res://BSO/Jump.mp3" id="2_y3apm"]
+[ext_resource type="AudioStream" uid="uid://cyhncaq48eog7" path="res://BSO/Throw.mp3" id="3_hve7a"]
 [ext_resource type="Texture2D" uid="uid://di4uorva2768d" path="res://Personajes/Principal/MainChar - crouch(idle).png" id="4_jc20y"]
 [ext_resource type="Texture2D" uid="uid://elsp3wtfm822" path="res://Personajes/Principal/MainChar - Buff.png" id="4_lf1lv"]
+[ext_resource type="AudioStream" uid="uid://c02wjxgtroqp8" path="res://BSO/Sword.mp3" id="4_liu85"]
 [ext_resource type="Texture2D" uid="uid://dcqunuedjvmui" path="res://Personajes/Principal/MainChar - crouch(walk).png" id="5_em6ls"]
 [ext_resource type="Texture2D" uid="uid://ck0yilwg5sip7" path="res://Personajes/Principal/MainChar - healing(apple).png" id="5_l5vwf"]
 [ext_resource type="Texture2D" uid="uid://cpmbki4xl534u" path="res://Personajes/Principal/MainChar - death.png" id="5_wpu74"]
@@ -979,6 +981,13 @@ speedDagger = 500.0
 
 [node name="Jump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_y3apm")
+
+[node name="Throw" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_hve7a")
+volume_db = 15.0
+
+[node name="Sword" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_liu85")
 
 [node name="crouchCollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-3, 10)

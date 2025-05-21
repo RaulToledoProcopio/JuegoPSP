@@ -41,6 +41,8 @@ public partial class Nivel3 : TileMapLayer
 			var collisionShape = portal.GetNode<CollisionShape2D>("CollisionShape2D");
 			collisionShape.Disabled = false;  // Reactivar la forma de colisión
 			portalSprite.Play("Idle"); // Reproduce la animación desde el AnimatedSprite2D
+			var portalAudio = portal.GetNode<AudioStreamPlayer>("Portal");
+			portalAudio?.Play();
 		}
 	}
 }

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cyi6y3m1marje"]
+[gd_scene load_steps=6 format=3 uid="uid://cyi6y3m1marje"]
 
 [ext_resource type="Script" path="res://Proyectiles/ItemAmmo/ItemAmmo.cs" id="1_bwoi0"]
 [ext_resource type="Texture2D" uid="uid://dlebcnenqnhly" path="res://Proyectiles/ItemAmmo/dagger.png" id="1_hl84j"]
+[ext_resource type="AudioStream" uid="uid://mkb5o3b45r8c" path="res://BSO/ItemAmmo.mp3" id="3_a1vkx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r1sae"]
 animations = [{
@@ -29,5 +30,8 @@ sprite_frames = SubResource("SpriteFrames_r1sae")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_eqo6i")
+
+[node name="ItemAmmo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_a1vkx")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

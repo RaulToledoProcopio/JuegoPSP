@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://ck7us3a1jjgky"]
+[gd_scene load_steps=18 format=3 uid="uid://ck7us3a1jjgky"]
 
 [ext_resource type="Texture2D" uid="uid://cxebx05a15hcp" path="res://Proyectiles/ItemHeal/heart.rotate.png" id="1_hb3cf"]
 [ext_resource type="Script" path="res://Proyectiles/ItemHeal/ItemHeal.cs" id="1_o2pxd"]
+[ext_resource type="AudioStream" uid="uid://drxd3yu5xnnbi" path="res://BSO/ItemHeal.mp3" id="3_1bspo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uu66k"]
 atlas = ExtResource("1_hb3cf")
@@ -114,5 +115,8 @@ frame_progress = 0.914435
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0)
 shape = SubResource("CircleShape2D_nyt28")
+
+[node name="ItemHeal" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_1bspo")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

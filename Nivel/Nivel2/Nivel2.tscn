@@ -28,6 +28,7 @@ script = ExtResource("1_8s7qx")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_47r8i")
+volume_db = -15.0
 autoplay = true
 
 [node name="Nivel2" type="Sprite2D" parent="."]

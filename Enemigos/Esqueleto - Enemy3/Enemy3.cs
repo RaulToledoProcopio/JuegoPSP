@@ -11,6 +11,7 @@ public partial class Enemy3 : CharacterBody2D
 	private int hp = 100; // Puntos de vida del enemigo.
 	private bool _timerStarted = false; // Bandera para evitar que se reinicie el temporizador.
 	[Export] public int damage = 10; // Daño que inflinge el enemigo
+	private AudioStreamPlayer deathSound;
 
 	public override void _Ready()
 	{
@@ -18,6 +19,7 @@ public partial class Enemy3 : CharacterBody2D
 		animation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_riseTimer = GetNode<Timer>("Timer");
 		_deathTimer = GetNode<Timer>("Timer2");
+		deathSound = GetNode<AudioStreamPlayer>("Dead");
 
 		animation.Play("Rise"); // Reproducir la animación de Rise al inicio
 		_riseTimer.Start(1.0f); // Iniciar el temporizador de Rise.
@@ -56,6 +58,8 @@ public partial class Enemy3 : CharacterBody2D
 			if (animation.Animation != "Death")
 			{
 				animation.Play("Death");
+				if (deathSound != null)
+					deathSound.Play();
 			}
 
 			// Detener el movimiento del enemigo.
@@ -64,6 +68,7 @@ public partial class Enemy3 : CharacterBody2D
 			// Activar el Timer de muerte.
 			_deathTimer.Start(0.5f);
 			_timerStarted = true;
+			
 		}
 	}
 

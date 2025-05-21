@@ -10,6 +10,7 @@ public partial class Enemy2 : CharacterBody2D
 	private Timer _deathTimer; // Temporizador para eliminar al enemigo después de morir.
 	private bool _timerStarted = false; // Bandera para evitar que se reinicie el temporizador.
 	private AnimatedSprite2D animation; // Referencia a AnimatedSprite2D para animaciones.
+	private AudioStreamPlayer deathSound;
 	
 	
 	public override void _Ready()
@@ -18,6 +19,7 @@ public partial class Enemy2 : CharacterBody2D
 		animation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_deathTimer = GetNode<Timer>("Timer");
 		_deathTimer.Stop(); // Asegurar de que el Timer no esté corriendo al principio
+		deathSound = GetNode<AudioStreamPlayer>("Dead");
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -38,6 +40,8 @@ public partial class Enemy2 : CharacterBody2D
 			if (animation.Animation != "Death")
 			{
 				animation.Play("Death");
+				if (deathSound != null)
+					deathSound.Play();
 			}
 			// Activar el Timer de muerte.
 			_deathTimer.Start(0.7f);

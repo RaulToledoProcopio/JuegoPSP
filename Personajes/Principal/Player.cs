@@ -29,6 +29,10 @@ public partial class Player : CharacterBody2D
 	
 	//Sonidos
 	private AudioStreamPlayer jumpSoundPlayer; // Salto
+	private AudioStreamPlayer throwSoundPlayer; // Daga
+	private AudioStreamPlayer swordSoundPlayer; // Espada
+	
+	
 	
 
 	public override void _Ready()
@@ -49,6 +53,8 @@ public partial class Player : CharacterBody2D
 		_crouchCollisionShape.Disabled = true; // Colisión agachado desactivada.
 		
 		jumpSoundPlayer = GetNode<AudioStreamPlayer>("Jump");
+		throwSoundPlayer = GetNode<AudioStreamPlayer>("Throw");
+		swordSoundPlayer = GetNode<AudioStreamPlayer>("Sword");
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -86,6 +92,7 @@ public partial class Player : CharacterBody2D
 			isAttacking = true;  // Marca estado de ataque.
 			Attack();            // Lanza método de ataque.
 			animation.Play("Attack"); // Reproduce animación de ataque.
+			swordSoundPlayer.Play();
 		}
 
 		// Ataque con daga
@@ -98,6 +105,7 @@ public partial class Player : CharacterBody2D
 				if (animation.FlipH)
 				instDagger.Scale = new Vector2(-Mathf.Abs(instDagger.Scale.X), instDagger.Scale.Y);
 				GetParent().AddChild(instDagger);
+				throwSoundPlayer.Play();
 	
 				GameState.ChangeAmmo(-1);
 		}
