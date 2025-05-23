@@ -1,8 +1,7 @@
-[gd_scene load_steps=27 format=3 uid="uid://bopk81kkkanbr"]
+[gd_scene load_steps=26 format=3 uid="uid://bopk81kkkanbr"]
 
 [ext_resource type="Texture2D" uid="uid://c3cevnotyq6y7" path="res://Nivel/Nivel3/gothic-castle-preview.png" id="1_glmj4"]
 [ext_resource type="Script" path="res://Nivel/Nivel3/Nivel3.cs" id="1_yao55"]
-[ext_resource type="AudioStream" uid="uid://drcoplxjnl6pe" path="res://BSO/3-Fase2.mp3" id="2_3agrm"]
 [ext_resource type="PackedScene" uid="uid://dxh765y85dhbj" path="res://UI.tscn" id="2_ynkm1"]
 [ext_resource type="PackedScene" uid="uid://c3yed6a1dp0xf" path="res://Menú/pause.tscn" id="3_pn348"]
 [ext_resource type="PackedScene" uid="uid://bklwa8odkkth1" path="res://Portales/Portal.tscn" id="4_6tnce"]
@@ -59,10 +58,6 @@ size = Vector2(82.5, 8.25)
 
 [node name="Nivel3" type="TileMapLayer"]
 script = ExtResource("1_yao55")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_3agrm")
-autoplay = true
 
 [node name="Nivel3" type="Sprite2D" parent="."]
 position = Vector2(710.572, 343.125)
@@ -172,7 +167,7 @@ scale = Vector2(2, 2)
 position = Vector2(54, 223)
 scale = Vector2(2, 2)
 
-[node name="AnimatedSprite2D" parent="Enemy4" index="0"]
+[node name="AnimatedSprite2D" parent="Enemy4" index="1"]
 flip_h = true
 
 [node name="ItemHeal" parent="." instance=ExtResource("9_j372t")]

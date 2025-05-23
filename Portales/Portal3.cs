@@ -9,6 +9,9 @@ public partial class Portal3 : Area2D
 		if (body is Player player)
 		{
 			
+			var audioManager = GetNode<AudioManager>("/root/AudioManager");
+			audioManager.StopMusic();
+			
 			Crono crono = GetNode<Crono>("/root/Crono");
 			crono.SetCanSubmitScore(true);
 			crono.StopTimer(submitScore: true);

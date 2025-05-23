@@ -7,6 +7,8 @@ public partial class Portal1 : Area2D
 	{
 		if (body is Player player)
 		{
+			var audioManager = GetNode<AudioManager>("/root/AudioManager");
+				audioManager.PlayForLevel(2);
 			
 			Crono crono = GetNode<Crono>("/root/Crono");
 			crono.StartTimer();
