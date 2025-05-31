@@ -455,30 +455,35 @@ texture = ExtResource("1_a88la")
 position = Vector2(-50.3868, 139.587)
 scale = Vector2(1, 0.746533)
 sprite_frames = SubResource("SpriteFrames_l1pth")
+autoplay = "default"
 frame_progress = 0.0747092
 
 [node name="Water2" type="AnimatedSprite2D" parent="TilemapLayers/Water"]
 position = Vector2(-20.1547, 139.587)
 scale = Vector2(1, 0.746533)
 sprite_frames = SubResource("SpriteFrames_l1pth")
+autoplay = "default"
 frame_progress = 0.315702
 
 [node name="Water3" type="AnimatedSprite2D" parent="TilemapLayers/Water"]
 position = Vector2(11.197, 139.587)
 scale = Vector2(1, 0.746533)
 sprite_frames = SubResource("SpriteFrames_l1pth")
+autoplay = "default"
 frame_progress = 0.181701
 
 [node name="Water4" type="AnimatedSprite2D" parent="TilemapLayers/Water"]
 position = Vector2(42.5488, 139.587)
 scale = Vector2(1, 0.746533)
 sprite_frames = SubResource("SpriteFrames_l1pth")
+autoplay = "default"
 frame_progress = 0.560978
 
 [node name="Water5" type="AnimatedSprite2D" parent="TilemapLayers/Water"]
 position = Vector2(72.7808, 139.587)
 scale = Vector2(1, 0.746533)
 sprite_frames = SubResource("SpriteFrames_l1pth")
+autoplay = "default"
 frame_progress = 0.4376
 
 [node name="TileMapLayer" type="TileMapLayer" parent="TilemapLayers"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2uti0qxe0mll"
-path="res://.godot/imported/SwampScreen.png-68c24a88ae40fb26a8cfed2253c7a61a.ctex"
+uid="uid://bwdna86qcax6v"
+path="res://.godot/imported/background_layer_2.png-96e8adf8280e574d78e86768223ac4ae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Nivel/Nivel5/SwampScreen.png"
-dest_files=["res://.godot/imported/SwampScreen.png-68c24a88ae40fb26a8cfed2253c7a61a.ctex"]
+source_file="res://Nivel/Nivel5/background_layer_2.png"
+dest_files=["res://.godot/imported/background_layer_2.png-96e8adf8280e574d78e86768223ac4ae.ctex"]
 
 [params]
 
