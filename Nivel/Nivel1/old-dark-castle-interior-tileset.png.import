@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjjvjnqmal8cs"
-path="res://.godot/imported/ChurchScreen.png-1bdaf14b74b1b0edd2534a2c4d995558.ctex"
+uid="uid://dxgbdq6rxsgh0"
+path="res://.godot/imported/old-dark-castle-interior-tileset.png-1a51a90702fcda75807f50af7e18f9a7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Nivel/Nivel4/ChurchScreen.png"
-dest_files=["res://.godot/imported/ChurchScreen.png-1bdaf14b74b1b0edd2534a2c4d995558.ctex"]
+source_file="res://Nivel/Nivel1/old-dark-castle-interior-tileset.png"
+dest_files=["res://.godot/imported/old-dark-castle-interior-tileset.png-1a51a90702fcda75807f50af7e18f9a7.ctex"]
 
 [params]
 
