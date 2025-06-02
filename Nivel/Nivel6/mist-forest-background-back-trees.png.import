@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2uti0qxe0mll"
-path="res://.godot/imported/SwampScreen.png-f1cfebb953150c30ec86a8b81d05bce1.ctex"
+uid="uid://cboj07wh6xh2i"
+path="res://.godot/imported/mist-forest-background-back-trees.png-fec6d95ee99fb7eedf40fbe566a533be.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Nivel/Nivel7/SwampScreen.png"
-dest_files=["res://.godot/imported/SwampScreen.png-f1cfebb953150c30ec86a8b81d05bce1.ctex"]
+source_file="res://Nivel/Nivel6/mist-forest-background-back-trees.png"
+dest_files=["res://.godot/imported/mist-forest-background-back-trees.png-fec6d95ee99fb7eedf40fbe566a533be.ctex"]
 
 [params]
 

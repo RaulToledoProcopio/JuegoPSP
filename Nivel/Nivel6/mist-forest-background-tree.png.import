@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfeq7rrgsjq1l"
-path="res://.godot/imported/tileset.png-10fec263436459c23635612127f4cc23.ctex"
+uid="uid://d3eicxsicb66b"
+path="res://.godot/imported/mist-forest-background-tree.png-2101d564d5d9ca27bf6bb24cf2ff00de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Nivel/Nivel5/tileset.png"
-dest_files=["res://.godot/imported/tileset.png-10fec263436459c23635612127f4cc23.ctex"]
+source_file="res://Nivel/Nivel6/mist-forest-background-tree.png"
+dest_files=["res://.godot/imported/mist-forest-background-tree.png-2101d564d5d9ca27bf6bb24cf2ff00de.ctex"]
 
 [params]
 

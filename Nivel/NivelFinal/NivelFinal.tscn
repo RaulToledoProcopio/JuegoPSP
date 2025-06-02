@@ -1,52 +1,37 @@
-[gd_scene load_steps=8 format=3 uid="uid://b353gt4fmlwx5"]
+[gd_scene load_steps=4 format=3 uid="uid://b353gt4fmlwx5"]
 
-[ext_resource type="Texture2D" uid="uid://ix1g5e6aombt" path="res://Nivel/NivelFinal/preview.png" id="1_fl0mo"]
-[ext_resource type="PackedScene" uid="uid://yun2gfbkemxv" path="res://Personajes/Principal/Character.tscn" id="2_2fwkg"]
-[ext_resource type="PackedScene" uid="uid://88hhrsdxavxq" path="res://Enemigos/Boss/boss.tscn" id="3_me07a"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6owcd"]
-size = Vector2(465, 7.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kban1"]
-size = Vector2(662.386, 9.95868)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2b5di"]
-size = Vector2(350, 3.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jg6lo"]
-size = Vector2(291, 6)
+[ext_resource type="Texture2D" uid="uid://c8s3g8nmknos4" path="res://Nivel/NivelFinal/back.png" id="1_6u1ug"]
+[ext_resource type="Texture2D" uid="uid://bd0ey6mi5ieb5" path="res://Nivel/NivelFinal/middle.png" id="2_8mnxa"]
+[ext_resource type="Texture2D" uid="uid://bouvxwgwg1i7u" path="res://Nivel/NivelFinal/near.png" id="3_p3dmt"]
 
 [node name="Node2D" type="TileMapLayer"]
 
-[node name="Fondo" type="Sprite2D" parent="."]
-position = Vector2(552, 328)
-scale = Vector2(2.725, 2.725)
-texture = ExtResource("1_fl0mo")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(187.875, 324.237)
+scale = Vector2(2.59896, 2.69038)
+texture = ExtResource("1_6u1ug")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(569, 324)
+scale = Vector2(2.69444, 2.69444)
+texture = ExtResource("1_6u1ug")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(230.5, 507.25)
-shape = SubResource("RectangleShape2D_6owcd")
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(957.5, 323.167)
+scale = Vector2(2.70139, 2.70139)
+texture = ExtResource("1_6u1ug")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-5.96673, 326.978)
-rotation = -1.57397
-shape = SubResource("RectangleShape2D_kban1")
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(302.05, 433.25)
+scale = Vector2(1.79375, 1.79375)
+texture = ExtResource("2_8mnxa")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(684, 461.25)
-shape = SubResource("RectangleShape2D_2b5di")
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+position = Vector2(877.575, 451.875)
+scale = Vector2(1.64062, 1.64062)
+texture = ExtResource("2_8mnxa")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1005.5, 387)
-shape = SubResource("RectangleShape2D_jg6lo")
-
-[node name="CharacterBody2D" parent="." instance=ExtResource("2_2fwkg")]
-position = Vector2(35, 443)
-scale = Vector2(2, 2)
-
-[node name="Boss" parent="." instance=ExtResource("3_me07a")]
-position = Vector2(981, 111)
-rotation = -0.362166
-scale = Vector2(2.5, 2.5)
+[node name="Sprite2D6" type="Sprite2D" parent="."]
+position = Vector2(577, 376)
+scale = Vector2(2.25, 2.25)
+texture = ExtResource("3_p3dmt")

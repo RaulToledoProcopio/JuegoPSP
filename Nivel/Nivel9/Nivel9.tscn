@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://17jeo6prinl"]
+
+[node name="Nivel9" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(575.889, 324.5)
+scale = Vector2(1.80278, 1.80278)

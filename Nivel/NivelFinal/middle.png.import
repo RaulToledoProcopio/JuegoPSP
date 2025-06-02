@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d051weolgv5wr"
-path="res://.godot/imported/shop_anim.png-36587c6d1c24c8584ac71cb8fecb9955.ctex"
+uid="uid://bd0ey6mi5ieb5"
+path="res://.godot/imported/middle.png-657eb9a260f95407b8a68a782fd2b2b9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Nivel/Nivel7/shop_anim.png"
-dest_files=["res://.godot/imported/shop_anim.png-36587c6d1c24c8584ac71cb8fecb9955.ctex"]
+source_file="res://Nivel/NivelFinal/middle.png"
+dest_files=["res://.godot/imported/middle.png-657eb9a260f95407b8a68a782fd2b2b9.ctex"]
 
 [params]
 
