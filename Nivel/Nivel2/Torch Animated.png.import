@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cboj07wh6xh2i"
-path="res://.godot/imported/mist-forest-background-back-trees.png-fec6d95ee99fb7eedf40fbe566a533be.ctex"
+uid="uid://e6sde8i44lih"
+path="res://.godot/imported/Torch Animated.png-52a081db80dfe21451cd3dafd1e3de62.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Nivel/Nivel6/mist-forest-background-back-trees.png"
-dest_files=["res://.godot/imported/mist-forest-background-back-trees.png-fec6d95ee99fb7eedf40fbe566a533be.ctex"]
+source_file="res://Nivel/Nivel2/Torch Animated.png"
+dest_files=["res://.godot/imported/Torch Animated.png-52a081db80dfe21451cd3dafd1e3de62.ctex"]
 
 [params]
 

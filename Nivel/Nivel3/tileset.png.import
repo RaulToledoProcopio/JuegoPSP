@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btoikftl0y6ce"
-path="res://.godot/imported/old-dark-castle-interior-tileset.png-4ba80fe7a23293130a9cf4f91560a4f7.ctex"
+uid="uid://uent8f56aw6j"
+path="res://.godot/imported/tileset.png-02416f3fc332f1313af6da7eac873bd2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Nivel/Nivel4/old-dark-castle-interior-tileset.png"
-dest_files=["res://.godot/imported/old-dark-castle-interior-tileset.png-4ba80fe7a23293130a9cf4f91560a4f7.ctex"]
+source_file="res://Nivel/Nivel3/tileset.png"
+dest_files=["res://.godot/imported/tileset.png-02416f3fc332f1313af6da7eac873bd2.ctex"]
 
 [params]
 

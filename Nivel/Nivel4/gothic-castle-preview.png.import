@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2r87l0v81mwr"
-path="res://.godot/imported/water-tileset.png-4fa59a7d4a88c2837db0dcc61b41b53f.ctex"
+uid="uid://c3cevnotyq6y7"
+path="res://.godot/imported/gothic-castle-preview.png-4096801a04869756726b7270f275d306.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Nivel/Nivel4/water-tileset.png"
-dest_files=["res://.godot/imported/water-tileset.png-4fa59a7d4a88c2837db0dcc61b41b53f.ctex"]
+source_file="res://Nivel/Nivel4/gothic-castle-preview.png"
+dest_files=["res://.godot/imported/gothic-castle-preview.png-4096801a04869756726b7270f275d306.ctex"]
 
 [params]
 

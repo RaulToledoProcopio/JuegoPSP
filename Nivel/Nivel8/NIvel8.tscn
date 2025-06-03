@@ -1,5 +1,37 @@
-[gd_scene format=3 uid="uid://dvk1nmr8wucdo"]
+[gd_scene load_steps=5 format=3 uid="uid://dvk1nmr8wucdo"]
+
+[ext_resource type="Texture2D" uid="uid://dh7ww60ypwqct" path="res://Nivel/Nivel8/mist-forest-background-back.png" id="1_tcl7s"]
+[ext_resource type="Texture2D" uid="uid://cboj07wh6xh2i" path="res://Nivel/Nivel8/mist-forest-background-back-trees.png" id="2_4phph"]
+[ext_resource type="Texture2D" uid="uid://brkdaculyildo" path="res://Nivel/Nivel8/mist-forest-background-rocks.png" id="3_rm3rf"]
+[ext_resource type="Texture2D" uid="uid://d3eicxsicb66b" path="res://Nivel/Nivel8/mist-forest-background-tree.png" id="4_ltm06"]
 
 [node name="NIvel8" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(577, 324.5)
+scale = Vector2(2.25, 2.87946)
+texture = ExtResource("1_tcl7s")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(233, 362)
+scale = Vector2(2.49062, 2.49062)
+texture = ExtResource("2_4phph")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(895, 306)
+scale = Vector2(2.36875, 2.36875)
+texture = ExtResource("2_4phph")
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+position = Vector2(290, 350)
+scale = Vector2(2.64904, 2.64904)
+texture = ExtResource("3_rm3rf")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(522, 276)
+scale = Vector2(2.44643, 2.44643)
+texture = ExtResource("4_ltm06")
+
+[node name="TilemapLayers" type="Node2D" parent="."]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="TilemapLayers"]

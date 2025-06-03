@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cndc0urlvouka"
-path="res://.godot/imported/old-dark-castle-interior-background.png-e72676c11f777007dfcf792a83dd9138.ctex"
+uid="uid://3j2e0i6baguc"
+path="res://.godot/imported/water-tileset.png-2f46406f8925606ce6f07d2abbabbb56.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Nivel/Nivel4/old-dark-castle-interior-background.png"
-dest_files=["res://.godot/imported/old-dark-castle-interior-background.png-e72676c11f777007dfcf792a83dd9138.ctex"]
+source_file="res://Nivel/Nivel6/water-tileset.png"
+dest_files=["res://.godot/imported/water-tileset.png-2f46406f8925606ce6f07d2abbabbb56.ctex"]
 
 [params]
 

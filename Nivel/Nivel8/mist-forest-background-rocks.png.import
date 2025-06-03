@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tc3xnetsuv64"
-path="res://.godot/imported/Test.png-c6a0689166721e1723296642aca88d57.ctex"
+uid="uid://brkdaculyildo"
+path="res://.godot/imported/mist-forest-background-rocks.png-ed4f85804e42e472f4e11841a0cbd8f6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Nivel/Nivel5/Test.png"
-dest_files=["res://.godot/imported/Test.png-c6a0689166721e1723296642aca88d57.ctex"]
+source_file="res://Nivel/Nivel8/mist-forest-background-rocks.png"
+dest_files=["res://.godot/imported/mist-forest-background-rocks.png-ed4f85804e42e472f4e11841a0cbd8f6.ctex"]
 
 [params]
 
