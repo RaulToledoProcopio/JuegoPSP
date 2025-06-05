@@ -19,7 +19,7 @@ radius = 1.99171
 height = 23.9992
 
 [node name="Daga" type="Area2D"]
-collision_mask = 2052
+collision_mask = 2068
 script = ExtResource("1_3tv8v")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
