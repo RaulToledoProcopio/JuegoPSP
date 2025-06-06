@@ -9,11 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://cxxl773ub52ct" path="res://Nivel/Nivel3/tileset.png" id="4_ynrnp"]
 [ext_resource type="Texture2D" uid="uid://c3gktmb0odbxp" path="res://Nivel/Nivel3/all-props.png" id="5_r6vqn"]
 [ext_resource type="Texture2D" uid="uid://cnqu7ga3h4s0p" path="res://Nivel/Nivel3/front.png" id="7_m12hr"]
-[ext_resource type="PackedScene" uid="uid://d26onvvoeq3jr" path="res://Enemigos/Mago - Enemy2/Enemy_2.tscn" id="9_l64fp"]
 [ext_resource type="PackedScene" uid="uid://bklwa8odkkth1" path="res://Portales/Portal.tscn" id="10_7byox"]
 [ext_resource type="Texture2D" uid="uid://5mww02vcx0gl" path="res://Nivel/Nivel3/Torch Animated.png" id="10_d5i8o"]
 [ext_resource type="Script" path="res://Portales/Portal3.cs" id="11_dqxvj"]
 [ext_resource type="PackedScene" uid="uid://c3yed6a1dp0xf" path="res://Menú/pause.tscn" id="12_nu2hv"]
+[ext_resource type="PackedScene" uid="uid://cti1tjlhq85kt" path="res://Enemigos/Archer/Enemy5.tscn" id="14_xhu2x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gx08e"]
 atlas = ExtResource("2_yx1m4")
@@ -3469,6 +3469,10 @@ sprite_frames = SubResource("SpriteFrames_why82")
 autoplay = "default"
 frame_progress = 0.889105
 
+[node name="Enemy6" parent="." groups=["Enemies"] instance=ExtResource("14_xhu2x")]
+position = Vector2(1095, 48)
+scale = Vector2(2, 2)
+
 [node name="TilemapLayers" type="Node2D" parent="."]
 
 [node name="Floor2" type="TileMapLayer" parent="TilemapLayers"]
@@ -3525,7 +3529,7 @@ collision_mask = 198416
 collision_layer = 16
 
 [node name="Wall" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-21, 318)
+position = Vector2(-17, 333)
 shape = SubResource("RectangleShape2D_t0gav")
 
 [node name="Wall2" type="CollisionShape2D" parent="StaticBody2D"]
@@ -3535,11 +3539,6 @@ shape = SubResource("RectangleShape2D_t0gav")
 [node name="Water" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(575, 659)
 shape = SubResource("RectangleShape2D_u74d4")
-
-[node name="Enemy2" parent="." groups=["Enemies"] instance=ExtResource("9_l64fp")]
-position = Vector2(549, 485)
-scale = Vector2(1.5, 1.5)
-collision_layer = 16
 
 [node name="Portal" parent="." instance=ExtResource("10_7byox")]
 position = Vector2(909, 48)
@@ -3566,5 +3565,9 @@ offset_left = 547.0
 offset_top = 333.0
 offset_right = 547.0
 offset_bottom = 333.0
+
+[node name="Enemy5" parent="." groups=["Enemies"] instance=ExtResource("14_xhu2x")]
+position = Vector2(1166, 508)
+scale = Vector2(2, 2)
 
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]

@@ -178,7 +178,7 @@ radius = 13.867
 height = 51.8046
 
 [node name="Enemy2" type="CharacterBody2D"]
-collision_layer = 4
+collision_layer = 16
 collision_mask = 16449
 script = ExtResource("1_gy8p4")
 FireBallScene = ExtResource("2_ky06l")

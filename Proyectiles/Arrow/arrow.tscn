@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhis377l2r7t2"]
+
+[ext_resource type="Script" path="res://Proyectiles/Arrow/Arrow.cs" id="1_ipghx"]
+[ext_resource type="Texture2D" uid="uid://d3o5uph1ye7ps" path="res://Proyectiles/Arrow/Arrow2.png" id="1_nf4sp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p8wo1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_nf4sp")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_prc0g"]
+radius = 1.0
+
+[node name="Arrow" type="Area2D"]
+collision_layer = 16
+script = ExtResource("1_ipghx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.375, 0.375)
+sprite_frames = SubResource("SpriteFrames_p8wo1")
+animation = &"Default"
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_prc0g")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
