@@ -22,6 +22,8 @@ public partial class Login : Godot.Control
 		_usernameField = GetNode<LineEdit>("UsernameLineEdit");
 		_passwordField = GetNode<LineEdit>("PasswordLineEdit");
 		_errorLabel = GetNode<Label>("ErrorLabel");
+		var audioManager = GetNode<AudioManager>("/root/AudioManager");
+		audioManager.PlayForLevel(0);
 	}
 
 	// Método que se llama al presionar el botón de login

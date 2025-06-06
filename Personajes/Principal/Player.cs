@@ -9,7 +9,7 @@ public partial class Player : CharacterBody2D
 
 	[Export] public float Speed = 200f;          // Velocidad de movimiento del personaje.
 	[Export] public float JumpVelocity = -500f;  // Velocidad aplicada al personaje al saltar.
-	[Export] public float Gravity = 1000f;       // Fuerza de gravedad aplicada al personaje.
+	[Export] public float Gravity = 1500f;       // Fuerza de gravedad aplicada al personaje.
 	[Export] public float speedDagger = 300f;    // Velocidad a la que se lanza la daga.
 	[Export] public float CrouchSpeed = 100f;    // Velocidad de movimiento cuando el personaje está agachado.
 	[Export] public int MaxJumps = 2;             // Número máximo de saltos permitidos para el doble salto.

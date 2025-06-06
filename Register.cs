@@ -24,6 +24,8 @@ public partial class Register : Godot.Control
 		_passwordField = GetNode<LineEdit>("PasswordLineEdit");
 		_emailField = GetNode<LineEdit>("EmailLineEdit");
 		_errorLabel = GetNode<Label>("ErrorLabel");
+		var audioManager = GetNode<AudioManager>("/root/AudioManager");
+		audioManager.PlayForLevel(0);
 	}
 
 	public async void _on_register_button_pressed()

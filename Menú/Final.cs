@@ -25,6 +25,8 @@ public partial class Final : Godot.Control
 			_leaderboardLabel.Visible = false;
 			_leaderboardPanel = GetNode<Panel>("PanelLeaderBoard");
 			_leaderboardPanel.Visible = false;
+			var audioManager = GetNode<AudioManager>("/root/AudioManager");
+			audioManager.PlayForLevel(99);
 	}
 
 	// Cambiar de escena al pulsar el primer botón del menú

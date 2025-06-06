@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dkqxo15nsd6g1"]
+[gd_scene load_steps=8 format=3 uid="uid://dkqxo15nsd6g1"]
 
 [ext_resource type="Script" path="res://Menú/Menu.cs" id="1_eursq"]
 [ext_resource type="Texture2D" uid="uid://dung7tk6ktu18" path="res://Menú/Menú.jpg" id="2_eyv1b"]
-[ext_resource type="AudioStream" uid="uid://dbx6bblucvl7n" path="res://BSO/1-Intro.mp3" id="2_q5dow"]
 
 [sub_resource type="SystemFont" id="SystemFont_nq8w4"]
 font_names = PackedStringArray("Impact")
@@ -31,10 +30,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_eursq")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_q5dow")
-autoplay = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

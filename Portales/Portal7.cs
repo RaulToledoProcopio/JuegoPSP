@@ -7,7 +7,7 @@ public partial class Portal7 : Area2D
 		if (body is Player)
 		{
 			var audioManager = GetNode<AudioManager>("/root/AudioManager");
-				audioManager.PlayForLevel(3);
+				audioManager.PlayForLevel(8);
 			
 			GetTree().CallDeferred("change_scene_to_file",
 				"res://Nivel/Nivel8/Nivel8.tscn");
