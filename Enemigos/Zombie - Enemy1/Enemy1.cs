@@ -82,7 +82,6 @@ public partial class Enemy1 : CharacterBody2D
 	public void TakeDamage(int damage)
 	{
 		hp -= damage;
-
 		// Obtener la posición del jugador dinámicamente
 		var player = GetNode<Player>("../Player"); // Asegúrate de que la ruta sea correcta
 

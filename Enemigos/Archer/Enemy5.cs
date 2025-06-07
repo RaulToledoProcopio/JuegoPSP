@@ -91,7 +91,7 @@ public partial class Enemy5 : CharacterBody2D
 		currentState = EnemyState.Dead;
 		// Reproducir animación y sonido de muerte
 		animation.Play("Dead");
-		deathSound?.Play();
+		//deathSound?.Play();
 
 		// Iniciar Timer para hacer QueueFree después de la animación
 		_deathTimer.Start();

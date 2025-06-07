@@ -49,6 +49,16 @@ public partial class Espada : Area2D
 			enemy3.TakeDamage(damage);
 			CallDeferred(nameof(DesactivarEspada));
 		}
+		else if (body is Enemy4 enemy4)
+		{
+			enemy4.TakeDamage(damage); 
+			CallDeferred(nameof(DesactivarEspada));
+		}
+		else if (body is Enemy5 enemy5)
+		{
+			enemy5.TakeDamage(damage);
+			CallDeferred(nameof(DesactivarEspada));
+		}
 		else if (body is Dummy dummy)
 		{
 			dummy.TakeDamage(damage);
