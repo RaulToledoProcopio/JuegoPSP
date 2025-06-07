@@ -1,6 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://88hhrsdxavxq"]
+[gd_scene load_steps=14 format=3 uid="uid://88hhrsdxavxq"]
 
+[ext_resource type="Script" path="res://Enemigos/Boss/Boss.cs" id="1_44lwl"]
 [ext_resource type="Texture2D" uid="uid://6mutm7tq3fix" path="res://Enemigos/Boss/sunny-dragon-fly.png" id="1_kchgg"]
+[ext_resource type="PackedScene" uid="uid://d3tk5j4wbt31q" path="res://Proyectiles/Lightning/Lightning.tscn" id="2_wb0ha"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mqso1"]
 atlas = ExtResource("1_kchgg")
@@ -69,19 +71,32 @@ animations = [{
 "texture": SubResource("AtlasTexture_r6jaa")
 }],
 "loop": true,
-"name": &"Boss",
+"name": &"Idle",
 "speed": 10.0
 }]
 
 [node name="Boss" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 16387
+script = ExtResource("1_44lwl")
+LightningScene = ExtResource("2_wb0ha")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_66ewu")
-animation = &"Boss"
-autoplay = "Boss"
-frame_progress = 0.657058
+animation = &"Idle"
+autoplay = "Idle"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 build_mode = 1
 polygon = PackedVector2Array(-12, 0, -64, -19, -83, 14, -38, 41, 14, 43, 57, 73, 60, 20)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+build_mode = 1
+polygon = PackedVector2Array(-12, 0, -64, -19, -83, 14, -38, 41, 14, 43, 57, 73, 60, 20)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

@@ -24,7 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://cis2k54scys4n" path="res://BSO/EnemyDead.mp3" id="22_uuvlw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wdely"]
-size = Vector2(16.1636, 73.0121)
+size = Vector2(32.2734, 48.9214)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ys0k6"]
 atlas = ExtResource("9_gdi10")
@@ -126,7 +126,7 @@ radius = 14.9137
 height = 50.5072
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d7ufn"]
-size = Vector2(162, 71)
+size = Vector2(96, 71)
 
 [node name="Enemy4" type="CharacterBody2D"]
 collision_layer = 16
@@ -137,8 +137,8 @@ script = ExtResource("1_gixh6")
 collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon"]
-position = Vector2(-41, 3)
-rotation = 0.675792
+position = Vector2(-32, 11.4607)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_wdely")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -146,6 +146,7 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_guiob")
 animation = &"Attack"
 autoplay = "Walk"
+frame_progress = 0.681124
 
 [node name="Body" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 7)

@@ -352,7 +352,7 @@ size = Vector2(280, 14)
 size = Vector2(20, 669)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_81ryb"]
-size = Vector2(20, 115)
+size = Vector2(7.5, 115)
 
 [node name="Nivel6" type="TileMapLayer"]
 script = ExtResource("1_g44dp")
@@ -445,12 +445,16 @@ position = Vector2(281, 501.5)
 shape = SubResource("RectangleShape2D_81ryb")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="OgreWall"]
-position = Vector2(555, 500)
+position = Vector2(542, 501)
+shape = SubResource("RectangleShape2D_81ryb")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="OgreWall"]
+position = Vector2(741, 539)
 shape = SubResource("RectangleShape2D_81ryb")
 
 [node name="Enemy4" parent="." groups=["Enemies"] instance=ExtResource("11_dfil3")]
-position = Vector2(468, 485)
+position = Vector2(389, 491)
 scale = Vector2(2, 2)
-collision_mask = 16384
+collision_mask = 16400
 
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]
