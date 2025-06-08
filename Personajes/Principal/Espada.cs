@@ -62,12 +62,17 @@ public partial class Espada : Area2D
 		else if (body is Enemy6 enemy6)
 		{
 			enemy6.TakeDamage(damage);
-			QueueFree();
+			CallDeferred(nameof(DesactivarEspada));
+		}
+		else if (body is Enemy7 enemy7)
+		{
+			enemy7.TakeDamage(damage);
+			CallDeferred(nameof(DesactivarEspada));
 		}
 		else if (body is Boss boss)
 		{
 			boss.TakeDamage(damage);
-			QueueFree();
+			CallDeferred(nameof(DesactivarEspada));
 		}
 		else if (body is Dummy dummy)
 		{

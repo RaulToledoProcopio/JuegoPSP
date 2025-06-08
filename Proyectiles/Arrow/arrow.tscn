@@ -22,7 +22,8 @@ collision_layer = 16
 script = ExtResource("1_ipghx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(1.375, 0.375)
+position = Vector2(0, -1.90735e-06)
+scale = Vector2(1.375, 1.1875)
 sprite_frames = SubResource("SpriteFrames_p8wo1")
 animation = &"Default"
 flip_h = true

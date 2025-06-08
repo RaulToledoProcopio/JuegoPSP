@@ -3,7 +3,7 @@ using System;
 
 public partial class Arrow : Area2D
 {
-	[Export] public float speedDagger = 2500f;  // Velocidad de la flecha
+	[Export] public float speedDagger = 1500f;  // Velocidad de la flecha
 	[Export] public int damage = 25;  // Daño que inflige la flecha
 
 	private Vector2 velocity = new Vector2(1, 0);  // Dirección de movimiento de la flecha

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://dvk1nmr8wucdo"]
+[gd_scene load_steps=27 format=4 uid="uid://dvk1nmr8wucdo"]
 
 [ext_resource type="Texture2D" uid="uid://br5qfkpmp5fjl" path="res://Nivel/Nivel8/background_layer_1.png" id="1_bikv4"]
 [ext_resource type="Script" path="res://Nivel/Nivel8/Nivel8.cs" id="1_m0eu4"]
@@ -11,7 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://bklwa8odkkth1" path="res://Portales/Portal.tscn" id="8_a3vt2"]
 [ext_resource type="Script" path="res://Portales/Portal8.cs" id="9_ig7ac"]
 [ext_resource type="PackedScene" uid="uid://c3yed6a1dp0xf" path="res://Menú/pause.tscn" id="10_v3thc"]
-[ext_resource type="PackedScene" uid="uid://d26onvvoeq3jr" path="res://Enemigos/Enemy2 - Mago/Enemy_2.tscn" id="12_18a8s"]
+[ext_resource type="PackedScene" uid="uid://bhwfp65whwj46" path="res://Enemigos/Enemy4 - Ogro/Enemy_4.tscn" id="12_f0bgm"]
+[ext_resource type="PackedScene" uid="uid://cti1tjlhq85kt" path="res://Enemigos/Enemy5 - Archer/Enemy5.tscn" id="13_uebwo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f8k55"]
 atlas = ExtResource("4_8t56s")
@@ -1649,6 +1650,9 @@ size = Vector2(20, 679)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8mwug"]
 size = Vector2(1185, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2pyyr"]
+size = Vector2(20, 157.5)
+
 [node name="NIvel8" type="TileMapLayer"]
 script = ExtResource("1_m0eu4")
 
@@ -1750,6 +1754,7 @@ collision_mask = 198416
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 16
+collision_mask = 65
 
 [node name="Wall" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-6, 330)
@@ -1775,9 +1780,27 @@ offset_top = 338.0
 offset_right = 579.0
 offset_bottom = 338.0
 
-[node name="Enemy2" parent="." groups=["Enemies"] instance=ExtResource("12_18a8s")]
-position = Vector2(552, 478)
-scale = Vector2(1.5, 1.5)
-collision_layer = 20
+[node name="Enemy4" parent="." groups=["Enemies"] instance=ExtResource("12_f0bgm")]
+position = Vector2(570, 446)
+scale = Vector2(2, 2)
+collision_layer = 64
+collision_mask = 16403
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+collision_layer = 16384
+collision_mask = 80
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(746, 444)
+shape = SubResource("RectangleShape2D_2pyyr")
+
+[node name="Enemy5" parent="." groups=["Enemies"] instance=ExtResource("13_uebwo")]
+position = Vector2(1158, 498)
+scale = Vector2(2, 2)
+
+[node name="Enemy6" parent="." groups=["Enemies"] instance=ExtResource("13_uebwo")]
+position = Vector2(39, 125)
+scale = Vector2(2, 2)
+startFlipped = true
 
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]

@@ -1,0 +1,127 @@
+[gd_scene load_steps=23 format=3 uid="uid://721xb3icdf46"]
+
+[ext_resource type="Texture2D" uid="uid://dinlb6q3hhocg" path="res://Enemigos/Enemy7 - Ghost/Death1.png" id="1_1jv64"]
+[ext_resource type="Script" path="res://Enemigos/Enemy7 - Ghost/Enemy7.cs" id="1_yeynf"]
+[ext_resource type="Texture2D" uid="uid://b73c8iqc3rqs1" path="res://Enemigos/Enemy7 - Ghost/Death2.png" id="2_3qtlv"]
+[ext_resource type="Texture2D" uid="uid://1pnto1clppp2" path="res://Enemigos/Enemy7 - Ghost/Death3.png" id="3_jnghw"]
+[ext_resource type="Texture2D" uid="uid://cfip2y637ka54" path="res://Enemigos/Enemy7 - Ghost/Death4.png" id="4_47pu5"]
+[ext_resource type="Texture2D" uid="uid://b1n0dgymjervq" path="res://Enemigos/Enemy7 - Ghost/Death5.png" id="5_t7585"]
+[ext_resource type="Texture2D" uid="uid://ckbarfe2kms68" path="res://Enemigos/Enemy7 - Ghost/Death6.png" id="6_o68x3"]
+[ext_resource type="Texture2D" uid="uid://dpvhriqn781hj" path="res://Enemigos/Enemy7 - Ghost/Death7.png" id="7_ar5oq"]
+[ext_resource type="Texture2D" uid="uid://dog2tdxualv4m" path="res://Enemigos/Enemy7 - Ghost/Rise1.png" id="8_fw2ck"]
+[ext_resource type="Texture2D" uid="uid://dcmndqfmeo5cq" path="res://Enemigos/Enemy7 - Ghost/Rise2.png" id="9_ll2nv"]
+[ext_resource type="Texture2D" uid="uid://b76anx0x8l605" path="res://Enemigos/Enemy7 - Ghost/Rise3.png" id="10_h6jsd"]
+[ext_resource type="Texture2D" uid="uid://cyntkrp2tkkvx" path="res://Enemigos/Enemy7 - Ghost/Rise4.png" id="11_kpflr"]
+[ext_resource type="Texture2D" uid="uid://s38i6pvqvk3j" path="res://Enemigos/Enemy7 - Ghost/Rise5.png" id="12_dit87"]
+[ext_resource type="Texture2D" uid="uid://bft7gg7ld5j3y" path="res://Enemigos/Enemy7 - Ghost/Rise6.png" id="13_e3uom"]
+[ext_resource type="Texture2D" uid="uid://vscxu2bah03v" path="res://Enemigos/Enemy7 - Ghost/Walk1.png" id="14_wtv38"]
+[ext_resource type="Texture2D" uid="uid://cbybxkbi6xju1" path="res://Enemigos/Enemy7 - Ghost/Walk2.png" id="15_k40ok"]
+[ext_resource type="Texture2D" uid="uid://dksbb15gij3k7" path="res://Enemigos/Enemy7 - Ghost/Walk3.png" id="16_qun3q"]
+[ext_resource type="Texture2D" uid="uid://crhum3xau1lpf" path="res://Enemigos/Enemy7 - Ghost/Walk4.png" id="17_ffife"]
+[ext_resource type="AudioStream" uid="uid://cis2k54scys4n" path="res://BSO/EnemyDead.mp3" id="19_bawuk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xwb1q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1jv64")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_3qtlv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_jnghw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_47pu5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_t7585")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_o68x3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ar5oq")
+}],
+"loop": false,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_fw2ck")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ll2nv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_h6jsd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_kpflr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_dit87")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_e3uom")
+}],
+"loop": false,
+"name": &"Rise",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_wtv38")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_k40ok")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_qun3q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ffife")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ulxb2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_33bjg"]
+
+[node name="Enemy7" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 16384
+script = ExtResource("1_yeynf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xwb1q")
+animation = &"Rise"
+autoplay = "Rise"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_ulxb2")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Timer2" type="Timer" parent="."]
+one_shot = true
+
+[node name="Dead" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_bawuk")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 131072
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_33bjg")
+
+[connection signal="timeout" from="Timer" to="." method="OnDeathTimerTimeout"]
+[connection signal="timeout" from="Timer2" to="." method="OnRiseTimerTimeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

@@ -50,6 +50,11 @@ public partial class Daga : Area2D
 			enemy6.TakeDamage(damage);
 			QueueFree();
 		}
+		else if (body is Enemy7 enemy7)
+		{
+			enemy7.TakeDamage(damage);
+			QueueFree();
+		}
 		else if (body is Boss boss)
 		{
 			boss.TakeDamage(damage);

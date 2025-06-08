@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://d4cr6he8gmis1"]
+[gd_scene load_steps=22 format=4 uid="uid://d4cr6he8gmis1"]
 
 [ext_resource type="Script" path="res://Nivel/Nivel6/Nivel6.cs" id="1_g44dp"]
 [ext_resource type="Texture2D" uid="uid://cndc0urlvouka" path="res://Nivel/Nivel6/old-dark-castle-interior-background.png" id="3_jdo5p"]
@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bklwa8odkkth1" path="res://Portales/Portal.tscn" id="8_mubfr"]
 [ext_resource type="PackedScene" uid="uid://c3yed6a1dp0xf" path="res://Menú/pause.tscn" id="8_oa3g0"]
 [ext_resource type="Script" path="res://Portales/Portal6.cs" id="9_qvph0"]
-[ext_resource type="PackedScene" uid="uid://bhwfp65whwj46" path="res://Enemigos/Enemy4 - Ogro/Enemy_4.tscn" id="11_dfil3"]
+[ext_resource type="PackedScene" uid="uid://721xb3icdf46" path="res://Enemigos/Enemy7 - Ghost/Enemy7.tscn" id="12_abdxh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_crlqk"]
 atlas = ExtResource("4_mk5j2")
@@ -352,7 +352,10 @@ size = Vector2(280, 14)
 size = Vector2(20, 669)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_81ryb"]
-size = Vector2(7.5, 115)
+size = Vector2(8.375, 115)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lojv7"]
+size = Vector2(9, 80.5)
 
 [node name="Nivel6" type="TileMapLayer"]
 script = ExtResource("1_g44dp")
@@ -426,35 +429,38 @@ offset_top = 122.0
 offset_right = 562.0
 offset_bottom = 122.0
 
-[node name="Enemy2" parent="." groups=["Enemies"] instance=ExtResource("7_w2qt1")]
-position = Vector2(946, 374)
-scale = Vector2(1.5, 1.5)
-
 [node name="Portal" parent="." instance=ExtResource("8_mubfr")]
 position = Vector2(1124, 328)
 scale = Vector2(2.5, 2.5)
 collision_layer = 16
 script = ExtResource("9_qvph0")
 
-[node name="OgreWall" type="StaticBody2D" parent="."]
+[node name="GhostWall" type="StaticBody2D" parent="."]
 collision_layer = 16384
-collision_mask = 16
+collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OgreWall"]
-position = Vector2(281, 501.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GhostWall"]
+position = Vector2(285, 498)
 shape = SubResource("RectangleShape2D_81ryb")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="OgreWall"]
-position = Vector2(542, 501)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="GhostWall"]
+position = Vector2(542, 534)
 shape = SubResource("RectangleShape2D_81ryb")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="OgreWall"]
-position = Vector2(741, 539)
-shape = SubResource("RectangleShape2D_81ryb")
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="GhostWall"]
+position = Vector2(738, 553)
+shape = SubResource("RectangleShape2D_lojv7")
 
-[node name="Enemy4" parent="." groups=["Enemies"] instance=ExtResource("11_dfil3")]
-position = Vector2(389, 491)
+[node name="Enemy7" parent="." groups=["Enemies"] instance=ExtResource("12_abdxh")]
+position = Vector2(505, 526)
 scale = Vector2(2, 2)
-collision_mask = 16400
+
+[node name="Enemy2" parent="." groups=["Enemies"] instance=ExtResource("7_w2qt1")]
+position = Vector2(940, 377)
+scale = Vector2(1.5, 1.5)
+
+[node name="Enemy8" parent="." groups=["Enemies"] instance=ExtResource("12_abdxh")]
+position = Vector2(578, 556)
+scale = Vector2(2, 2)
 
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]

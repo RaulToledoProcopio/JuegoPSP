@@ -6,8 +6,11 @@ public partial class Enemy5 : CharacterBody2D
 	
 	[Export] public PackedScene FireBallScene;    // Referencia a la escena de flecha
 	[Export] public float IdleMoveSpeed = 100f;   // Velocidad de avance durante el Idle
+	[Export] public bool startFlipped = false;
+	private Vector2 _movementDirection = Vector2.Zero;
 
-	private float fireRate = 0.7f;       // Tiempo entre disparos
+
+	private float fireRate = 2f;       // Tiempo entre disparos
 	private float timeSinceLastFire = 0; // Acumulado desde el último disparo
 	private int hp = 100;                // Puntos de vida
 
@@ -22,21 +25,26 @@ public partial class Enemy5 : CharacterBody2D
 	// Flag para saber que “Idle” ha terminado
 	private bool idleDone = false;
 
-	public override void _Ready()
-	{
-		animation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		_deathTimer = GetNode<Timer>("Timer");
-		//deathSound = GetNode<AudioStreamPlayer>("Dead");
+public override void _Ready()
+{
+	animation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+	_deathTimer = GetNode<Timer>("Timer");
+	//deathSound = GetNode<AudioStreamPlayer>("Dead");
 
-		_deathTimer.Stop();
-		_deathTimer.OneShot = true;  
-		_deathTimer.WaitTime = 4.5f; // Duración de animación “Dead”
+	_deathTimer.Stop();
+	_deathTimer.OneShot = true;  
+	_deathTimer.WaitTime = 4.5f; // Duración de animación “Dead”
 
-		// Arrancamos en estado Idle
-		currentState = EnemyState.Idle;
-		idleDone = false;
-		animation.Play("Idle");
-	}
+	// Arrancamos en estado Idle
+	currentState = EnemyState.Idle;
+	idleDone = false;
+	animation.Play("Idle");
+
+	// Aplica flip y dirección según startFlipped
+	_movementDirection = startFlipped ? new Vector2(-1, 0) : new Vector2(1, 0);
+	animation.FlipH = !startFlipped;
+}
+
 
 	public override void _PhysicsProcess(double delta)
 	{

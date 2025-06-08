@@ -10,7 +10,6 @@ public partial class Enemy4 : CharacterBody2D
 	[Export] public int Damage = 10;
 	[Export] public float AttackRate = 1f;     // segundos entre ataques
 	[Export] public float DetectionRadius = 200f;
-	[Export] public float Gravity = 600f;
 
 	private AnimatedSprite2D _anim;
 	private Area2D _weaponArea;
@@ -63,17 +62,6 @@ public partial class Enemy4 : CharacterBody2D
 			EnterDeathState();
 			return;
 		}
-		
-		if (!IsOnFloor())
-			Velocity = new Vector2(Velocity.X, Velocity.Y + Gravity * (float)delta);
-		else
-			Velocity = new Vector2(Velocity.X, 0); // resetea gravedad al tocar el piso
-
-		if (_hp <= 0 && _state != State.Death)
-		{
-			EnterDeathState();
-			return;
-		}
 
 		switch (_state)
 		{
@@ -88,7 +76,7 @@ public partial class Enemy4 : CharacterBody2D
 
 	private void PatrolBehavior()
 	{
-		Velocity = new Vector2(_patrolDir.X * Speed, Velocity.Y);
+		Velocity = new Vector2(_patrolDir.X * Speed, 0);
 		MoveAndSlide();
 
 		if (IsOnWall())
