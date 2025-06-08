@@ -6,11 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://dmrqtl7rpmucd" path="res://Nivel/Nivel6/old-dark-castle-interior-tileset.png" id="4_qbodp"]
 [ext_resource type="PackedScene" uid="uid://yun2gfbkemxv" path="res://Personajes/Principal/Character.tscn" id="6_45q3v"]
 [ext_resource type="PackedScene" uid="uid://dxh765y85dhbj" path="res://UI.tscn" id="7_eqxj8"]
-[ext_resource type="PackedScene" uid="uid://d26onvvoeq3jr" path="res://Enemigos/Mago - Enemy2/Enemy_2.tscn" id="7_w2qt1"]
+[ext_resource type="PackedScene" uid="uid://d26onvvoeq3jr" path="res://Enemigos/Enemy2 - Mago/Enemy_2.tscn" id="7_w2qt1"]
 [ext_resource type="PackedScene" uid="uid://bklwa8odkkth1" path="res://Portales/Portal.tscn" id="8_mubfr"]
 [ext_resource type="PackedScene" uid="uid://c3yed6a1dp0xf" path="res://Menú/pause.tscn" id="8_oa3g0"]
 [ext_resource type="Script" path="res://Portales/Portal6.cs" id="9_qvph0"]
-[ext_resource type="PackedScene" uid="uid://bhwfp65whwj46" path="res://Enemigos/Ogro - Enemy4/Enemy_4.tscn" id="11_dfil3"]
+[ext_resource type="PackedScene" uid="uid://bhwfp65whwj46" path="res://Enemigos/Enemy4 - Ogro/Enemy_4.tscn" id="11_dfil3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_crlqk"]
 atlas = ExtResource("4_mk5j2")

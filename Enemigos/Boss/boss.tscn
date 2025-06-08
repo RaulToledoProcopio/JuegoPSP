@@ -99,4 +99,7 @@ collision_mask = 3
 build_mode = 1
 polygon = PackedVector2Array(-12, 0, -64, -19, -83, 14, -38, 41, 14, 43, 57, 73, 60, 20)
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="OnDeathTimerTimeout"]

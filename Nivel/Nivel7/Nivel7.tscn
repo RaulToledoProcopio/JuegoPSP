@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bklwa8odkkth1" path="res://Portales/Portal.tscn" id="8_k6d67"]
 [ext_resource type="Script" path="res://Portales/Portal7.cs" id="9_aka1t"]
 [ext_resource type="PackedScene" uid="uid://c3yed6a1dp0xf" path="res://Menú/pause.tscn" id="10_erbcc"]
-[ext_resource type="PackedScene" uid="uid://d26onvvoeq3jr" path="res://Enemigos/Mago - Enemy2/Enemy_2.tscn" id="12_e6dgw"]
+[ext_resource type="PackedScene" uid="uid://d26onvvoeq3jr" path="res://Enemigos/Enemy2 - Mago/Enemy_2.tscn" id="12_e6dgw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6baiv"]
 atlas = ExtResource("1_wldgf")

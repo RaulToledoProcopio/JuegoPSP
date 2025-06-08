@@ -6,13 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://c3yed6a1dp0xf" path="res://Menú/pause.tscn" id="3_7d3d7"]
 [ext_resource type="Texture2D" uid="uid://cxxl773ub52ct" path="res://Nivel/Nivel3/tileset.png" id="3_elhp5"]
 [ext_resource type="PackedScene" uid="uid://yun2gfbkemxv" path="res://Personajes/Principal/Character.tscn" id="4_st8vl"]
-[ext_resource type="PackedScene" uid="uid://cva20wuxpfaok" path="res://Enemigos/Zombie - Enemy1/Enemy1.tscn" id="5_cg1w5"]
-[ext_resource type="PackedScene" uid="uid://m8qxwcp7e0a7" path="res://Enemigos/Esqueleto - Enemy3/Enemy_3.tscn" id="6_3wjtk"]
+[ext_resource type="PackedScene" uid="uid://cva20wuxpfaok" path="res://Enemigos/Enemy1- Zombie/Enemy1.tscn" id="5_cg1w5"]
+[ext_resource type="PackedScene" uid="uid://m8qxwcp7e0a7" path="res://Enemigos/Enemy3 - Esqueleto/Enemy_3.tscn" id="6_3wjtk"]
 [ext_resource type="PackedScene" uid="uid://cyi6y3m1marje" path="res://Proyectiles/ItemAmmo/Item_ammo.tscn" id="7_thhf4"]
 [ext_resource type="PackedScene" uid="uid://bklwa8odkkth1" path="res://Portales/Portal.tscn" id="8_wl6hy"]
 [ext_resource type="Script" path="res://Portales/Portal2.cs" id="9_jfu6b"]
 [ext_resource type="PackedScene" uid="uid://ck7us3a1jjgky" path="res://Proyectiles/ItemHeal/Item_heal.tscn" id="10_83cty"]
-[ext_resource type="PackedScene" uid="uid://d26onvvoeq3jr" path="res://Enemigos/Mago - Enemy2/Enemy_2.tscn" id="11_72mpy"]
+[ext_resource type="PackedScene" uid="uid://d26onvvoeq3jr" path="res://Enemigos/Enemy2 - Mago/Enemy_2.tscn" id="11_72mpy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_poc04"]
 texture = ExtResource("3_elhp5")

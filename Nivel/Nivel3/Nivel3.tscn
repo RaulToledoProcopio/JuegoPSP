@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://5mww02vcx0gl" path="res://Nivel/Nivel3/Torch Animated.png" id="10_d5i8o"]
 [ext_resource type="Script" path="res://Portales/Portal3.cs" id="11_dqxvj"]
 [ext_resource type="PackedScene" uid="uid://c3yed6a1dp0xf" path="res://Menú/pause.tscn" id="12_nu2hv"]
-[ext_resource type="PackedScene" uid="uid://cti1tjlhq85kt" path="res://Enemigos/Archer/Enemy5.tscn" id="14_xhu2x"]
+[ext_resource type="PackedScene" uid="uid://cti1tjlhq85kt" path="res://Enemigos/Enemy5 - Archer/Enemy5.tscn" id="14_xhu2x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gx08e"]
 atlas = ExtResource("2_yx1m4")

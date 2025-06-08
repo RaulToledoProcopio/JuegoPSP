@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://csppkcqr7hyuq"]
 
 [ext_resource type="Script" path="res://Dummy.cs" id="1_rpk01"]
-[ext_resource type="Texture2D" uid="uid://b15t2y88w2tq5" path="res://Enemigos/Ogro - Enemy4/ogre-idle1.png" id="2_53vxl"]
-[ext_resource type="Texture2D" uid="uid://ls8y21w2sg76" path="res://Enemigos/Ogro - Enemy4/ogre-idle2.png" id="3_e8jqq"]
-[ext_resource type="Texture2D" uid="uid://c4hk3sk2uyqbf" path="res://Enemigos/Ogro - Enemy4/ogre-idle3.png" id="4_48ndj"]
-[ext_resource type="Texture2D" uid="uid://dm58uqrhethkl" path="res://Enemigos/Ogro - Enemy4/ogre-idle4.png" id="5_gw367"]
+[ext_resource type="Texture2D" uid="uid://b15t2y88w2tq5" path="res://Enemigos/Enemy4 - Ogro/ogre-idle1.png" id="2_53vxl"]
+[ext_resource type="Texture2D" uid="uid://ls8y21w2sg76" path="res://Enemigos/Enemy4 - Ogro/ogre-idle2.png" id="3_e8jqq"]
+[ext_resource type="Texture2D" uid="uid://c4hk3sk2uyqbf" path="res://Enemigos/Enemy4 - Ogro/ogre-idle3.png" id="4_48ndj"]
+[ext_resource type="Texture2D" uid="uid://dm58uqrhethkl" path="res://Enemigos/Enemy4 - Ogro/ogre-idle4.png" id="5_gw367"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ty3jh"]
 animations = [{

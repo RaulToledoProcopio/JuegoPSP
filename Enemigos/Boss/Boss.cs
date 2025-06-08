@@ -3,7 +3,7 @@ using System;
 
 public partial class Boss : CharacterBody2D
 {
-	private enum State { PatrolHigh, MovingDown, PatrolLow, MovingUp }
+	private enum State { PatrolHigh, MovingDown, PatrolLow, MovingUp, Death }
 	private State _state = State.PatrolHigh;
 
 	[Export] public float Speed = 300f;
@@ -11,9 +11,11 @@ public partial class Boss : CharacterBody2D
 	[Export] public float HighPatrolDuration = 15f;
 	[Export] public float LowPatrolDuration = 5f;
 	[Export] public float LowY = 450f;
-	[Export] public PackedScene LightningScene; // Rayo
-	[Export] public Vector2 LightningOffset = new Vector2(-100, 175); // Posición relativa al boss
-	private int damage = 50; // Daño que hace el enemigo
+	[Export] public PackedScene LightningScene;
+	[Export] public Vector2 LightningOffset = new Vector2(-100, 175);
+
+	private int damage = 50;
+	private int hp = 100;
 
 	private float _highY;
 	private Vector2 _patrolDir = Vector2.Left;
@@ -21,26 +23,36 @@ public partial class Boss : CharacterBody2D
 	private float _stateTimer = 0f;
 
 	private Timer _lightningTimer;
+	private Timer _deathTimer;
+	private CollisionPolygon2D _collisionShape;
 
 	public override void _Ready()
 	{
 		_anim = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_anim.Play("Idle");
-		_highY = GlobalPosition.Y;
-		_stateTimer = 0f;
 
-		// Timer para disparar rayos
+		_collisionShape = GetNode<CollisionPolygon2D>("CollisionPolygon2D");
+		_highY = GlobalPosition.Y;
+
 		_lightningTimer = new Timer();
 		_lightningTimer.WaitTime = 2f;
 		_lightningTimer.OneShot = false;
-		_lightningTimer.Autostart = false;
 		_lightningTimer.Timeout += () => FireLightning();
 		AddChild(_lightningTimer);
 		_lightningTimer.Start();
+
+		_deathTimer = new Timer();
+		_deathTimer.OneShot = true;
+		_deathTimer.WaitTime = 5f;
+		_deathTimer.Timeout += () => OnDeathTimerTimeout();
+		AddChild(_deathTimer);
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
+		if (_state == State.Death)
+			return;
+
 		float dt = (float)delta;
 		_stateTimer += dt;
 
@@ -54,7 +66,7 @@ public partial class Boss : CharacterBody2D
 				{
 					_state = State.MovingDown;
 					_stateTimer = 0f;
-					_lightningTimer.Stop(); // Dejar de disparar rayos
+					_lightningTimer.Stop();
 				}
 				break;
 
@@ -84,18 +96,17 @@ public partial class Boss : CharacterBody2D
 					GlobalPosition = new Vector2(GlobalPosition.X, _highY);
 					_state = State.PatrolHigh;
 					_stateTimer = 0f;
-					_lightningTimer.Start(); // Reanuda rayos al volver a patrullar arriba
+					_lightningTimer.Start();
 				}
 				break;
 		}
 
-		// Movimiento horizontal
-		if (_state == State.PatrolHigh || _state == State.PatrolLow)
+		if (_state != State.Death)
 		{
 			Velocity = vel;
 			MoveAndSlide();
 
-			if (IsOnWall())
+			if ((_state == State.PatrolHigh || _state == State.PatrolLow) && IsOnWall())
 			{
 				_patrolDir.X = -_patrolDir.X;
 				GlobalPosition += new Vector2(_patrolDir.X * 5, 0);
@@ -103,25 +114,56 @@ public partial class Boss : CharacterBody2D
 
 			_anim.FlipH = _patrolDir.X > 0;
 		}
-		else
-		{
-			Velocity = vel;
-			MoveAndSlide();
-		}
 	}
 
 	private void FireLightning()
 	{
-		if (LightningScene == null)
-			return;
+		if (LightningScene == null) return;
 
 		var lightning = LightningScene.Instantiate<Lightning>();
 		lightning.GlobalPosition = GlobalPosition + LightningOffset;
 		GetParent().AddChild(lightning);
 	}
-	
+
+	public void TakeDamage(int damage)
+	{
+		if (_state == State.Death)
+			return;
+
+		hp -= damage;
+
+		var player = GetNode<Player>("../Player");
+		float direction = (player.Position.X < this.Position.X) ? 1.0f : -1.0f;
+		this.Position = new Vector2(this.Position.X + (direction * 50), this.Position.Y);
+
+		if (hp <= 0)
+		{
+			EnterDeathState();
+		}
+	}
+
+	private void EnterDeathState()
+{
+	_state = State.Death;
+	Velocity = Vector2.Zero;
+	_lightningTimer.Stop();
+	_collisionShape.SetDeferred("disabled", true);
+
+	//_anim.Play("Death"); // Animación de muerte comentada hasta tenerla lista
+	_deathTimer.Start(5f); // Arranca el timer para que desaparezca en 5 segundos
+}
+
+
+	private void OnDeathTimerTimeout()
+{
+	QueueFree();
+}
+
 	private void _on_body_entered(Node body)
 	{
+		if (_state == State.Death)
+			return;
+
 		if (body is Player player)
 		{
 			player.TakeDamage(damage);
