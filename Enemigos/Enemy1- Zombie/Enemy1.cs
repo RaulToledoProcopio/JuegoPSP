@@ -11,6 +11,11 @@ public partial class Enemy1 : CharacterBody2D
 	private bool _timerStarted = false;  // Bandera para evitar que se reinicie el temporizador.
 	[Export] public int damage = 10; // Daño que inflinge el enemigo
 	private AudioStreamPlayer deathSound;
+	private Vector2 _knockbackVelocity = Vector2.Zero;
+	private bool _isKnockedBack = false;
+	private const float KnockBackSpeed    = 200f;  // fuerza horizontal
+	private const float KnockBackUpForce  = 100f;  // fuerza vertical
+	private const float Gravity           = 1000f;  // gravedad
 
 	public override void _Ready()
 	{
@@ -24,42 +29,53 @@ public partial class Enemy1 : CharacterBody2D
 	}
 
 	public override void _PhysicsProcess(double delta)
+{
+	if (_isKnockedBack)
 	{
-		if (_movementDirection != Vector2.Zero) // Verifica que haya alguna dirección de movimiento .
+		// Aplica gravedad al retroceso
+		_knockbackVelocity.Y += Gravity * (float)delta;
+		Velocity = _knockbackVelocity;
+		MoveAndSlide();
+
+		// Cuando tocas el suelo, terminas el knockback
+		if (IsOnFloor())
 		{
-			Vector2 velocity = Velocity; // Obtiene la velocidad actual.
-			velocity.X = _movementDirection.X * Speed; // Modifica X de la velocidad según la dirección de movimiento y la velocidad máxima.
-			Velocity = velocity; // Asigna la nueva velocidad al objeto, incluyendo X modificada.
-			MoveAndSlide();
+			_isKnockedBack = false;
+			_knockbackVelocity = Vector2.Zero;
 		}
-
-
-		// Si la vida es 0 o menos y el temporizador no ha sido iniciado, iniciar la animación de muerte
-		if (hp <= 0 && !_timerStarted)
-		{
-			// Si no se está ejecutando la animación la ejecuta, para evitar que se reinicie.
-			if (animation.Animation != "Death")
-			{
-				animation.Play("Death");
-				if (deathSound != null)
-					deathSound.Play();
-			}
-
-			// Detener el movimiento del enemigo
-			_movementDirection = Vector2.Zero;
-
-			// Activar el Timer de muerte.
-			_deathTimer.Start(0.7f);
-			_timerStarted = true;
-		}
-
-		// Si el enemigo colisiona, invierte la dirección
-		if (IsOnWall())
-		{
-			_movementDirection.X *= -1;
-			animation.FlipH = !animation.FlipH;
-		}
+		return; // no ejecutas el movimiento normal mientras haces knockback
 	}
+
+	// —— Aquí va tu movimiento normal —— 
+	if (_movementDirection != Vector2.Zero)
+	{
+		Vector2 velocity = Velocity;
+		velocity.X = _movementDirection.X * Speed;
+		Velocity = velocity;
+		MoveAndSlide();
+	}
+
+	// Animación y timer de muerte
+	if (hp <= 0 && !_timerStarted)
+	{
+		if (animation.Animation != "Death")
+		{
+			animation.Play("Death");
+			deathSound?.Play();
+		}
+		_movementDirection = Vector2.Zero;
+		_deathTimer.Start(0.7f);
+		_timerStarted = true;
+	}
+
+	// Rebote en paredes
+	if (IsOnWall())
+	{
+		_movementDirection.X *= -1;
+		animation.FlipH = !animation.FlipH;
+	}
+}
+
 
 	/* Este método se llamará cuando el Timer termine para eliminar al enemigo,
 	y enviará una señal a la escena para que el contador de enemigo lo reste */
@@ -80,15 +96,16 @@ public partial class Enemy1 : CharacterBody2D
 
 	// Método para recibir daño y aplicar retroceso
 	public void TakeDamage(int damage)
-	{
-		hp -= damage;
-		// Obtener la posición del jugador dinámicamente
-		var player = GetNode<Player>("../Player"); // Asegúrate de que la ruta sea correcta
+{
+	hp -= damage;
 
-		// Calcula la dirección del retroceso en función de la posición del jugador
-		float direction = (player.Position.X < this.Position.X) ? 1.0f : -1.0f;
+	// Calcula la dirección: 1 si el player está a la izquierda, -1 si está a la derecha
+	var player = GetNode<Player>("../Player");
+	float direction = (player.Position.X < Position.X) ? 1f : -1f;
 
-		// Retroceder en la dirección opuesta al jugador
-		this.Position = new Vector2(this.Position.X + (direction * 50), this.Position.Y);
-	}
+	// Inicializa el knockback
+	_knockbackVelocity = new Vector2(direction * KnockBackSpeed, -KnockBackUpForce);
+	_isKnockedBack = true;
+}
+
 }

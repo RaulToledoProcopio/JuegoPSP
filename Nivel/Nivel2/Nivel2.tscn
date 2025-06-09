@@ -549,23 +549,23 @@ position = Vector2(479, 409)
 [node name="ItemAmmo2" parent="." instance=ExtResource("7_thhf4")]
 position = Vector2(176, 261)
 
-[node name="PLayerCollision" type="StaticBody2D" parent="."]
+[node name="PlayerCollision" type="StaticBody2D" parent="."]
 collision_layer = 320
 collision_mask = 2
 
-[node name="Columna2" type="CollisionShape2D" parent="PLayerCollision"]
+[node name="Columna2" type="CollisionShape2D" parent="PlayerCollision"]
 position = Vector2(508, 429)
 shape = SubResource("RectangleShape2D_t8lpu")
 
-[node name="Columna3" type="CollisionShape2D" parent="PLayerCollision"]
+[node name="Columna3" type="CollisionShape2D" parent="PlayerCollision"]
 position = Vector2(803, 327)
 shape = SubResource("RectangleShape2D_t8lpu")
 
-[node name="Columna1" type="CollisionShape2D" parent="PLayerCollision"]
+[node name="Columna1" type="CollisionShape2D" parent="PlayerCollision"]
 position = Vector2(212, 279)
 shape = SubResource("RectangleShape2D_t8lpu")
 
-[node name="LeftWall" type="CollisionShape2D" parent="PLayerCollision"]
+[node name="LeftWall" type="CollisionShape2D" parent="PlayerCollision"]
 position = Vector2(-7.73704, 303.86)
 rotation = -1.57397
 shape = SubResource("RectangleShape2D_ej0xh")

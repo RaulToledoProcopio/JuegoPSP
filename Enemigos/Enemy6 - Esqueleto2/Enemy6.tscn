@@ -431,6 +431,8 @@ size = Vector2(60, 34)
 size = Vector2(142, 40)
 
 [node name="Enemy6" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 16
 script = ExtResource("1_7yebl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

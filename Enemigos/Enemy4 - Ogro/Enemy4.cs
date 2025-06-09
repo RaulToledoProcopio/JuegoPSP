@@ -19,12 +19,18 @@ public partial class Enemy4 : CharacterBody2D
 	private Timer _attackTimer;
 	private AudioStreamPlayer _deathSound;
 	private Player _player;
-	private int hp = 100;
+	private int _hp = 100;
 
 	private Vector2 _patrolDir = Vector2.Left;
-
-	private int _hp = 100;
 	private Vector2 _weaponOriginalPosition;
+
+	// ——— Copiado de Enemy1/Enemy3: parámetros de knockback ———
+	private Vector2 _knockbackVelocity = Vector2.Zero;
+	private bool _isKnockedBack = false;
+	private const float KnockBackSpeed   = 200f;  // fuerza horizontal
+	private const float KnockBackUpForce = 100f;  // fuerza vertical
+	private const float Gravity          = 1000f; // gravedad
+	// ———————————————————————————————————————————————
 
 	public override void _Ready()
 	{
@@ -36,24 +42,46 @@ public partial class Enemy4 : CharacterBody2D
 		_deathSound    = GetNode<AudioStreamPlayer>("Dead");
 		_weaponOriginalPosition = _weaponShape.Position;
 
-		_attackTimer = new Timer();
-		_attackTimer.WaitTime = AttackRate;
-		_attackTimer.OneShot = false;
+		_attackTimer = new Timer
+		{
+			WaitTime = AttackRate,
+			OneShot  = false
+		};
 		AddChild(_attackTimer);
 
 		_weaponArea.Monitoring = false;
-		_weaponShape.Disabled = true;
+		_weaponShape.Disabled  = true;
 
 		_detectionArea.Connect("body_entered", new Callable(this, nameof(OnDetectionBodyEntered)));
-		_detectionArea.Connect("body_exited", new Callable(this, nameof(OnDetectionBodyExited)));
-
-		_attackTimer.Connect("timeout", new Callable(this, nameof(OnAttackTimerTimeout)));
+		_detectionArea.Connect("body_exited",  new Callable(this, nameof(OnDetectionBodyExited)));
+		_attackTimer.Connect("timeout",         new Callable(this, nameof(OnAttackTimerTimeout)));
 
 		_anim.Play("Walk");
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
+		// ——— Knockback “a mano” (idéntico a Enemy1/Enemy3) ———
+		if (_isKnockedBack)
+		{
+			// 1) Aplica gravedad
+			_knockbackVelocity.Y += Gravity * (float)delta;
+
+			// 2) Asigna y mueve con MoveAndSlide
+			Velocity = _knockbackVelocity;
+			MoveAndSlide();
+
+			// 3) Al tocar suelo, termina el knockback
+			if (IsOnFloor())
+			{
+				_isKnockedBack = false;
+				_knockbackVelocity = Vector2.Zero;
+			}
+			return; // mientras dure el knockback, no ejecuta la IA
+		}
+		// ———————————————————————————————————————————————
+
+		// ——— Lógica original por estados ———
 		if (_state == State.Death)
 			return;
 
@@ -82,43 +110,38 @@ public partial class Enemy4 : CharacterBody2D
 		if (IsOnWall())
 		{
 			_patrolDir.X = -_patrolDir.X;
-			_anim.FlipH = !_anim.FlipH;
+			_anim.FlipH  = !_anim.FlipH;
 		}
 
 		if (_anim.Animation != "Walk")
 			_anim.Play("Walk");
 
 		_weaponArea.Monitoring = false;
-		_weaponShape.Disabled = true;
+		_weaponShape.Disabled  = true;
 	}
 
 	private void AttackBehavior()
 	{
 		Velocity = Vector2.Zero;
+		_anim.FlipH = (_player.Position.X < Position.X) ? false : true;
 
-		_anim.FlipH = _player.Position.X < Position.X ? false : true;
-
-		if (_anim.FlipH)
-		{
-			_weaponShape.Position = new Vector2(-Mathf.Abs(_weaponOriginalPosition.X), _weaponOriginalPosition.Y);
-		}
-		else
-		{
-			_weaponShape.Position = new Vector2(Mathf.Abs(_weaponOriginalPosition.X), _weaponOriginalPosition.Y);
-		}
+		float x = Mathf.Abs(_weaponOriginalPosition.X);
+		_weaponShape.Position = _anim.FlipH
+			? new Vector2(-x, _weaponOriginalPosition.Y)
+			: new Vector2( x, _weaponOriginalPosition.Y);
 
 		if (_anim.Animation != "Attack")
 			_anim.Play("Attack");
 
 		_weaponArea.Monitoring = true;
-		_weaponShape.Disabled = false;
+		_weaponShape.Disabled  = false;
 	}
 
 	private void EnterDeathState()
 	{
 		_state = State.Death;
 		_weaponArea.Monitoring = false;
-		_weaponShape.Disabled = true;
+		_weaponShape.Disabled  = true;
 		Velocity = Vector2.Zero;
 		_anim.Play("Death");
 		_deathSound.Play();
@@ -136,7 +159,7 @@ public partial class Enemy4 : CharacterBody2D
 		if (body is Player p && _state != State.Death)
 		{
 			_player = p;
-			_state = State.Attack;
+			_state  = State.Attack;
 			_attackTimer.Start();
 		}
 	}
@@ -157,32 +180,32 @@ public partial class Enemy4 : CharacterBody2D
 	private void OnAttackTimerTimeout()
 	{
 		if (_player != null && IsInstanceValid(_player))
-		{
 			_player.TakeDamage(Damage);
-		}
 	}
 
 	private void _on_Weapon_body_entered(Node body)
 	{
 		if (_state == State.Attack && body is Player p)
-		{
 			p.TakeDamage(Damage);
-		}
 	}
 
+	private void DisableWeapon()
+	{
+		_weaponArea.Monitoring = false;
+		_weaponShape.Disabled  = true;
+	}
+
+	// ——— Copiado de Enemy1/Enemy3: TakeDamage con knockback ———
 	public void TakeDamage(int damage)
 	{
 		_hp -= damage;
 
-		var player = GetNode<Player>("../Player"); // asegúrate que la ruta esté bien
+		var player = GetNode<Player>("../Player");
+		float direction = (player.Position.X < Position.X) ? 1f : -1f;
 
-		float direction = (player.Position.X < this.Position.X) ? 1.0f : -1.0f;
-		this.Position = new Vector2(this.Position.X + (direction * 50), this.Position.Y);
+		// Igual que en Enemy1/3
+		_knockbackVelocity = new Vector2(direction * KnockBackSpeed, -KnockBackUpForce);
+		_isKnockedBack = true;
 	}
-	
-	private void DisableWeapon()
-	{
-		_weaponArea.Monitoring = false;
-		_weaponShape.Disabled = true;
-	}
+	// ———————————————————————————————————————————————
 }

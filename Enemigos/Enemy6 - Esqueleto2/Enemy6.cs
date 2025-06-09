@@ -8,7 +8,7 @@ public partial class Enemy6 : CharacterBody2D
 
 	[Export] public float Speed = 100f;
 	[Export] public int Damage = 10;
-	[Export] public float AttackRate = 1f;     // segundos entre ataques
+	[Export] public float AttackRate = 1f;
 	[Export] public float DetectionRadius = 200f;
 	[Export] public float Gravity = 600f;
 
@@ -20,21 +20,28 @@ public partial class Enemy6 : CharacterBody2D
 	private Timer _attackTimer;
 	private AudioStreamPlayer _deathSound;
 	private Player _player;
-	private int hp = 100;
 
 	private Vector2 _patrolDir = Vector2.Left;
+	private Vector2 _weaponOriginalPosition;
 
 	private int _hp = 100;
-	private Vector2 _weaponOriginalPosition;
+
+	// Knockback variables (copiados tal cual de Enemy1)
+	private Vector2 _knockbackVelocity = Vector2.Zero;
+	private bool _isKnockedBack = false;
+	private const float KnockBackSpeed = 200f;
+	private const float KnockBackUpForce = 100f;
+	private const float KnockbackGravity = 1000f;
 
 	public override void _Ready()
 	{
-		_anim          = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		_weaponArea    = GetNode<Area2D>("Weapon");
-		_weaponShape   = _weaponArea.GetNode<CollisionShape2D>("CollisionShape2D");
+		_anim = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		_weaponArea = GetNode<Area2D>("Weapon");
+		_weaponShape = _weaponArea.GetNode<CollisionShape2D>("CollisionShape2D");
 		_detectionArea = GetNode<Area2D>("DetectionArea");
-		_deathTimer    = GetNode<Timer>("Timer");
-		//_deathSound    = GetNode<AudioStreamPlayer>("Dead");
+		_deathTimer = GetNode<Timer>("Timer");
+		//_deathSound = GetNode<AudioStreamPlayer>("Dead");
+
 		_weaponOriginalPosition = _weaponShape.Position;
 
 		_attackTimer = new Timer();
@@ -55,19 +62,22 @@ public partial class Enemy6 : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
-		if (_state == State.Death)
-			return;
-
-		if (_hp <= 0 && _state != State.Death)
+		if (_isKnockedBack)
 		{
-			EnterDeathState();
+			_knockbackVelocity.Y += KnockbackGravity * (float)delta;
+			Velocity = _knockbackVelocity;
+			MoveAndSlide();
+
+			if (IsOnFloor())
+			{
+				_isKnockedBack = false;
+				_knockbackVelocity = Vector2.Zero;
+			}
 			return;
 		}
-		
-		if (!IsOnFloor())
-			Velocity = new Vector2(Velocity.X, Velocity.Y + Gravity * (float)delta);
-		else
-			Velocity = new Vector2(Velocity.X, 0); // resetea gravedad al tocar el piso
+
+		if (_state == State.Death)
+			return;
 
 		if (_hp <= 0 && _state != State.Death)
 		{
@@ -133,7 +143,7 @@ public partial class Enemy6 : CharacterBody2D
 		_weaponShape.SetDeferred("disabled", true);
 		Velocity = Vector2.Zero;
 		_anim.Play("Death");
-		//_deathSound.Play();
+		//_deathSound?.Play();
 		_deathTimer.Start(5f);
 	}
 
@@ -159,7 +169,6 @@ public partial class Enemy6 : CharacterBody2D
 		{
 			_attackTimer.Stop();
 			CallDeferred(nameof(DisableWeapon));
-
 			_state = State.Patrol;
 			_anim.Play("Walk");
 			_player = null;
@@ -185,14 +194,15 @@ public partial class Enemy6 : CharacterBody2D
 	public void TakeDamage(int damage)
 	{
 		if (_state == State.Death)
-			return; // No se puede dañar si ya está muerto
+			return;
 
 		_hp -= damage;
 
 		var player = GetNode<Player>("../Player");
+		float direction = (player.Position.X < Position.X) ? 1f : -1f;
 
-		float direction = (player.Position.X < this.Position.X) ? 1.0f : -1.0f;
-		this.Position = new Vector2(this.Position.X + (direction * 50), this.Position.Y);
+		_knockbackVelocity = new Vector2(direction * KnockBackSpeed, -KnockBackUpForce);
+		_isKnockedBack = true;
 
 		if (_hp <= 0)
 		{
@@ -200,7 +210,6 @@ public partial class Enemy6 : CharacterBody2D
 		}
 	}
 
-	
 	private void DisableWeapon()
 	{
 		_weaponArea.Monitoring = false;

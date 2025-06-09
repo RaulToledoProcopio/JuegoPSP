@@ -120,7 +120,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rjm38"]
 radius = 14.9137
-height = 50.5072
+height = 66.3595
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wdely"]
 size = Vector2(32.2734, 48.9214)
@@ -129,8 +129,8 @@ size = Vector2(32.2734, 48.9214)
 size = Vector2(96, 71)
 
 [node name="Enemy4" type="CharacterBody2D"]
-collision_layer = 16
-collision_mask = 16385
+collision_layer = 4
+collision_mask = 16465
 script = ExtResource("1_gixh6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

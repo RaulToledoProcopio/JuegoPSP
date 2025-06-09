@@ -561,8 +561,8 @@ position = Vector2(1125, 481)
 shape = SubResource("RectangleShape2D_yecpn")
 
 [node name="Enemy6" parent="." groups=["Enemies"] instance=ExtResource("13_qf5xd")]
-position = Vector2(939, 487)
-scale = Vector2(1.7, 1.7)
+position = Vector2(928, 495)
+scale = Vector2(2, 2)
 collision_layer = 64
 collision_mask = 16403
 
