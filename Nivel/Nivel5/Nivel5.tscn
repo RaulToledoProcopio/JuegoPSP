@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://bvqrlbtt50mka"]
+[gd_scene load_steps=34 format=4 uid="uid://bvqrlbtt50mka"]
 
 [ext_resource type="Script" path="res://Nivel/Nivel5/Nivel5.cs" id="1_88rx2"]
 [ext_resource type="Texture2D" uid="uid://ekjp7kmyip77" path="res://Nivel/Nivel5/gothic-castle-tileset.png" id="3_2qbjf"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ck7us3a1jjgky" path="res://Proyectiles/ItemHeal/Item_heal.tscn" id="7_wnllw"]
 [ext_resource type="PackedScene" uid="uid://cyi6y3m1marje" path="res://Proyectiles/ItemAmmo/Item_ammo.tscn" id="8_tjevm"]
 [ext_resource type="Texture2D" uid="uid://e6sde8i44lih" path="res://Nivel/Nivel2/Torch Animated.png" id="9_ldlol"]
+[ext_resource type="Script" path="res://Nivel/Nivel4/Fall.cs" id="13_7u7nu"]
 [ext_resource type="PackedScene" uid="uid://yun2gfbkemxv" path="res://Personajes/Principal/Character.tscn" id="13_8hhp7"]
 [ext_resource type="PackedScene" uid="uid://dxh765y85dhbj" path="res://UI.tscn" id="14_juooh"]
 
@@ -756,6 +757,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_utd06"]
+size = Vector2(285, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ptpku"]
+size = Vector2(315, 20)
+
 [node name="Lvl5" type="TileMapLayer"]
 script = ExtResource("1_88rx2")
 
@@ -925,6 +932,24 @@ scale = Vector2(2.5, 2.5)
 collision_layer = 16
 script = ExtResource("7_2hy5n")
 
+[node name="FallLane" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("13_7u7nu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallLane"]
+position = Vector2(810, 684)
+shape = SubResource("RectangleShape2D_utd06")
+
+[node name="DeathFloor" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathFloor"]
+position = Vector2(815, 793)
+shape = SubResource("RectangleShape2D_ptpku")
+
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]
+[connection signal="body_entered" from="FallLane" to="FallLane" method="OnBodyEntered"]
 
 [editable path="Enemy4"]

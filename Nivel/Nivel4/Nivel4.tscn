@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://d1xnvgw4qk3h1"]
+[gd_scene load_steps=36 format=4 uid="uid://d1xnvgw4qk3h1"]
 
 [ext_resource type="Script" path="res://Nivel/Nivel4/Nivel4.cs" id="1_25k44"]
 [ext_resource type="PackedScene" uid="uid://yun2gfbkemxv" path="res://Personajes/Principal/Character.tscn" id="2_n08te"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bb53n77tadfmt" path="res://Nivel/Nivel4/front.png" id="10_7yxmr"]
 [ext_resource type="Texture2D" uid="uid://e6sde8i44lih" path="res://Nivel/Nivel2/Torch Animated.png" id="11_22hdf"]
 [ext_resource type="PackedScene" uid="uid://ct8nqyalqxost" path="res://Enemigos/Enemy6 - Esqueleto2/Enemy6.tscn" id="13_qf5xd"]
+[ext_resource type="Script" path="res://Nivel/Nivel4/Fall.cs" id="14_cj85r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hxuhu"]
 texture = ExtResource("5_jtvcu")
@@ -434,11 +435,14 @@ sources/0 = SubResource("TileSetAtlasSource_afaib")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o7rld"]
 size = Vector2(46, 680)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_50d3a"]
-size = Vector2(1205, 20)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yecpn"]
 size = Vector2(20, 96.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_50d3a"]
+size = Vector2(404, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_po2hx"]
+size = Vector2(871, 20)
 
 [node name="Nivel4" type="TileMapLayer"]
 script = ExtResource("1_25k44")
@@ -532,10 +536,6 @@ shape = SubResource("RectangleShape2D_o7rld")
 position = Vector2(1170, 331)
 shape = SubResource("RectangleShape2D_o7rld")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(568, 638)
-shape = SubResource("RectangleShape2D_50d3a")
-
 [node name="Portal" parent="." instance=ExtResource("4_fim8d")]
 position = Vector2(1056, 440)
 scale = Vector2(3, 3)
@@ -566,4 +566,22 @@ scale = Vector2(2, 2)
 collision_layer = 64
 collision_mask = 16403
 
+[node name="FallLane" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("14_cj85r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallLane"]
+position = Vector2(564, 638)
+shape = SubResource("RectangleShape2D_50d3a")
+
+[node name="DeathFloor" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathFloor"]
+position = Vector2(578, 766)
+shape = SubResource("RectangleShape2D_po2hx")
+
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]
+[connection signal="body_entered" from="FallLane" to="FallLane" method="OnBodyEntered"]

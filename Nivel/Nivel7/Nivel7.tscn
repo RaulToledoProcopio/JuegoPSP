@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://c3ued12af1an5"]
+[gd_scene load_steps=35 format=4 uid="uid://c3ued12af1an5"]
 
 [ext_resource type="Script" path="res://Nivel/Nivel7/Nivel7.cs" id="1_okpwr"]
 [ext_resource type="Texture2D" uid="uid://3j2e0i6baguc" path="res://Nivel/Nivel7/water-tileset.png" id="1_wldgf"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dxh765y85dhbj" path="res://UI.tscn" id="7_daouh"]
 [ext_resource type="PackedScene" uid="uid://bklwa8odkkth1" path="res://Portales/Portal.tscn" id="8_k6d67"]
 [ext_resource type="Script" path="res://Portales/Portal7.cs" id="9_aka1t"]
+[ext_resource type="Script" path="res://Nivel/Nivel3/Water2.cs" id="9_y0vhk"]
 [ext_resource type="PackedScene" uid="uid://c3yed6a1dp0xf" path="res://Menú/pause.tscn" id="10_erbcc"]
 [ext_resource type="PackedScene" uid="uid://d26onvvoeq3jr" path="res://Enemigos/Enemy2 - Mago/Enemy_2.tscn" id="12_e6dgw"]
 
@@ -7108,11 +7109,14 @@ sources/0 = SubResource("TileSetAtlasSource_m5nhc")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w07hv"]
 size = Vector2(20, 679)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fo768"]
+size = Vector2(154, 19)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_urcl7"]
 size = Vector2(171.75, 28.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fo768"]
-size = Vector2(154, 19)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ld6dp"]
+size = Vector2(249, 20)
 
 [node name="Nivel7" type="TileMapLayer"]
 script = ExtResource("1_okpwr")
@@ -7196,13 +7200,18 @@ shape = SubResource("RectangleShape2D_w07hv")
 position = Vector2(1161, 322)
 shape = SubResource("RectangleShape2D_w07hv")
 
-[node name="Water" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(796.125, 634.75)
-shape = SubResource("RectangleShape2D_urcl7")
-
 [node name="Spikes" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(115, 448.5)
 shape = SubResource("RectangleShape2D_fo768")
+
+[node name="Water2" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("9_y0vhk")
+
+[node name="Water" type="CollisionShape2D" parent="Water2"]
+position = Vector2(796.125, 634.75)
+shape = SubResource("RectangleShape2D_urcl7")
 
 [node name="Portal" parent="." instance=ExtResource("8_k6d67")]
 position = Vector2(1132, 92)
@@ -7221,4 +7230,13 @@ position = Vector2(1111, 524)
 scale = Vector2(1.5, 1.5)
 collision_layer = 20
 
+[node name="DeathFloor" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathFloor"]
+position = Vector2(798, 701)
+shape = SubResource("RectangleShape2D_ld6dp")
+
+[connection signal="body_entered" from="Water2" to="Water2" method="OnBodyEntered"]
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]

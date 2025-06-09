@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://b353gt4fmlwx5"]
+[gd_scene load_steps=23 format=4 uid="uid://b353gt4fmlwx5"]
 
 [ext_resource type="Texture2D" uid="uid://c8s3g8nmknos4" path="res://Nivel/Nivel10/back.png" id="1_djjpf"]
 [ext_resource type="Script" path="res://Nivel/Nivel10/Nivel10.cs" id="1_llwmn"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://yun2gfbkemxv" path="res://Personajes/Principal/Character.tscn" id="9_mgo1x"]
 [ext_resource type="PackedScene" uid="uid://dxh765y85dhbj" path="res://UI.tscn" id="10_e605w"]
 [ext_resource type="PackedScene" uid="uid://88hhrsdxavxq" path="res://Enemigos/Boss/boss.tscn" id="11_wxvnw"]
+[ext_resource type="Script" path="res://Nivel/Nivel4/Fall.cs" id="13_ryefr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4rp87"]
 texture = ExtResource("4_o8ihf")
@@ -135,6 +136,12 @@ sources/0 = SubResource("TileSetAtlasSource_vtnx4")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1nnbc"]
 size = Vector2(20, 661)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x60e0"]
+size = Vector2(1180.5, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eyqde"]
+size = Vector2(1175, 20)
+
 [node name="Node2D" type="TileMapLayer"]
 script = ExtResource("1_llwmn")
 
@@ -227,3 +234,22 @@ shape = SubResource("RectangleShape2D_1nnbc")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(1157, 322)
 shape = SubResource("RectangleShape2D_1nnbc")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("13_ryefr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(577.75, 660)
+shape = SubResource("RectangleShape2D_x60e0")
+
+[node name="DeathFloor" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathFloor"]
+position = Vector2(582, 774)
+shape = SubResource("RectangleShape2D_eyqde")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="OnBodyEntered"]
