@@ -31,6 +31,7 @@ public partial class Final : Godot.Control
 
 	// Cambiar de escena al pulsar el primer botón del menú
 	private void _on_button_pressed(){
+		GameState.Reset();
 		GetTree().ChangeSceneToFile("res://Nivel/Nivel1/Nivel1.tscn");
 	}
 	
