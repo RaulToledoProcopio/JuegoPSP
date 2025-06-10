@@ -1,8 +1,19 @@
-[gd_scene load_steps=14 format=3 uid="uid://88hhrsdxavxq"]
+[gd_scene load_steps=25 format=3 uid="uid://88hhrsdxavxq"]
 
 [ext_resource type="Script" path="res://Enemigos/Boss/Boss.cs" id="1_44lwl"]
 [ext_resource type="Texture2D" uid="uid://6mutm7tq3fix" path="res://Enemigos/Boss/sunny-dragon-fly.png" id="1_kchgg"]
 [ext_resource type="PackedScene" uid="uid://d3tk5j4wbt31q" path="res://Proyectiles/Lightning/Lightning.tscn" id="2_wb0ha"]
+[ext_resource type="Texture2D" uid="uid://dybnuuxm6dv5m" path="res://Enemigos/Boss/Explosion_two_colors1.png" id="3_ign4g"]
+[ext_resource type="Texture2D" uid="uid://qgto5evdsxc3" path="res://Enemigos/Boss/Explosion_two_colors2.png" id="4_fbb20"]
+[ext_resource type="Texture2D" uid="uid://bki4i8iscikn2" path="res://Enemigos/Boss/Explosion_two_colors3.png" id="5_h32gw"]
+[ext_resource type="Texture2D" uid="uid://bgaj3y67epodv" path="res://Enemigos/Boss/Explosion_two_colors4.png" id="6_w3ctq"]
+[ext_resource type="Texture2D" uid="uid://c83o3uc7lnew0" path="res://Enemigos/Boss/Explosion_two_colors5.png" id="7_bmhmi"]
+[ext_resource type="Texture2D" uid="uid://bx5je1vro87tn" path="res://Enemigos/Boss/Explosion_two_colors6.png" id="8_2673d"]
+[ext_resource type="Texture2D" uid="uid://bl46ueclhuxkq" path="res://Enemigos/Boss/Explosion_two_colors7.png" id="9_gbe67"]
+[ext_resource type="Texture2D" uid="uid://caxho1g246vou" path="res://Enemigos/Boss/Explosion_two_colors8.png" id="10_oee1u"]
+[ext_resource type="Texture2D" uid="uid://cu5abu6xj5731" path="res://Enemigos/Boss/Explosion_two_colors9.png" id="11_sncjh"]
+[ext_resource type="Texture2D" uid="uid://hup04wmdiyeq" path="res://Enemigos/Boss/Explosion_two_colors10.png" id="12_8bpwg"]
+[ext_resource type="AudioStream" uid="uid://cis2k54scys4n" path="res://BSO/EnemyDead.mp3" id="14_1hhpu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mqso1"]
 atlas = ExtResource("1_kchgg")
@@ -42,6 +53,41 @@ region = Rect2(1536, 5, 192, 171)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_66ewu"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ign4g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fbb20")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_h32gw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_w3ctq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_bmhmi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_2673d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_gbe67")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_oee1u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_sncjh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_8bpwg")
+}],
+"loop": false,
+"name": &"Death",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mqso1")
@@ -84,8 +130,10 @@ LightningScene = ExtResource("2_wb0ha")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_66ewu")
-animation = &"Idle"
+animation = &"Death"
 autoplay = "Idle"
+frame = 9
+frame_progress = 1.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 build_mode = 1
@@ -100,6 +148,9 @@ build_mode = 1
 polygon = PackedVector2Array(-12, 0, -64, -19, -83, 14, -38, 41, 14, 43, 57, 73, 60, 20)
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="Dead" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_1hhpu")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="OnDeathTimerTimeout"]

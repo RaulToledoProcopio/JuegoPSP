@@ -21,6 +21,7 @@ public partial class Boss : CharacterBody2D
 	private Vector2 _patrolDir = Vector2.Left;
 	private AnimatedSprite2D _anim;
 	private float _stateTimer = 0f;
+	private AudioStreamPlayer deathSound;
 
 	private Timer _lightningTimer;
 	private Timer _deathTimer;
@@ -33,7 +34,8 @@ public partial class Boss : CharacterBody2D
 
 		_collisionShape = GetNode<CollisionPolygon2D>("CollisionPolygon2D");
 		_highY = GlobalPosition.Y;
-
+		
+		deathSound = GetNode<AudioStreamPlayer>("Dead");
 		_lightningTimer = new Timer();
 		_lightningTimer.WaitTime = 2f;
 		_lightningTimer.OneShot = false;
@@ -127,18 +129,17 @@ public partial class Boss : CharacterBody2D
 
 	public void TakeDamage(int damage)
 	{
-		if (_state == State.Death)
-			return;
+		if (_state == State.Death) return;
 
 		hp -= damage;
-
-		var player = GetNode<Player>("../Player");
-		float direction = (player.Position.X < this.Position.X) ? 1.0f : -1.0f;
-		this.Position = new Vector2(this.Position.X + (direction * 50), this.Position.Y);
-
+		var playerNode = GetNode<Player>("../Player");
 		if (hp <= 0)
 		{
-			EnterDeathState();
+			_state = State.Death;
+			Velocity = Vector2.Zero;
+			_anim.Play("Death");
+			deathSound?.Play();
+			_deathTimer.Start(2f);
 		}
 	}
 

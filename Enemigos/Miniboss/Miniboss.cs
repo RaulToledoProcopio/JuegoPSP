@@ -14,6 +14,7 @@ public partial class Miniboss : CharacterBody2D
 	[Export] public int Hp = 100;
 	private bool _playerInBreath = false;
 	private Vector2 _breathOriginalPosition;
+	private AudioStreamPlayer deathSound;
 
 
 
@@ -35,6 +36,7 @@ public partial class Miniboss : CharacterBody2D
 		_bodyShape     = GetNode<CollisionShape2D>("Body");
 		_breathArea    = GetNode<Area2D>("Breath");
 		_breathShape   = _breathArea.GetNode<CollisionShape2D>("Breath");
+		deathSound = GetNode<AudioStreamPlayer>("Dead");
 		_detectionArea = GetNode<Area2D>("DetectionArea");
 		_breathArea.Connect("body_entered", new Callable(this, nameof(OnBreathBodyEntered)));
 		_breathArea.Connect("body_exited", new Callable(this, nameof(OnBreathBodyExited)));
@@ -205,8 +207,9 @@ public void TakeDamage(int damage)
 		{
 			_state = State.Death;
 			Velocity = Vector2.Zero;
-			//_anim.Play("Death");
-			_deathTimer.Start();
+			_anim.Play("Death");
+			deathSound?.Play();
+			_deathTimer.Start(2f);
 		}
 	}
 
