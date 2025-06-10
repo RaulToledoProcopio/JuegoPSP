@@ -439,7 +439,8 @@ offset_right = 562.0
 offset_bottom = 122.0
 
 [node name="Portal" parent="." instance=ExtResource("8_mubfr")]
-position = Vector2(1124, 328)
+position = Vector2(927, 598)
+rotation = 1.5708
 scale = Vector2(2.5, 2.5)
 collision_layer = 16
 script = ExtResource("9_qvph0")

@@ -157,6 +157,7 @@ public partial class Boss : CharacterBody2D
 	private void OnDeathTimerTimeout()
 {
 	QueueFree();
+	GetParent().CallDeferred("OnEnemyDefeated", this);
 }
 
 	private void _on_body_entered(Node body)

@@ -11,7 +11,7 @@ public partial class Nivel7 : TileMapLayer
 	{
 		// Encuentra el nodo del portal y ocúltalo inicialmente
 		portal = GetNode<Area2D>("Portal");
-		portal.Visible = false; // Lo ocultamos inicialmente
+		portal.Visible = false;
 		// Desactivar la colisión para que el portal no interactúe con el jugador
 		var collisionShape = portal.GetNode<CollisionShape2D>("CollisionShape2D");
 		collisionShape.Disabled = true;  // Desactivar la forma de colisión

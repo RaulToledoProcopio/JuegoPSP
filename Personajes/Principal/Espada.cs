@@ -69,6 +69,11 @@ public partial class Espada : Area2D
 			enemy7.TakeDamage(damage);
 			CallDeferred(nameof(DesactivarEspada));
 		}
+		else if (body is Miniboss miniboss)
+		{
+			miniboss.TakeDamage(damage);
+			CallDeferred(nameof(DesactivarEspada));
+		}
 		else if (body is Boss boss)
 		{
 			boss.TakeDamage(damage);

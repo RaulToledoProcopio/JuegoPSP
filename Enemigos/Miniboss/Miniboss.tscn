@@ -1,7 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://p8kfjlqsvyar"]
+[gd_scene load_steps=32 format=3 uid="uid://p8kfjlqsvyar"]
 
+[ext_resource type="Script" path="res://Enemigos/Miniboss/Miniboss.cs" id="1_bf3mn"]
 [ext_resource type="Texture2D" uid="uid://twgf2nwk0fu2" path="res://Enemigos/Miniboss/frame1.png" id="1_islho"]
 [ext_resource type="Texture2D" uid="uid://c8rhov80v47wg" path="res://Enemigos/Miniboss/frame2.png" id="2_7fbap"]
+[ext_resource type="PackedScene" uid="uid://bg6vdcytid1f2" path="res://Proyectiles/FireBlue/FireBlue.tscn" id="2_bqiov"]
 [ext_resource type="Texture2D" uid="uid://d1jvfq2vqd8h2" path="res://Enemigos/Miniboss/frame3.png" id="3_kykoq"]
 [ext_resource type="Texture2D" uid="uid://ccio10wlbdbfx" path="res://Enemigos/Miniboss/frame4.png" id="4_4xkkp"]
 [ext_resource type="Texture2D" uid="uid://guaraa7v488q" path="res://Enemigos/Miniboss/frame5.png" id="5_nyu28"]
@@ -24,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://dtdvj2glt301s" path="res://Enemigos/Miniboss/idle4.png" id="22_64rbf"]
 [ext_resource type="Texture2D" uid="uid://d20a020wuh3h1" path="res://Enemigos/Miniboss/idle5.png" id="23_cqp78"]
 [ext_resource type="Texture2D" uid="uid://oc7vm62u3w3f" path="res://Enemigos/Miniboss/idle6.png" id="24_r5s8g"]
+[ext_resource type="AudioStream" uid="uid://cis2k54scys4n" path="res://BSO/EnemyDead.mp3" id="26_kwmfe"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fqii8"]
 animations = [{
@@ -106,7 +109,7 @@ animations = [{
 "texture": ExtResource("24_r5s8g")
 }],
 "loop": true,
-"name": &"Static",
+"name": &"Idle",
 "speed": 10.0
 }]
 
@@ -114,21 +117,52 @@ animations = [{
 radius = 36.0
 height = 102.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0igr3"]
-radius = 46.0977
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qjvp2"]
+radius = 26.0
+height = 72.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6bjat"]
+size = Vector2(203, 122)
 
 [node name="Miniboss" type="CharacterBody2D"]
+collision_layer = 8192
+collision_mask = 16793601
+script = ExtResource("1_bf3mn")
+FireballScene = ExtResource("2_bqiov")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_fqii8")
 animation = &"Attack"
-autoplay = "Attack"
+autoplay = "Idle"
+frame = 10
+frame_progress = 0.391136
 
 [node name="Body" type="CollisionShape2D" parent="."]
-position = Vector2(-16, 8)
+position = Vector2(7, 32)
 shape = SubResource("CapsuleShape2D_e01yv")
 
-[node name="Breath" type="CollisionShape2D" parent="."]
-position = Vector2(-69, 50)
-shape = SubResource("CircleShape2D_0igr3")
+[node name="Breath" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="Breath" type="CollisionShape2D" parent="Breath"]
+position = Vector2(-65, 65)
+rotation = 4.71239
+shape = SubResource("CapsuleShape2D_qjvp2")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(0.5, 32)
+shape = SubResource("RectangleShape2D_6bjat")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Dead" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("26_kwmfe")
+
+[connection signal="body_entered" from="Breath" to="." method="_on_Breath_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="OnDeathTimerTimeout"]

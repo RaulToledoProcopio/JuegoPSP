@@ -11,10 +11,10 @@ public partial class Nivel9 : TileMapLayer
 	{
 		// Encuentra el nodo del portal y ocúltalo inicialmente
 		portal = GetNode<Area2D>("Portal");
-		portal.Visible = true;
+		portal.Visible = false; // Lo ocultamos inicialmente
 		// Desactivar la colisión para que el portal no interactúe con el jugador
 		var collisionShape = portal.GetNode<CollisionShape2D>("CollisionShape2D");
-		collisionShape.Disabled = false;  // Desactivar la forma de colisión
+		collisionShape.Disabled = true;  // Desactivar la forma de colisión
 
 		// Encuentra el AnimatedSprite2D dentro del portal
 		portalSprite = portal.GetNode<AnimatedSprite2D>("AnimatedSprite2D");
