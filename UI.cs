@@ -7,6 +7,7 @@ public partial class UI : Node2D
 
 	public override void _Ready()
 	{
+		GameState.Reset();
 		healthBar = GetNode<ProgressBar>("HealthBar");
 		ammoLabel = GetNode<Label>("Ammo");
 

@@ -26,4 +26,10 @@ public partial class GameState : Node
 		Ammo = Mathf.Max(Ammo + amount, 0);
 		CurrentUI?.UpdateAmmo(Ammo);
 	}
+	
+	public static void Reset()
+	{
+	Health = 100f;
+	Ammo = 10;
+	}
 }
