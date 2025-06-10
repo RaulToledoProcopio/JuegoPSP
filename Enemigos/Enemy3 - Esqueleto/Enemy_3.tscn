@@ -96,7 +96,7 @@ height = 40.0
 [node name="Enemy3" type="CharacterBody2D"]
 scale = Vector2(2, 2)
 collision_layer = 4
-collision_mask = 16465
+collision_mask = 16464
 script = ExtResource("1_wn3s6")
 
 [node name="Dead" type="AudioStreamPlayer" parent="."]
