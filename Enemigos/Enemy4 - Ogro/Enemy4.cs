@@ -20,17 +20,14 @@ public partial class Enemy4 : CharacterBody2D
 	private AudioStreamPlayer _deathSound;
 	private Player _player;
 	private int _hp = 100;
-
 	private Vector2 _patrolDir = Vector2.Left;
 	private Vector2 _weaponOriginalPosition;
 
-	// ——— Copiado de Enemy1/Enemy3: parámetros de knockback ———
 	private Vector2 _knockbackVelocity = Vector2.Zero;
 	private bool _isKnockedBack = false;
-	private const float KnockBackSpeed   = 200f;  // fuerza horizontal
-	private const float KnockBackUpForce = 100f;  // fuerza vertical
-	private const float Gravity          = 1000f; // gravedad
-	// ———————————————————————————————————————————————
+	private const float KnockBackSpeed   = 200f;
+	private const float KnockBackUpForce = 100f;
+	private const float Gravity          = 1000f;
 
 	public override void _Ready()
 	{
@@ -61,27 +58,21 @@ public partial class Enemy4 : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
-		// ——— Knockback “a mano” (idéntico a Enemy1/Enemy3) ———
+		
 		if (_isKnockedBack)
 		{
-			// 1) Aplica gravedad
 			_knockbackVelocity.Y += Gravity * (float)delta;
-
-			// 2) Asigna y mueve con MoveAndSlide
 			Velocity = _knockbackVelocity;
 			MoveAndSlide();
 
-			// 3) Al tocar suelo, termina el knockback
 			if (IsOnFloor())
 			{
 				_isKnockedBack = false;
 				_knockbackVelocity = Vector2.Zero;
 			}
-			return; // mientras dure el knockback, no ejecuta la IA
+			return;
 		}
-		// ———————————————————————————————————————————————
 
-		// ——— Lógica original por estados ———
 		if (_state == State.Death)
 			return;
 
@@ -195,7 +186,6 @@ public partial class Enemy4 : CharacterBody2D
 		_weaponShape.Disabled  = true;
 	}
 
-	// ——— Copiado de Enemy1/Enemy3: TakeDamage con knockback ———
 	public void TakeDamage(int damage)
 	{
 		_hp -= damage;
@@ -203,9 +193,7 @@ public partial class Enemy4 : CharacterBody2D
 		var player = GetNode<Player>("../Player");
 		float direction = (player.Position.X < Position.X) ? 1f : -1f;
 
-		// Igual que en Enemy1/3
 		_knockbackVelocity = new Vector2(direction * KnockBackSpeed, -KnockBackUpForce);
 		_isKnockedBack = true;
 	}
-	// ———————————————————————————————————————————————
 }

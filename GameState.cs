@@ -11,7 +11,6 @@ public partial class GameState : Node
 
 	public override void _Ready()
 	{
-		// Nada aquí, sólo almacena datos
 	}
 
 	// Métodos para cambiar valores y actualizar UI

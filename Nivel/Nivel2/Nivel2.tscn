@@ -586,19 +586,7 @@ position = Vector2(538, 407)
 [node name="ItemAmmo3" parent="." instance=ExtResource("7_thhf4")]
 position = Vector2(201, 261)
 
-[node name="ItemAmmo4" parent="." instance=ExtResource("7_thhf4")]
-position = Vector2(212, 560)
-
 [node name="ItemAmmo5" parent="." instance=ExtResource("7_thhf4")]
 position = Vector2(230, 559)
-
-[node name="ItemAmmo6" parent="." instance=ExtResource("7_thhf4")]
-position = Vector2(248, 560)
-
-[node name="ItemAmmo7" parent="." instance=ExtResource("7_thhf4")]
-position = Vector2(184, 559)
-
-[node name="ItemAmmo8" parent="." instance=ExtResource("7_thhf4")]
-position = Vector2(164, 560)
 
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]

@@ -16,8 +16,6 @@ public partial class Pause : Control
 		{
 			bool isPaused = GetTree().Paused; // Obtenemos el estado actual de la pausa del árbol de nodos.
 			GetTree().Paused = !isPaused; // Cambiamos el estado de la pausa.
-			/* Activamos el proceso de entrada para que el menú pueda recibir eventos de entrada
-			para poder volver al juego desde la pausa */
 			SetProcessInput(true);
 			// Si el juego está en pausa, el menú de pausa será visible.
 			Visible = GetTree().Paused;

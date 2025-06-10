@@ -12,7 +12,6 @@ public partial class GameOver : Control
 		GetTree().ChangeSceneToFile("res://Nivel/Nivel1/Nivel1.tscn");
 	}
 	
-	// Cambiar de escena al pulsar el segundo botón del menú
 	private void _on_button_2_pressed(){
 		var crono = GetNode<Crono>("/root/Crono");
 		crono.StopTimer(submitScore: false);
@@ -21,7 +20,6 @@ public partial class GameOver : Control
 		GetTree().ChangeSceneToFile("res://Menú/Menu.tscn");
 	}
 	
-	// Cambiar de escena al pulsar el tercer botón del menú
 	private void _on_button_3_pressed(){
 		GetTree().Quit();
 	}

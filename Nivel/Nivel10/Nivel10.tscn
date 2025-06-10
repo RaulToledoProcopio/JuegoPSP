@@ -255,7 +255,8 @@ position = Vector2(582, 774)
 shape = SubResource("RectangleShape2D_eyqde")
 
 [node name="Portal" parent="." instance=ExtResource("14_y8mt1")]
-position = Vector2(1046, 388)
+position = Vector2(1113, 344)
+scale = Vector2(3, 3)
 script = ExtResource("15_hv075")
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="OnBodyEntered"]

@@ -19,7 +19,7 @@ public partial class Espada : Area2D
 		GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;  // Activamos la colisión de la espada.
 	}
 
-	/* Para desactivar la espada creamos un método para llamarlo de manera diferida */
+	// Para desactivar la espada creamos un método para llamarlo de manera diferida
 	public void DesactivarEspada()
 	{
 		CallDeferred(nameof(DeferredDesactivarEspada));

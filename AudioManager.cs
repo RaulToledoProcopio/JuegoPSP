@@ -49,15 +49,12 @@ public partial class AudioManager : Node2D
 		if (level == 0)
 		return 1;
 		
-		// Niveles 2 y 3 usan la pista 2 (grupo 2)
 		if (level == 2 || level == 3)
 		return 2;
 
-		// Niveles 4 y 5 usan la pista 3 (grupo 3)
 		if (level == 4 || level == 5)
 		return 3;
 
-		// Otros niveles: grupo 1 (intro), grupo 4 (créditos), etc.
 		if (level == 6 || level == 7)
 		return 4;
 

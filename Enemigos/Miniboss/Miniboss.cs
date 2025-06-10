@@ -49,8 +49,6 @@ public partial class Miniboss : CharacterBody2D
 		_fireTimer.Timeout += () => FireFireball();
 		AddChild(_fireTimer);
 		_fireTimer.Start();
-
-		// Timer de muerte (en escena)
 		_deathTimer = GetNode<Timer>("Timer");
 
 		// Timer para activar/desactivar daño del breath
@@ -63,8 +61,7 @@ public partial class Miniboss : CharacterBody2D
 			if (_state == State.Attack && _player != null)
 			GetTree().CreateTimer(1f).Timeout += () => ActivateBreathDamage();
 		};
-AddChild(_breathDamageTimer);
-
+		AddChild(_breathDamageTimer);
 
 		_detectionArea.Connect("body_entered", new Callable(this, nameof(OnDetectionBodyEntered)));
 		_detectionArea.Connect("body_exited", new Callable(this, nameof(OnDetectionBodyExited)));
@@ -98,24 +95,24 @@ AddChild(_breathDamageTimer);
 	}
 
 	private void AttackBehavior()
-{
-	if (_player == null || !IsInstanceValid(_player))
 	{
-		EnterPatrol();
-		return;
+		if (_player == null || !IsInstanceValid(_player))
+		{
+			EnterPatrol();
+			return;
+		}
+		
+		// El boss se detiene cuando está en ataque
+		Velocity = Vector2.Zero;
+		MoveAndSlide();
+
+		// Girar sprite mirando al jugador
+		bool playerRight = _player.Position.X > Position.X;
+		_anim.FlipH = playerRight;
+
+		// Reflejar el area de aliento en tiempo real
+		_breathArea.Scale = new Vector2(playerRight ? -1 : 1, 1);
 	}
-
-	// El boss se detiene cuando está en ataque
-	Velocity = Vector2.Zero;
-	MoveAndSlide();
-
-	// Girar sprite mirando al jugador
-	bool playerRight = _player.Position.X > Position.X;
-	_anim.FlipH = playerRight;
-
-	// Reflejar el area de aliento en tiempo real
-	_breathArea.Scale = new Vector2(playerRight ? -1 : 1, 1);
-}
 
 
 	private void EnterPatrol()
@@ -129,25 +126,23 @@ AddChild(_breathDamageTimer);
 	}
 
 	private void EnterAttack()
-{
-	_state = State.Attack;
-	_anim.Play("Attack");
+	{
+		_state = State.Attack;
+		_anim.Play("Attack");
 
-	// Verifica si el jugador está a la derecha del miniboss
-	bool playerRight = _player.Position.X > Position.X;
-	_anim.FlipH = playerRight;
+		// Verifica si el jugador está a la derecha del miniboss
+		bool playerRight = _player.Position.X > Position.X;
+		_anim.FlipH = playerRight;
 
-	// Refleja el área Breath horizontalmente
-	_breathArea.Scale = new Vector2(playerRight ? 1 : -1, 1);
+		// Refleja el área Breath horizontalmente
+		_breathArea.Scale = new Vector2(playerRight ? 1 : -1, 1);
 
-	_bodyShape.SetDeferred("disabled", false);
-	_breathShape.SetDeferred("disabled", true);
-	_fireTimer.Stop();
-
-	GetTree().CreateTimer(1f).Timeout += () => ActivateBreathDamage();
-}
-
-
+		_bodyShape.SetDeferred("disabled", false);
+		_breathShape.SetDeferred("disabled", true);
+		_fireTimer.Stop();
+		
+		GetTree().CreateTimer(1f).Timeout += () => ActivateBreathDamage();
+	}
 
 	private void OnDetectionBodyEntered(Node body)
 	{
@@ -176,28 +171,27 @@ AddChild(_breathDamageTimer);
 		fire.GlobalPosition = GlobalPosition + new Vector2(FireballOffset.X * dir, FireballOffset.Y);
 		GetParent().AddChild(fire);
 	}
-
-	// Llama este método cuando quieras activar el daño de Breath (por ejemplo desde la animación o código)
+	
 	public void ActivateBreathDamage()
-{
-	_breathShape.SetDeferred("disabled", true);  // primero desactiva
-	_breathShape.SetDeferred("disabled", false); // luego activa de nuevo
-	_breathDamageTimer.Start();
-}
+	{
+		_breathShape.SetDeferred("disabled", true);  // primero desactiva
+		_breathShape.SetDeferred("disabled", false); // luego activa de nuevo
+		_breathDamageTimer.Start();
+	}
 
 	private void OnBreathBodyEntered(Node body)
-{
-	if (body is Player player)
+	{
+		if (body is Player player)
 		_playerInBreath = true;
-}
+	}
 
-private void OnBreathBodyExited(Node body)
-{
-	if (body is Player player)
+	private void OnBreathBodyExited(Node body)
+	{
+		if (body is Player player)
 		_playerInBreath = false;
-}
+	}
 
-public void TakeDamage(int damage)
+	public void TakeDamage(int damage)
 	{
 		if (_state == State.Death) return;
 

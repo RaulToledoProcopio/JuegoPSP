@@ -44,23 +44,18 @@ public partial class Enemy3 : CharacterBody2D
 		// Si estamos en estado de knockback, aplicamos la parábola
 		if (_isKnockedBack)
 		{
-			// 1) Aplicar gravedad
 			_knockbackVelocity.Y += Gravity * (float)delta;
-
-			// 2) Asignar y mover
 			Velocity = _knockbackVelocity;
 			MoveAndSlide();
-
-			// 3) Detectar fin al tocar suelo
+			
 			if (IsOnFloor())
 			{
 				_isKnockedBack = false;
 				_knockbackVelocity = Vector2.Zero;
 			}
-			return; // saltamos el movimiento normal
+			return;
 		}
 
-		// ——— Movimiento normal ———
 		if (_movementDirection != Vector2.Zero)
 		{
 			Vector2 vel = Velocity;
@@ -69,14 +64,12 @@ public partial class Enemy3 : CharacterBody2D
 			MoveAndSlide();
 		}
 
-		// Rebote en paredes
 		if (IsOnWall())
 		{
 			_movementDirection.X *= -1;
 			animation.FlipH = !animation.FlipH;
 		}
 
-		// Animación y timer de muerte
 		if (hp <= 0 && !_timerStarted)
 		{
 			if (animation.Animation != "Death")
@@ -103,16 +96,11 @@ public partial class Enemy3 : CharacterBody2D
 			player.TakeDamage(damage);
 	}
 
-	// Al recibir daño, lanzamos el knockback en arco
 	public void TakeDamage(int damage)
 	{
 		hp -= damage;
-
-		// Determinar dirección según la posición del player
 		var player = GetNode<Player>("../Player");
 		float direction = (player.Position.X < Position.X) ? 1f : -1f;
-
-		// Iniciar la velocidad de knockback
 		_knockbackVelocity = new Vector2(direction * KnockBackSpeed, -KnockBackUpForce);
 		_isKnockedBack = true;
 	}

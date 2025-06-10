@@ -130,36 +130,31 @@ public partial class Boss : CharacterBody2D
 	public void TakeDamage(int damage)
 	{
 		if (_state == State.Death) return;
-
 		hp -= damage;
-		var playerNode = GetNode<Player>("../Player");
 		if (hp <= 0)
 		{
-			_state = State.Death;
-			Velocity = Vector2.Zero;
-			_anim.Play("Death");
-			deathSound?.Play();
-			_deathTimer.Start(2f);
+			EnterDeathState();
 		}
 	}
 
 	private void EnterDeathState()
-{
-	_state = State.Death;
-	Velocity = Vector2.Zero;
-	_lightningTimer.Stop();
-	_collisionShape.SetDeferred("disabled", true);
+	{
+		_state = State.Death;
+		Velocity = Vector2.Zero;
+		_anim.Play("Death");
+		deathSound?.Play();
+		_deathTimer.Start(2f);
+		_lightningTimer.Stop();
+		_collisionShape.SetDeferred("disabled", true);
+	}
 
-	//_anim.Play("Death"); // Animación de muerte comentada hasta tenerla lista
-	_deathTimer.Start(5f); // Arranca el timer para que desaparezca en 5 segundos
-}
 
 
 	private void OnDeathTimerTimeout()
-{
-	QueueFree();
-	GetParent().CallDeferred("OnEnemyDefeated", this);
-}
+	{
+		QueueFree();
+		GetParent().CallDeferred("OnEnemyDefeated", this);
+	}
 
 	private void _on_body_entered(Node body)
 	{

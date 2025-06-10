@@ -21,8 +21,6 @@ public partial class Dummy : CharacterBody2D
 		}
 	}
 	
-	/* Este método se llamará cuando el Timer termine para eliminar al enemigo,
-	y enviará una señal a la escena para que el contador de enemigo lo reste */
 	private void OnDeathTimerTimeout()
 	{
 		QueueFree();  // Elimina al enemigo del juego

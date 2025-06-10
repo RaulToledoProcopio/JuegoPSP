@@ -15,8 +15,6 @@ public partial class FireBlue : Area2D
 		_velocity = new Vector2(speedDagger * Direction, 0);
 		_animation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_animation.Play("Idle");
-
-		// Voltea solo si va a la izquierda
 		_animation.FlipH = Direction < 0;
 	}
 

@@ -12,7 +12,7 @@ public partial class Login : Godot.Control
 	// URL del endpoint de login
 	private const string LoginUrl = "https://api-psp-2.onrender.com/api/auth/login";
 
-	// Referencias a los nodos de la UI (asegúrate de asignarlos en el editor o mediante GetNode)
+	// Referencias a los nodos de la UI
 	private LineEdit _usernameField;
 	private LineEdit _passwordField;
 	private Label _errorLabel;

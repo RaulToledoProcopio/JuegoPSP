@@ -15,19 +15,17 @@ public partial class Enemy2 : CharacterBody2D
 	
 	public override void _Ready()
 	{
-		// Obtención de los nodos necesarios
 		animation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_deathTimer = GetNode<Timer>("Timer");
-		_deathTimer.Stop(); // Asegurar de que el Timer no esté corriendo al principio
+		_deathTimer.Stop();
 		deathSound = GetNode<AudioStreamPlayer>("Dead");
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
 
-		timeSinceLastFire += (float)delta; // Sumar el tiempo transcurrido desde el último cuadro.
+		timeSinceLastFire += (float)delta;
 
-		// Verifica si ha pasado el tiempo necesario para disparar una nueva bola de fuego.
 		if (timeSinceLastFire >= fireRate)
 		{
 			timeSinceLastFire = 0.0f;  // Reiniciar el contador.
@@ -36,14 +34,12 @@ public partial class Enemy2 : CharacterBody2D
 		
 		if (hp <= 0 && !_timerStarted)
 		{
-			// Si no se está ejecutando la animación la ejecuta, para evitar que se reinicie.
 			if (animation.Animation != "Death")
 			{
 				animation.Play("Death");
 				if (deathSound != null)
 					deathSound.Play();
 			}
-			// Activar el Timer de muerte.
 			_deathTimer.Start(0.7f);
 			_timerStarted = true;
 		}

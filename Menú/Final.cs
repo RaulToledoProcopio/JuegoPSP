@@ -35,30 +35,25 @@ public partial class Final : Godot.Control
 		GetTree().ChangeSceneToFile("res://Nivel/Nivel1/Nivel1.tscn");
 	}
 	
-	// Cambiar de escena al pulsar el segundo botón del menú
 	private void _on_button_2_pressed(){
 		GetTree().ChangeSceneToFile("res://Menú/Menu.tscn");
 	}
 	
-	// Cambiar de escena al pulsar el tercer botón del menú
 	private void _on_button_3_pressed(){
 		GetTree().Quit();
 	}
 	
-	// Cambiar de escena al pulsar el botón lo que está por venir
 	private void _on_button_4_pressed(){
 		GetTree().ChangeSceneToFile("res://Menú/Incoming.tscn");
 	}
 	
 	private void _on_button_5_pressed()
 	{
-		// Arrancamos la carga asíncrona sin bloquear
 		_ = LoadAndShowLeaderboardAsync();
 	}
 	
 	private void _on_close_button_pressed()
 	{
-	// Oculta el panel y el label
 	_leaderboardPanel.Visible = false;
 	_leaderboardLabel.Visible = false;
 	}
@@ -101,7 +96,6 @@ public partial class Final : Godot.Control
 	}
 	
 	// DTO interno para los scores
-	
 	private class ScoreDto
 	{
 		public string Username { get; set; }

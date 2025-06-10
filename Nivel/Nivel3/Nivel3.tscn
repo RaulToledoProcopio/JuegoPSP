@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=4 uid="uid://bopk81kkkanbr"]
+[gd_scene load_steps=53 format=4 uid="uid://bopk81kkkanbr"]
 
 [ext_resource type="Texture2D" uid="uid://cxqmhjv4qwkx7" path="res://Nivel/Nivel3/background_layer_1.png" id="1_vk6kc"]
 [ext_resource type="Script" path="res://Nivel/Nivel3/Nivel3.cs" id="1_yao55"]
@@ -15,6 +15,8 @@
 [ext_resource type="Script" path="res://Portales/Portal3.cs" id="11_dqxvj"]
 [ext_resource type="PackedScene" uid="uid://c3yed6a1dp0xf" path="res://Menú/pause.tscn" id="12_nu2hv"]
 [ext_resource type="PackedScene" uid="uid://cti1tjlhq85kt" path="res://Enemigos/Enemy5 - Archer/Enemy5.tscn" id="14_xhu2x"]
+[ext_resource type="PackedScene" uid="uid://cyi6y3m1marje" path="res://Proyectiles/ItemAmmo/Item_ammo.tscn" id="16_j31dc"]
+[ext_resource type="PackedScene" uid="uid://ck7us3a1jjgky" path="res://Proyectiles/ItemHeal/Item_heal.tscn" id="17_4b0qk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gx08e"]
 atlas = ExtResource("2_yx1m4")
@@ -3585,6 +3587,12 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallLane"]
 position = Vector2(638, 713)
 shape = SubResource("RectangleShape2D_jjw4q")
+
+[node name="ItemAmmo" parent="." instance=ExtResource("16_j31dc")]
+position = Vector2(317, 406)
+
+[node name="ItemHeal" parent="." instance=ExtResource("17_4b0qk")]
+position = Vector2(224, 286)
 
 [connection signal="body_entered" from="Water2" to="Water2" method="OnBodyEntered"]
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]

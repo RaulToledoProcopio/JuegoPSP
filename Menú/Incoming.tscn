@@ -1,12 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://86sn4ulqjbpl"]
+[gd_scene load_steps=5 format=3 uid="uid://86sn4ulqjbpl"]
 
 [ext_resource type="Script" path="res://Menú/Incoming.cs" id="1_6lqrd"]
 [ext_resource type="Texture2D" uid="uid://dundutrb7rqkn" path="res://Menú/thumb-1920-1349938.png" id="1_na4cu"]
-[ext_resource type="PackedScene" uid="uid://bhwfp65whwj46" path="res://Enemigos/Enemy4 - Ogro/Enemy_4.tscn" id="2_luy5o"]
-[ext_resource type="PackedScene" uid="uid://p8kfjlqsvyar" path="res://Enemigos/Miniboss/Miniboss.tscn" id="3_t5rqq"]
-[ext_resource type="PackedScene" uid="uid://88hhrsdxavxq" path="res://Enemigos/Boss/boss.tscn" id="4_w8yef"]
-[ext_resource type="Texture2D" path="res://Nivel/Nivel4/ChurchScreen.png" id="5_qtid5"]
-[ext_resource type="Texture2D" path="res://Nivel/Nivel7/SwampScreen.png" id="6_vapsq"]
 
 [sub_resource type="SystemFont" id="SystemFont_vkiyi"]
 font_names = PackedStringArray("Impact")
@@ -55,13 +50,6 @@ theme_override_fonts/font = SubResource("SystemFont_3chme")
 theme_override_font_sizes/font_size = 25
 text = "Nuevo enemigos"
 
-[node name="enemy3" parent="Sprite2D" instance=ExtResource("2_luy5o")]
-position = Vector2(121, 166)
-scale = Vector2(1.7, 1.7)
-
-[node name="Miniboss" parent="Sprite2D" instance=ExtResource("3_t5rqq")]
-position = Vector2(304, 173)
-
 [node name="Label2" type="Label" parent="Sprite2D"]
 layout_mode = 0
 offset_left = 524.0
@@ -85,18 +73,5 @@ theme_override_constants/outline_size = 12
 theme_override_fonts/font = SubResource("SystemFont_3chme")
 theme_override_font_sizes/font_size = 25
 text = "Nuevas animaciones"
-
-[node name="Boss" parent="." instance=ExtResource("4_w8yef")]
-position = Vector2(185, 342)
-
-[node name="ChurchScreen" type="Sprite2D" parent="."]
-position = Vector2(605, 195)
-scale = Vector2(0.409821, 0.377778)
-texture = ExtResource("5_qtid5")
-
-[node name="SwampScreen" type="Sprite2D" parent="."]
-position = Vector2(605, 351)
-scale = Vector2(0.410764, 0.410764)
-texture = ExtResource("6_vapsq")
 
 [connection signal="pressed" from="Sprite2D/Button" to="." method="_on_button_pressed"]

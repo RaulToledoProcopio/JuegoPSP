@@ -20,13 +20,11 @@ public partial class Enemy6 : CharacterBody2D
 	private Timer _attackTimer;
 	private AudioStreamPlayer _deathSound;
 	private Player _player;
-
 	private Vector2 _patrolDir = Vector2.Left;
 	private Vector2 _weaponOriginalPosition;
-
 	private int _hp = 100;
 
-	// Knockback variables (copiados tal cual de Enemy1)
+	// Knockback
 	private Vector2 _knockbackVelocity = Vector2.Zero;
 	private bool _isKnockedBack = false;
 	private const float KnockBackSpeed = 200f;
@@ -41,7 +39,6 @@ public partial class Enemy6 : CharacterBody2D
 		_detectionArea = GetNode<Area2D>("DetectionArea");
 		_deathTimer = GetNode<Timer>("Timer");
 		//_deathSound = GetNode<AudioStreamPlayer>("Dead");
-
 		_weaponOriginalPosition = _weaponShape.Position;
 
 		_attackTimer = new Timer();
@@ -51,12 +48,9 @@ public partial class Enemy6 : CharacterBody2D
 
 		_weaponArea.Monitoring = false;
 		_weaponShape.Disabled = true;
-
 		_detectionArea.Connect("body_entered", new Callable(this, nameof(OnDetectionBodyEntered)));
 		_detectionArea.Connect("body_exited", new Callable(this, nameof(OnDetectionBodyExited)));
-
 		_attackTimer.Connect("timeout", new Callable(this, nameof(OnAttackTimerTimeout)));
-
 		_anim.Play("Walk");
 	}
 
@@ -136,17 +130,6 @@ public partial class Enemy6 : CharacterBody2D
 		_weaponShape.Disabled = false;
 	}
 
-	private void EnterDeathState()
-	{
-		_state = State.Death;
-		_weaponArea.SetDeferred("monitoring", false);
-		_weaponShape.SetDeferred("disabled", true);
-		Velocity = Vector2.Zero;
-		_anim.Play("Death");
-		//_deathSound?.Play();
-		_deathTimer.Start(5f);
-	}
-
 	private void OnDeathTimerTimeout()
 	{
 		QueueFree();
@@ -208,6 +191,17 @@ public partial class Enemy6 : CharacterBody2D
 		{
 			EnterDeathState();
 		}
+	}
+	
+	private void EnterDeathState()
+	{
+		_state = State.Death;
+		_weaponArea.SetDeferred("monitoring", false);
+		_weaponShape.SetDeferred("disabled", true);
+		Velocity = Vector2.Zero;
+		_anim.Play("Death");
+		//_deathSound?.Play();
+		_deathTimer.Start(5f);
 	}
 
 	private void DisableWeapon()
