@@ -8,6 +8,7 @@ public partial class GameOver : Control
 		var crono = GetNode<Crono>("/root/Crono");
 		crono.StopTimer(submitScore: false);
 		crono.ResetTimer();
+		GameState.Reset();
 		GetTree().ChangeSceneToFile("res://Nivel/Nivel1/Nivel1.tscn");
 	}
 	
