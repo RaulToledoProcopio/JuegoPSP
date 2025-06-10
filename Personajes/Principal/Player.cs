@@ -143,6 +143,8 @@ public partial class Player : CharacterBody2D
 			{
 				_gameOverTimer.Start(5.5f);  // Inicia temporizador de GameOver
 				_isDead = true;
+				var session = GetNode<SessionManager>("/root/SessionManager");
+				var saveManager = GetNode<SaveManager>("/root/SaveManager");
 				saveManager.DeleteGame(session.Username);
 			}
 		}
