@@ -22,6 +22,7 @@ CronometroUI="*res://CronometroUI.tscn"
 SessionManager="*res://SessionManager.cs"
 GameState="*res://GameState.cs"
 AudioManager="*res://audio_manager.tscn"
+SaveManager="*res://SaveManager.cs"
 
 [display]
 

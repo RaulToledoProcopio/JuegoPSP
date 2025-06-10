@@ -67,6 +67,6 @@ public partial class Login : Godot.Control
 	private void _on_register_button_pressed()
 	{
 		GD.Print("Cambiando a la escena de registro...");
-		GetTree().ChangeSceneToFile("res://Register.tscn");
+		GetTree().ChangeSceneToFile("res://register.tscn");
 	}
 }

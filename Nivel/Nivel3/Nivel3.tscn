@@ -3524,7 +3524,6 @@ tile_set = SubResource("TileSet_cq74b")
 [node name="Player" parent="." instance=ExtResource("4_pjtiu")]
 position = Vector2(66, 487)
 scale = Vector2(1.5, 1.5)
-collision_layer = 3
 collision_mask = 198480
 
 [node name="UI" parent="." instance=ExtResource("2_ynkm1")]
