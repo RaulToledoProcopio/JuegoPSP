@@ -15,13 +15,14 @@ public partial class Login : Godot.Control
 	// Referencias a los nodos de la UI
 	private LineEdit _usernameField;
 	private LineEdit _passwordField;
-	private Label _errorLabel;
+	private ErrorPanel _errorPanel;
 
 	public override void _Ready()
 	{
 		_usernameField = GetNode<LineEdit>("UsernameLineEdit");
 		_passwordField = GetNode<LineEdit>("PasswordLineEdit");
-		_errorLabel = GetNode<Label>("ErrorLabel");
+		_errorPanel = GetNode<ErrorPanel>("ErrorPanel");
+
 		var audioManager = GetNode<AudioManager>("/root/AudioManager");
 		audioManager.PlayForLevel(0);
 	}
@@ -47,20 +48,24 @@ public partial class Login : Godot.Control
 				// Si la respuesta es exitosa, carga la escena del menú
 				GD.Print("Login exitoso");
 				var session = GetNode<SessionManager>("/root/SessionManager");
-					session.Username = username;
+				session.Username = username;
+
+				// Ocultar el error por si estaba visible
+				_errorPanel.HideError();
+
 				GetTree().ChangeSceneToFile("res://Menú/Menu.tscn");
 			}
 			else
 			{
 				// Si el usuario no está registrado o hubo otro error, muestra el mensaje
 				GD.PrintErr("Error en el login: " + response.StatusCode);
-				_errorLabel.Text = "Usuario no registrado o credenciales incorrectas.";
+				_errorPanel.ShowError("Usuario no registrado o credenciales incorrectas.");
 			}
 		}
 		catch (Exception ex)
 		{
 			GD.PrintErr("Error en la solicitud HTTP: " + ex.Message);
-			_errorLabel.Text = "Error en la conexión con el servidor.";
+			_errorPanel.ShowError("Error en la conexión con el servidor.");
 		}
 	}
 	

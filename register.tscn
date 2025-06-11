@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0sefp2v60ert"]
+[gd_scene load_steps=6 format=3 uid="uid://b0sefp2v60ert"]
 
 [ext_resource type="Script" path="res://Register.cs" id="1_i344y"]
 [ext_resource type="Texture2D" uid="uid://dung7tk6ktu18" path="res://Menú/Menú.jpg" id="1_n4g4f"]
+[ext_resource type="Script" path="res://ErrorPanel.cs" id="3_r0yxs"]
 
 [sub_resource type="SystemFont" id="SystemFont_xu3ag"]
 font_names = PackedStringArray("Impact")
@@ -78,13 +79,6 @@ offset_right = 657.0
 offset_bottom = 469.0
 text = "Regístrar"
 
-[node name="ErrorLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 448.0
-offset_top = 484.0
-offset_right = 698.0
-offset_bottom = 520.0
-
 [node name="Back" type="Button" parent="."]
 layout_mode = 0
 offset_left = 939.0
@@ -92,6 +86,21 @@ offset_top = 30.0
 offset_right = 1125.0
 offset_bottom = 70.0
 text = "Volver al login"
+
+[node name="ErrorPanel" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 500.0
+offset_right = 725.0
+offset_bottom = 525.0
+script = ExtResource("3_r0yxs")
+
+[node name="CenterContainer" type="CenterContainer" parent="ErrorPanel"]
+layout_mode = 2
+
+[node name="ErrorLabel" type="Label" parent="ErrorPanel/CenterContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [connection signal="pressed" from="RegisterButton" to="." method="_on_register_button_pressed"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://drhdvm0rgfh4a"]
+[gd_scene load_steps=12 format=3 uid="uid://drhdvm0rgfh4a"]
 
 [ext_resource type="Script" path="res://Menú/Final.cs" id="1_isok6"]
 [ext_resource type="Texture2D" uid="uid://dung7tk6ktu18" path="res://Menú/Menú.jpg" id="2_eckwu"]
+[ext_resource type="Script" path="res://Menú/PanelLeaderBoard.cs" id="3_ig2l2"]
 
 [sub_resource type="SystemFont" id="SystemFont_pwbhq"]
 font_names = PackedStringArray("Impact")
@@ -80,10 +81,11 @@ text = "Lo que está por venir"
 
 [node name="Button5" type="Button" parent="."]
 layout_mode = 0
-offset_left = 850.0
-offset_top = 228.0
-offset_right = 1048.0
-offset_bottom = 278.0
+offset_left = 937.0
+offset_top = 24.0
+offset_right = 1135.0
+offset_bottom = 74.0
+text = "Clasificación"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -126,12 +128,14 @@ theme_override_font_sizes/font_size = 30
 text = "Salir"
 
 [node name="PanelLeaderBoard" type="Panel" parent="."]
+visible = false
 layout_mode = 2
 offset_left = 14.0
 offset_top = 8.0
 offset_right = 1142.0
 offset_bottom = 639.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_tr8q6")
+script = ExtResource("3_ig2l2")
 
 [node name="LeaderBoard" type="RichTextLabel" parent="PanelLeaderBoard"]
 layout_mode = 1
@@ -162,6 +166,7 @@ offset_left = 0.18396
 offset_top = 0.0409546
 offset_right = -0.447998
 offset_bottom = 0.228943
+text = "Volver"
 
 [connection signal="pressed" from="Button4" to="." method="_on_button_4_pressed"]
 [connection signal="pressed" from="Button5" to="." method="_on_button_5_pressed"]

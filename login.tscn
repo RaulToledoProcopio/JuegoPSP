@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0b8sqjuo45ls"]
+[gd_scene load_steps=6 format=3 uid="uid://b0b8sqjuo45ls"]
 
 [ext_resource type="Texture2D" uid="uid://dung7tk6ktu18" path="res://Menú/Menú.jpg" id="1_31y7h"]
 [ext_resource type="Script" path="res://Login.cs" id="1_e8mmp"]
+[ext_resource type="Script" path="res://ErrorPanel.cs" id="3_airb4"]
 
 [sub_resource type="SystemFont" id="SystemFont_1odf7"]
 font_names = PackedStringArray("Impact")
@@ -61,13 +62,6 @@ offset_right = 698.0
 offset_bottom = 411.0
 placeholder_text = "Contraseña"
 
-[node name="ErrorLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 378.0
-offset_top = 552.0
-offset_right = 628.0
-offset_bottom = 598.0
-
 [node name="LoginButton" type="Button" parent="."]
 layout_mode = 2
 offset_left = 500.0
@@ -83,6 +77,21 @@ offset_top = 494.0
 offset_right = 657.0
 offset_bottom = 532.0
 text = "Regístrate"
+
+[node name="ErrorPanel" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 555.0
+offset_right = 725.0
+offset_bottom = 580.0
+script = ExtResource("3_airb4")
+
+[node name="CenterContainer" type="CenterContainer" parent="ErrorPanel"]
+layout_mode = 2
+
+[node name="ErrorLabel" type="Label" parent="ErrorPanel/CenterContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [connection signal="pressed" from="LoginButton" to="." method="_on_login_button_pressed"]
 [connection signal="pressed" from="RegisterButton" to="." method="_on_register_button_pressed"]

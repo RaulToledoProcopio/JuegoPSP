@@ -16,14 +16,15 @@ public partial class Register : Godot.Control
 	private LineEdit _usernameField;
 	private LineEdit _passwordField;
 	private LineEdit _emailField;
-	private Label _errorLabel;
+	private ErrorPanel _errorPanel;
 
 	public override void _Ready()
 	{
 		_usernameField = GetNode<LineEdit>("UsernameLineEdit");
 		_passwordField = GetNode<LineEdit>("PasswordLineEdit");
 		_emailField = GetNode<LineEdit>("EmailLineEdit");
-		_errorLabel = GetNode<Label>("ErrorLabel");
+		_errorPanel = GetNode<ErrorPanel>("ErrorPanel");
+
 		var audioManager = GetNode<AudioManager>("/root/AudioManager");
 		audioManager.PlayForLevel(0);
 	}
@@ -36,7 +37,7 @@ public partial class Register : Godot.Control
 
 		if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(email))
 		{
-			_errorLabel.Text = "Por favor, llena todos los campos.";
+			_errorPanel.ShowError("Por favor, llena todos los campos.");
 			return;
 		}
 
@@ -55,19 +56,19 @@ public partial class Register : Godot.Control
 			if (response.IsSuccessStatusCode)
 			{
 				GD.Print("Registro exitoso");
-				_errorLabel.Text = "Registro exitoso. Ahora puedes iniciar sesión.";
+				_errorPanel.HideError();  // Ocultamos error si estaba visible
+				_errorPanel.ShowError("Registro exitoso. Ahora puedes iniciar sesión.");
 			}
-			
 			else
 			{
 				GD.PrintErr("Error en el registro: " + response.StatusCode);
-				_errorLabel.Text = "Error: El usuario/email ya existe o hubo un problema.";
+				_errorPanel.ShowError("Error: El usuario/email ya existe o hubo un problema.");
 			}
 		}
 		catch (Exception ex)
 		{
 			GD.PrintErr("Error en la solicitud HTTP: " + ex.Message);
-			_errorLabel.Text = "Error en la conexión con el servidor.";
+			_errorPanel.ShowError("Error en la conexión con el servidor.");
 		}
 	}
 
