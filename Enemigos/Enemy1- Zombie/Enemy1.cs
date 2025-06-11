@@ -31,52 +31,52 @@ public partial class Enemy1 : CharacterBody2D
 	}
 
 	public override void _PhysicsProcess(double delta)
-{
-	if (_isKnockedBack)
 	{
-		// Aplica gravedad al retroceso
-		_knockbackVelocity.Y += Gravity * (float)delta;
-		Velocity = _knockbackVelocity;
-		MoveAndSlide();
-
-		// Cuando tocas el suelo, terminas el knockback
-		if (IsOnFloor())
+		if (_isKnockedBack)
 		{
-			_isKnockedBack = false;
-			_knockbackVelocity = Vector2.Zero;
+			// Aplica gravedad al retroceso
+			_knockbackVelocity.Y += Gravity * (float)delta;
+			Velocity = _knockbackVelocity;
+			MoveAndSlide();
+
+			// Cuando tocas el suelo, terminas el knockback
+			if (IsOnFloor())
+			{
+				_isKnockedBack = false;
+				_knockbackVelocity = Vector2.Zero;
+			}
+			return; // no ejecutas el movimiento normal mientras haces knockback
 		}
-		return; // no ejecutas el movimiento normal mientras haces knockback
-	}
 
-	// —— Aquí va tu movimiento normal —— 
-	if (_movementDirection != Vector2.Zero)
-	{
-		Vector2 velocity = Velocity;
-		velocity.X = _movementDirection.X * Speed;
-		Velocity = velocity;
-		MoveAndSlide();
-	}
-
-	// Animación y timer de muerte
-	if (hp <= 0 && !_timerStarted)
-	{
-		if (animation.Animation != "Death")
+		// —— Aquí va tu movimiento normal —— 
+		if (_movementDirection != Vector2.Zero)
 		{
-			animation.Play("Death");
-			deathSound?.Play();
+			Vector2 velocity = Velocity;
+			velocity.X = _movementDirection.X * Speed;
+			Velocity = velocity;
+			MoveAndSlide();
 		}
-		_movementDirection = Vector2.Zero;
-		_deathTimer.Start(0.7f);
-		_timerStarted = true;
-	}
 
-	// Rebote en paredes
-	if (IsOnWall())
-	{
-		_movementDirection.X *= -1;
-		animation.FlipH = !animation.FlipH;
+		// Animación y timer de muerte
+		if (hp <= 0 && !_timerStarted)
+		{
+			if (animation.Animation != "Death")
+			{
+				animation.Play("Death");
+				deathSound?.Play();
+			}
+			_movementDirection = Vector2.Zero;
+			_deathTimer.Start(0.7f);
+			_timerStarted = true;
+		}
+
+		// Rebote en paredes
+		if (IsOnWall())
+		{
+			_movementDirection.X *= -1;
+			animation.FlipH = !animation.FlipH;
+		}
 	}
-}
 
 
 	/* Este método se llamará cuando el Timer termine para eliminar al enemigo,
@@ -98,16 +98,15 @@ public partial class Enemy1 : CharacterBody2D
 
 	// Método para recibir daño y aplicar retroceso
 	public void TakeDamage(int damage)
-{
-	hp -= damage;
+	{
+		hp -= damage;
 
-	// Calcula la dirección: 1 si el player está a la izquierda, -1 si está a la derecha
-	var player = GetNode<Player>("../Player");
-	float direction = (player.Position.X < Position.X) ? 1f : -1f;
+		// Calcula la dirección: 1 si el player está a la izquierda, -1 si está a la derecha
+		var player = GetNode<Player>("../Player");
+		float direction = (player.Position.X < Position.X) ? 1f : -1f;
 
-	hitSound?.Play();
-	_knockbackVelocity = new Vector2(direction * KnockBackSpeed, -KnockBackUpForce);
-	_isKnockedBack = true;
-}
-
+		hitSound?.Play();
+		_knockbackVelocity = new Vector2(direction * KnockBackSpeed, -KnockBackUpForce);
+		_isKnockedBack = true;
+	}
 }

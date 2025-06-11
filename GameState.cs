@@ -6,9 +6,7 @@ public partial class GameState : Node
 	public static float Health = 100f;
 	public static int Ammo = 10;
 	public static bool DiedByFall = false; // Quiero controlar esto para evitar que el sonido de muerte se solape con el de caída.
-
-	// Para que el UI pueda refrescarse al cambiar valores
-	public static UI CurrentUI;
+	public static UI CurrentUI; // Para que el UI pueda refrescarse al cambiar valores
 
 	public override void _Ready()
 	{
