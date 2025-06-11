@@ -1,10 +1,11 @@
-[gd_scene load_steps=42 format=3 uid="uid://cti1tjlhq85kt"]
+[gd_scene load_steps=43 format=3 uid="uid://cti1tjlhq85kt"]
 
 [ext_resource type="Script" path="res://Enemigos/Enemy5 - Archer/Enemy5.cs" id="1_0krvm"]
 [ext_resource type="Texture2D" uid="uid://cd18ct4lib0u8" path="res://Enemigos/Enemy5 - Archer/spr_ArcherAttack_strip_NoBkg.png" id="2_2qetm"]
 [ext_resource type="PackedScene" uid="uid://dhis377l2r7t2" path="res://Proyectiles/Arrow/arrow.tscn" id="2_74ves"]
 [ext_resource type="Texture2D" uid="uid://ws7d3blmtpne" path="res://Enemigos/Enemy5 - Archer/spr_ArcherDeath_strip_NoBkg.png" id="3_4qe20"]
 [ext_resource type="Texture2D" uid="uid://bwt82i7rrbghs" path="res://Enemigos/Enemy5 - Archer/spr_ArcherDash_strip_NoBkg.png" id="4_f0nny"]
+[ext_resource type="AudioStream" uid="uid://d3uur2pkjn74j" path="res://BSO/dead2.mp3" id="6_728b4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h6iwi"]
 atlas = ExtResource("2_2qetm")
@@ -280,5 +281,8 @@ position = Vector2(-5, -3)
 shape = SubResource("CapsuleShape2D_h8lwd")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="Dead" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_728b4")
 
 [connection signal="timeout" from="Timer" to="." method="OnDeathTimerTimeout"]

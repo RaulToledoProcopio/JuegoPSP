@@ -55,7 +55,7 @@ public partial class Enemy7 : CharacterBody2D
 			}
 
 			_movementDirection = Vector2.Zero;
-			_deathTimer.Start(0.5f);
+			_deathTimer.Start(1f);
 			_timerStarted = true;
 		}
 	}

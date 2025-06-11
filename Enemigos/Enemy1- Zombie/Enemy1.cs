@@ -11,6 +11,7 @@ public partial class Enemy1 : CharacterBody2D
 	private bool _timerStarted = false;  // Bandera para evitar que se reinicie el temporizador.
 	[Export] public int damage = 10; // Daño que inflinge el enemigo
 	private AudioStreamPlayer deathSound;
+	private AudioStreamPlayer hitSound;
 	private Vector2 _knockbackVelocity = Vector2.Zero;
 	private bool _isKnockedBack = false;
 	private const float KnockBackSpeed    = 200f;  // fuerza horizontal
@@ -26,6 +27,7 @@ public partial class Enemy1 : CharacterBody2D
 		animation.Play("Walk");// Reproducir la animación de caminar al inicio
 		_deathTimer.Stop(); // Asegurar de que el Timer no esté corriendo al principio
 		deathSound = GetNode<AudioStreamPlayer>("Dead");
+		hitSound = GetNode<AudioStreamPlayer>("Hit");
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -103,7 +105,7 @@ public partial class Enemy1 : CharacterBody2D
 	var player = GetNode<Player>("../Player");
 	float direction = (player.Position.X < Position.X) ? 1f : -1f;
 
-	// Inicializa el knockback
+	hitSound?.Play();
 	_knockbackVelocity = new Vector2(direction * KnockBackSpeed, -KnockBackUpForce);
 	_isKnockedBack = true;
 }

@@ -21,6 +21,7 @@ public partial class Enemy3 : CharacterBody2D
 	private bool _timerStarted = false;
 	[Export] public int damage = 10;
 	private AudioStreamPlayer deathSound;
+	private AudioStreamPlayer hitSound;
 
 	public override void _Ready()
 	{
@@ -28,6 +29,7 @@ public partial class Enemy3 : CharacterBody2D
 		_riseTimer  = GetNode<Timer>("Timer");
 		_deathTimer = GetNode<Timer>("Timer2");
 		deathSound  = GetNode<AudioStreamPlayer>("Dead");
+		hitSound = GetNode<AudioStreamPlayer>("Hit");
 
 		animation.Play("Rise");
 		_riseTimer.Start(1.0f);
@@ -101,6 +103,7 @@ public partial class Enemy3 : CharacterBody2D
 		hp -= damage;
 		var player = GetNode<Player>("../Player");
 		float direction = (player.Position.X < Position.X) ? 1f : -1f;
+		hitSound?.Play();
 		_knockbackVelocity = new Vector2(direction * KnockBackSpeed, -KnockBackUpForce);
 		_isKnockedBack = true;
 	}

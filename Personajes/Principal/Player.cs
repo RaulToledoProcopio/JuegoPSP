@@ -31,6 +31,8 @@ public partial class Player : CharacterBody2D
 	private AudioStreamPlayer jumpSoundPlayer; // Salto
 	private AudioStreamPlayer throwSoundPlayer; // Daga
 	private AudioStreamPlayer swordSoundPlayer; // Espada
+	private AudioStreamPlayer deathPlayer; // Espada
+	private AudioStreamPlayer hitPlayer; // Daño
 	
 	
 	
@@ -55,6 +57,8 @@ public partial class Player : CharacterBody2D
 		jumpSoundPlayer = GetNode<AudioStreamPlayer>("Jump");
 		throwSoundPlayer = GetNode<AudioStreamPlayer>("Throw");
 		swordSoundPlayer = GetNode<AudioStreamPlayer>("Sword");
+		deathPlayer = GetNode<AudioStreamPlayer>("Death");
+		hitPlayer = GetNode<AudioStreamPlayer>("Hit");
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -178,8 +182,16 @@ public partial class Player : CharacterBody2D
 		switch (state)
 		{
 			case PlayerState.Death:
-				animation.Play("Death");
-				break;
+			if (!GameState.DiedByFall)
+			{
+				deathPlayer.Play(); // Solo reproducir si NO fue por caída
+			}
+			else
+			{
+				GameState.DiedByFall = false; // Resetear para próximas muertes
+			}
+			animation.Play("Death");
+			break;
 			case PlayerState.Hit:
 				// Dejar animación de Hit corriendo
 				break;
@@ -223,6 +235,7 @@ public partial class Player : CharacterBody2D
 			if (_isDead || isAttacking) return;
 			GameState.ChangeHp(-damage);
 			animation.Play("Hit");
+			hitPlayer.Play();
 			Position += new Vector2(animation.FlipH ? 50 : -50, 0);
 	}
 }

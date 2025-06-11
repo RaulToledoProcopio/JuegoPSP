@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://m8qxwcp7e0a7"]
+[gd_scene load_steps=23 format=3 uid="uid://m8qxwcp7e0a7"]
 
 [ext_resource type="Texture2D" uid="uid://kpgpj5n51kl4" path="res://Enemigos/Enemy3 - Esqueleto/skeleton-rise-1.png" id="1_6e7w6"]
 [ext_resource type="Script" path="res://Enemigos/Enemy3 - Esqueleto/Enemy3.cs" id="1_wn3s6"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://v832nx0n8xke" path="res://Enemigos/Enemy3 - Esqueleto/skeleton-6.png" id="12_wcvfc"]
 [ext_resource type="Texture2D" uid="uid://bc1ysqoomxg66" path="res://Enemigos/Enemy3 - Esqueleto/skeleton-7.png" id="13_yxl8l"]
 [ext_resource type="Texture2D" uid="uid://b8k35g3wu7xro" path="res://Enemigos/Enemy3 - Esqueleto/skeleton-8.png" id="14_t6o3y"]
+[ext_resource type="AudioStream" uid="uid://cr3x06bkdidn0" path="res://BSO/monsterhit.mp3" id="20_osamb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_earyi"]
 animations = [{
@@ -126,6 +127,9 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 5)
 shape = SubResource("CapsuleShape2D_swuhy")
+
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_osamb")
 
 [connection signal="timeout" from="Timer" to="." method="OnRiseTimerTimeout"]
 [connection signal="timeout" from="Timer2" to="." method="OnDeathTimerTimeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=149 format=3 uid="uid://yun2gfbkemxv"]
+[gd_scene load_steps=151 format=3 uid="uid://yun2gfbkemxv"]
 
 [ext_resource type="Script" path="res://Personajes/Principal/Player.cs" id="1_onsn2"]
 [ext_resource type="Texture2D" uid="uid://bgm3q0mmuwq6w" path="res://Personajes/Principal/MainChar - idle.png" id="2_1jxms"]
@@ -18,6 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://w52n8j50dggc" path="res://Personajes/Principal/MainChar - interact(grab).png" id="11_8lc8i"]
 [ext_resource type="Texture2D" uid="uid://4wup7ht2txwc" path="res://Personajes/Principal/MainChar - walk.png" id="12_h7kly"]
 [ext_resource type="Script" path="res://Personajes/Principal/Espada.cs" id="14_af6u3"]
+[ext_resource type="AudioStream" uid="uid://cfilalbledjme" path="res://BSO/hit.mp3" id="19_kmaed"]
+[ext_resource type="AudioStream" uid="uid://dvhyd1m4r8pg6" path="res://BSO/DeathPlayer.mp3" id="20_ono0n"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2yksp"]
 
@@ -1017,6 +1019,12 @@ position = Vector2(21.875, 1)
 shape = SubResource("RectangleShape2D_73og2")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_kmaed")
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_ono0n")
 
 [connection signal="body_entered" from="Espada" to="Espada" method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="OnGameOverTimeout"]

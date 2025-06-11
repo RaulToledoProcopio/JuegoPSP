@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://cbybxkbi6xju1" path="res://Enemigos/Enemy7 - Ghost/Walk2.png" id="15_k40ok"]
 [ext_resource type="Texture2D" uid="uid://dksbb15gij3k7" path="res://Enemigos/Enemy7 - Ghost/Walk3.png" id="16_qun3q"]
 [ext_resource type="Texture2D" uid="uid://crhum3xau1lpf" path="res://Enemigos/Enemy7 - Ghost/Walk4.png" id="17_ffife"]
-[ext_resource type="AudioStream" uid="uid://cis2k54scys4n" path="res://BSO/EnemyDead.mp3" id="19_bawuk"]
+[ext_resource type="AudioStream" uid="uid://dnv3vgl18uiuc" path="res://BSO/ghost.mp3" id="19_ilvcg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xwb1q"]
 animations = [{
@@ -113,7 +113,7 @@ one_shot = true
 one_shot = true
 
 [node name="Dead" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("19_bawuk")
+stream = ExtResource("19_ilvcg")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 131072

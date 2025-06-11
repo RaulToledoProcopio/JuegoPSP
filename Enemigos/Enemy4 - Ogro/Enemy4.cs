@@ -18,6 +18,7 @@ public partial class Enemy4 : CharacterBody2D
 	private Timer _deathTimer;
 	private Timer _attackTimer;
 	private AudioStreamPlayer _deathSound;
+	private AudioStreamPlayer _hitSound;
 	private Player _player;
 	private int _hp = 100;
 	private Vector2 _patrolDir = Vector2.Left;
@@ -37,6 +38,7 @@ public partial class Enemy4 : CharacterBody2D
 		_detectionArea = GetNode<Area2D>("DetectionArea");
 		_deathTimer    = GetNode<Timer>("Timer");
 		_deathSound    = GetNode<AudioStreamPlayer>("Dead");
+		_hitSound    = GetNode<AudioStreamPlayer>("Hit");
 		_weaponOriginalPosition = _weaponShape.Position;
 
 		_attackTimer = new Timer
@@ -192,7 +194,8 @@ public partial class Enemy4 : CharacterBody2D
 
 		var player = GetNode<Player>("../Player");
 		float direction = (player.Position.X < Position.X) ? 1f : -1f;
-
+		
+		_hitSound.Play();
 		_knockbackVelocity = new Vector2(direction * KnockBackSpeed, -KnockBackUpForce);
 		_isKnockedBack = true;
 	}

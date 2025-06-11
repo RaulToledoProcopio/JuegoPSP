@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bhwfp65whwj46"]
+[gd_scene load_steps=31 format=3 uid="uid://bhwfp65whwj46"]
 
 [ext_resource type="Texture2D" uid="uid://cxfpse5yxapwx" path="res://Enemigos/Enemy4 - Ogro/ogre-attack1.png" id="1_ebqub"]
 [ext_resource type="Script" path="res://Enemigos/Enemy4 - Ogro/Enemy4.cs" id="1_gixh6"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://d04i3x6ptlk75" path="res://Enemigos/Enemy4 - Ogro/ogre-walk5.png" id="16_aelm2"]
 [ext_resource type="Texture2D" uid="uid://d1ap3uv0adykt" path="res://Enemigos/Enemy4 - Ogro/ogre-walk6.png" id="17_y5oc7"]
 [ext_resource type="AudioStream" uid="uid://cis2k54scys4n" path="res://BSO/EnemyDead.mp3" id="22_uuvlw"]
+[ext_resource type="AudioStream" uid="uid://dtuifa1mblnuq" path="res://BSO/ogre.mp3" id="23_uc7cr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ys0k6"]
 atlas = ExtResource("9_gdi10")
@@ -162,6 +163,9 @@ shape = SubResource("RectangleShape2D_d7ufn")
 
 [node name="Dead" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("22_uuvlw")
+
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_uc7cr")
 
 [connection signal="body_entered" from="Weapon" to="." method="_on_Weapon_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="OnDeathTimerTimeout"]

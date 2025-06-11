@@ -32,11 +32,11 @@
 [ext_resource type="Texture2D" uid="uid://oc7vm62u3w3f" path="res://Enemigos/Miniboss/idle6.png" id="24_r5s8g"]
 [ext_resource type="Texture2D" uid="uid://c5bywylj17w0r" path="res://Enemigos/Miniboss/Explosion_blue_circle5.png" id="25_r6622"]
 [ext_resource type="Texture2D" uid="uid://bkl757nwq0jt1" path="res://Enemigos/Miniboss/Explosion_blue_circle6.png" id="26_e8f12"]
-[ext_resource type="AudioStream" uid="uid://cis2k54scys4n" path="res://BSO/EnemyDead.mp3" id="26_kwmfe"]
 [ext_resource type="Texture2D" uid="uid://vfwy3dgl2m65" path="res://Enemigos/Miniboss/Explosion_blue_circle7.png" id="27_0hnbw"]
 [ext_resource type="Texture2D" uid="uid://d33wa7abmsjbq" path="res://Enemigos/Miniboss/Explosion_blue_circle8.png" id="28_524rt"]
 [ext_resource type="Texture2D" uid="uid://digb7fxb0tk4k" path="res://Enemigos/Miniboss/Explosion_blue_circle9.png" id="29_do52e"]
 [ext_resource type="Texture2D" uid="uid://p3cxjdsxh3ye" path="res://Enemigos/Miniboss/Explosion_blue_circle10.png" id="30_p8smu"]
+[ext_resource type="AudioStream" uid="uid://birexjifdcpxp" path="res://BSO/Miniboss.mp3" id="37_8ac3h"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fqii8"]
 animations = [{
@@ -171,7 +171,7 @@ size = Vector2(203, 122)
 
 [node name="Miniboss" type="CharacterBody2D"]
 collision_layer = 8192
-collision_mask = 16793601
+collision_mask = 16793600
 script = ExtResource("1_bf3mn")
 FireballScene = ExtResource("2_bqiov")
 
@@ -206,7 +206,7 @@ shape = SubResource("RectangleShape2D_6bjat")
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Dead" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("26_kwmfe")
+stream = ExtResource("37_8ac3h")
 
 [connection signal="body_entered" from="Breath" to="." method="_on_Breath_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="OnDeathTimerTimeout"]

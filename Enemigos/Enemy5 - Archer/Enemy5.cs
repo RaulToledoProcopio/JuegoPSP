@@ -16,7 +16,7 @@ public partial class Enemy5 : CharacterBody2D
 
 	private AnimatedSprite2D animation;
 	private Timer _deathTimer;
-	//private AudioStreamPlayer deathSound;
+	private AudioStreamPlayer deathSound;
 	private enum EnemyState { Idle, Attack, Dead }
 	private EnemyState currentState = EnemyState.Idle;
 	private bool idleDone = false; // Flag para saber que la voltereta ha terminado
@@ -25,7 +25,7 @@ public partial class Enemy5 : CharacterBody2D
 	{
 		animation = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_deathTimer = GetNode<Timer>("Timer");
-		//deathSound = GetNode<AudioStreamPlayer>("Dead");
+		deathSound = GetNode<AudioStreamPlayer>("Dead");
 		_deathTimer.Stop();
 		_deathTimer.OneShot = true;  
 		_deathTimer.WaitTime = 4.5f; // Duración de animación “Dead”
@@ -90,7 +90,7 @@ public partial class Enemy5 : CharacterBody2D
 
 		currentState = EnemyState.Dead;
 		animation.Play("Dead");
-		//deathSound?.Play();
+		deathSound?.Play();
 		_deathTimer.Start();
 		_deathTimer.Connect("timeout", Callable.From(OnDeathTimerTimeout));
 	}

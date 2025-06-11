@@ -19,6 +19,7 @@ public partial class Enemy6 : CharacterBody2D
 	private Timer _deathTimer;
 	private Timer _attackTimer;
 	private AudioStreamPlayer _deathSound;
+	private AudioStreamPlayer hitSound;
 	private Player _player;
 	private Vector2 _patrolDir = Vector2.Left;
 	private Vector2 _weaponOriginalPosition;
@@ -38,7 +39,8 @@ public partial class Enemy6 : CharacterBody2D
 		_weaponShape = _weaponArea.GetNode<CollisionShape2D>("CollisionShape2D");
 		_detectionArea = GetNode<Area2D>("DetectionArea");
 		_deathTimer = GetNode<Timer>("Timer");
-		//_deathSound = GetNode<AudioStreamPlayer>("Dead");
+		_deathSound = GetNode<AudioStreamPlayer>("Dead");
+		hitSound = GetNode<AudioStreamPlayer>("Hit");
 		_weaponOriginalPosition = _weaponShape.Position;
 
 		_attackTimer = new Timer();
@@ -183,7 +185,8 @@ public partial class Enemy6 : CharacterBody2D
 
 		var player = GetNode<Player>("../Player");
 		float direction = (player.Position.X < Position.X) ? 1f : -1f;
-
+		
+		hitSound?.Play();
 		_knockbackVelocity = new Vector2(direction * KnockBackSpeed, -KnockBackUpForce);
 		_isKnockedBack = true;
 
@@ -200,7 +203,7 @@ public partial class Enemy6 : CharacterBody2D
 		_weaponShape.SetDeferred("disabled", true);
 		Velocity = Vector2.Zero;
 		_anim.Play("Death");
-		//_deathSound?.Play();
+		_deathSound?.Play();
 		_deathTimer.Start(5f);
 	}
 

@@ -1,9 +1,11 @@
-[gd_scene load_steps=66 format=3 uid="uid://ct8nqyalqxost"]
+[gd_scene load_steps=68 format=3 uid="uid://ct8nqyalqxost"]
 
 [ext_resource type="Texture2D" uid="uid://cs4iu34qqbs32" path="res://Enemigos/Enemy6 - Esqueleto2/skeletonAttack-Sheet146x64.png" id="1_6plod"]
 [ext_resource type="Script" path="res://Enemigos/Enemy6 - Esqueleto2/Enemy6.cs" id="1_7yebl"]
 [ext_resource type="Texture2D" uid="uid://cy2xdbs2veoqn" path="res://Enemigos/Enemy6 - Esqueleto2/skeletonDie-Sheet118x64_all.png" id="2_jb8bv"]
+[ext_resource type="AudioStream" uid="uid://birexjifdcpxp" path="res://BSO/Miniboss.mp3" id="5_40yle"]
 [ext_resource type="Texture2D" uid="uid://ic6l5aiibx54" path="res://Enemigos/Enemy6 - Esqueleto2/skeletonMove-Sheet64x64.png" id="5_vsa6w"]
+[ext_resource type="AudioStream" uid="uid://cr3x06bkdidn0" path="res://BSO/monsterhit.mp3" id="6_ru6bj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i5cde"]
 atlas = ExtResource("1_6plod")
@@ -456,6 +458,12 @@ shape = SubResource("RectangleShape2D_2afcv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("RectangleShape2D_ttv5u")
+
+[node name="Dead" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_40yle")
+
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ru6bj")
 
 [connection signal="body_entered" from="Weapon" to="." method="_on_Weapon_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="OnDeathTimerTimeout"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://cva20wuxpfaok"]
+[gd_scene load_steps=23 format=3 uid="uid://cva20wuxpfaok"]
 
 [ext_resource type="Script" path="res://Enemigos/Enemy1- Zombie/Enemy1.cs" id="1_fq628"]
 [ext_resource type="Texture2D" uid="uid://dl6u68hx5swa3" path="res://Enemigos/Enemy1- Zombie/Enemy-death.png" id="2_rudcg"]
 [ext_resource type="AudioStream" uid="uid://cis2k54scys4n" path="res://BSO/EnemyDead.mp3" id="2_rv7em"]
 [ext_resource type="Texture2D" uid="uid://biuqq85l0ysyq" path="res://Enemigos/Enemy1- Zombie/nivel2.png" id="3_6uh3b"]
+[ext_resource type="AudioStream" uid="uid://cr3x06bkdidn0" path="res://BSO/monsterhit.mp3" id="5_6wmvk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uwybg"]
 atlas = ExtResource("2_rudcg")
@@ -157,6 +158,9 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-2, 6)
 shape = SubResource("CapsuleShape2D_1emg8")
+
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_6wmvk")
 
 [connection signal="timeout" from="Timer" to="." method="OnDeathTimerTimeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
