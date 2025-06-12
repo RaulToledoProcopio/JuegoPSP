@@ -20,6 +20,8 @@ public partial class Enemy5 : CharacterBody2D
 	private enum EnemyState { Idle, Attack, Dead }
 	private EnemyState currentState = EnemyState.Idle;
 	private bool idleDone = false; // Flag para saber que la voltereta ha terminado
+	private CollisionShape2D collisionShape; // Para que no colisione muerto
+
 
 	public override void _Ready()
 	{
@@ -29,6 +31,7 @@ public partial class Enemy5 : CharacterBody2D
 		_deathTimer.Stop();
 		_deathTimer.OneShot = true;  
 		_deathTimer.WaitTime = 4.5f; // Duración de animación “Dead”
+		collisionShape = GetNode<CollisionShape2D>("CollisionShape2D"); // <-- Aquí
 
 		// Arrancamos en estado Idle
 		currentState = EnemyState.Idle;
@@ -91,6 +94,8 @@ public partial class Enemy5 : CharacterBody2D
 		currentState = EnemyState.Dead;
 		animation.Play("Dead");
 		deathSound?.Play();
+		if (collisionShape != null)
+		collisionShape.CallDeferred("set_disabled", true);
 		_deathTimer.Start();
 		_deathTimer.Connect("timeout", Callable.From(OnDeathTimerTimeout));
 	}
