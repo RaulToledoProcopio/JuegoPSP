@@ -16,8 +16,6 @@ public partial class Miniboss : CharacterBody2D
 	private Vector2 _breathOriginalPosition;
 	private AudioStreamPlayer deathSound;
 
-
-
 	private AnimatedSprite2D _anim;
 	private CollisionShape2D _bodyShape;
 	private CollisionShape2D _breathShape;
@@ -28,6 +26,7 @@ public partial class Miniboss : CharacterBody2D
 	private Timer _deathTimer;
 	private Timer _breathDamageTimer;
 	private Vector2 _patrolDir = Vector2.Left;
+	private ProgressBar _healthBar;
 	
 
 	public override void _Ready()
@@ -67,6 +66,9 @@ public partial class Miniboss : CharacterBody2D
 		_detectionArea.Connect("body_exited", new Callable(this, nameof(OnDetectionBodyExited)));
 
 		EnterPatrol();
+		
+		_healthBar = GetNode<ProgressBar>("../BossHealthBar/ProgressBar");
+		_healthBar.Value = Hp;
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -196,6 +198,7 @@ public partial class Miniboss : CharacterBody2D
 		if (_state == State.Death) return;
 
 		Hp -= damage;
+		_healthBar.Value = Hp;
 		var playerNode = GetNode<Player>("../Player");
 		if (Hp <= 0)
 		{

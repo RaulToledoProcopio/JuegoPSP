@@ -13,6 +13,7 @@ public partial class Boss : CharacterBody2D
 	[Export] public float LowY = 450f;
 	[Export] public PackedScene LightningScene;
 	[Export] public Vector2 LightningOffset = new Vector2(-100, 175);
+	[Export] public PackedScene BossHealthBarScene;
 
 	private int damage = 50;
 	private int hp = 100;
@@ -26,6 +27,8 @@ public partial class Boss : CharacterBody2D
 	private Timer _lightningTimer;
 	private Timer _deathTimer;
 	private CollisionPolygon2D _collisionShape;
+	private ProgressBar _healthBar;
+
 
 	public override void _Ready()
 	{
@@ -48,6 +51,9 @@ public partial class Boss : CharacterBody2D
 		_deathTimer.WaitTime = 5f;
 		_deathTimer.Timeout += () => OnDeathTimerTimeout();
 		AddChild(_deathTimer);
+		
+		_healthBar = GetNode<ProgressBar>("../BossHealthBar/ProgressBar");
+		_healthBar.Value = hp;
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -131,6 +137,7 @@ public partial class Boss : CharacterBody2D
 	{
 		if (_state == State.Death) return;
 		hp -= damage;
+		_healthBar.Value = hp;
 		if (hp <= 0)
 		{
 			EnterDeathState();
@@ -153,6 +160,7 @@ public partial class Boss : CharacterBody2D
 	private void OnDeathTimerTimeout()
 	{
 		QueueFree();
+		_healthBar?.Hide();
 		GetParent().CallDeferred("OnEnemyDefeated", this);
 	}
 

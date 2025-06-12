@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://b353gt4fmlwx5"]
+[gd_scene load_steps=26 format=4 uid="uid://b353gt4fmlwx5"]
 
 [ext_resource type="Texture2D" uid="uid://c8s3g8nmknos4" path="res://Nivel/Nivel10/back.png" id="1_djjpf"]
 [ext_resource type="Script" path="res://Nivel/Nivel10/Nivel10.cs" id="1_llwmn"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://Nivel/Nivel4/Fall.cs" id="13_ryefr"]
 [ext_resource type="PackedScene" uid="uid://bklwa8odkkth1" path="res://Portales/Portal.tscn" id="14_y8mt1"]
 [ext_resource type="Script" path="res://Portales/Portal10.cs" id="15_hv075"]
+[ext_resource type="PackedScene" uid="uid://d3shvpqruxr8h" path="res://BossHealthBar.tscn" id="16_gmkqk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4rp87"]
 texture = ExtResource("4_o8ihf")
@@ -255,6 +256,9 @@ shape = SubResource("RectangleShape2D_eyqde")
 position = Vector2(1113, 344)
 scale = Vector2(3, 3)
 script = ExtResource("15_hv075")
+
+[node name="BossHealthBar" parent="." instance=ExtResource("16_gmkqk")]
+position = Vector2(0, 581)
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="OnBodyEntered"]
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]

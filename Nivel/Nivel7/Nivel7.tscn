@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://17jeo6prinl"]
+[gd_scene load_steps=21 format=4 uid="uid://17jeo6prinl"]
 
 [ext_resource type="Script" path="res://Nivel/Nivel7/Nivel7.cs" id="1_okpwr"]
 [ext_resource type="Texture2D" uid="uid://d2tnhftx30t7f" path="res://Nivel/Nivel7/background1.png" id="2_xq0ta"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c3yed6a1dp0xf" path="res://Menú/pause.tscn" id="10_erbcc"]
 [ext_resource type="PackedScene" uid="uid://p8kfjlqsvyar" path="res://Enemigos/Miniboss/Miniboss.tscn" id="12_h14se"]
 [ext_resource type="PackedScene" uid="uid://cyi6y3m1marje" path="res://Proyectiles/ItemAmmo/Item_ammo.tscn" id="13_6ll8w"]
+[ext_resource type="PackedScene" uid="uid://d3shvpqruxr8h" path="res://BossHealthBar.tscn" id="14_p6qcr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ghcrd"]
 texture = ExtResource("6_cl0mv")
@@ -2020,5 +2021,8 @@ position = Vector2(203, 590)
 
 [node name="ItemAmmo2" parent="." instance=ExtResource("13_6ll8w")]
 position = Vector2(240, 600)
+
+[node name="BossHealthBar" parent="." instance=ExtResource("14_p6qcr")]
+position = Vector2(0, 579)
 
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]
