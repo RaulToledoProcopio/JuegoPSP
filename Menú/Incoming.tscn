@@ -1,13 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://86sn4ulqjbpl"]
+[gd_scene load_steps=12 format=3 uid="uid://86sn4ulqjbpl"]
 
 [ext_resource type="Script" path="res://Menú/Incoming.cs" id="1_6lqrd"]
 [ext_resource type="Texture2D" uid="uid://dundutrb7rqkn" path="res://Menú/thumb-1920-1349938.png" id="1_na4cu"]
-
-[sub_resource type="SystemFont" id="SystemFont_vkiyi"]
-font_names = PackedStringArray("Impact")
-
-[sub_resource type="SystemFont" id="SystemFont_3chme"]
-font_names = PackedStringArray("Impact")
+[ext_resource type="FontFile" uid="uid://desfrp1c5ow8p" path="res://Menú/Pixel Emulator.otf" id="3_0shwl"]
+[ext_resource type="Texture2D" uid="uid://poihsp1piq8s" path="res://Menú/mist-forest-background-back.png" id="3_tu8f8"]
+[ext_resource type="PackedScene" uid="uid://bxb0gbxkrsc3" path="res://Personajes/Principal/PlayerIncoming/PlayerIncoming.tscn" id="3_ulspg"]
+[ext_resource type="Texture2D" uid="uid://5yq5hj8mjb7h" path="res://Menú/mist-forest-background-rocks.png" id="4_mckxg"]
+[ext_resource type="PackedScene" uid="uid://dn5umck1w5ht1" path="res://Enemigos/EnemigosIncoming/Enemy1/Enemy1Inc.tscn" id="4_mtjm0"]
+[ext_resource type="PackedScene" uid="uid://bp7j6w7owsca0" path="res://Enemigos/EnemigosIncoming/Enemy2/Enemy2Inc.tscn" id="5_51oj0"]
+[ext_resource type="Texture2D" uid="uid://jjeihndvvxlk" path="res://Menú/mist-forest-background-back-trees.png" id="5_it2ll"]
+[ext_resource type="PackedScene" uid="uid://cr6qm8vshx1uj" path="res://Enemigos/EnemigosIncoming/Enemy1/IncSpell.tscn" id="6_6d3h7"]
+[ext_resource type="Texture2D" uid="uid://nm8k3pxeokg0" path="res://Menú/mist-forest-background-tree.png" id="6_u0pu4"]
 
 [node name="Incoming" type="Control"]
 layout_mode = 3
@@ -34,44 +37,76 @@ offset_right = 704.0
 offset_bottom = 568.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
-theme_override_fonts/font = SubResource("SystemFont_vkiyi")
+theme_override_fonts/font = ExtResource("3_0shwl")
 theme_override_font_sizes/font_size = 25
 text = "Volver"
 
 [node name="Label" type="Label" parent="Sprite2D"]
 layout_mode = 0
-offset_left = 108.0
-offset_top = 63.0
-offset_right = 278.0
-offset_bottom = 95.0
+offset_left = 55.0
+offset_top = 55.0
+offset_right = 338.0
+offset_bottom = 87.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
-theme_override_fonts/font = SubResource("SystemFont_3chme")
+theme_override_fonts/font = ExtResource("3_0shwl")
 theme_override_font_sizes/font_size = 25
-text = "Nuevo enemigos"
+text = "Nuevos enemigos"
 
 [node name="Label2" type="Label" parent="Sprite2D"]
 layout_mode = 0
-offset_left = 524.0
-offset_top = 69.0
-offset_right = 670.0
-offset_bottom = 101.0
+offset_left = 437.0
+offset_top = 55.0
+offset_right = 698.0
+offset_bottom = 87.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
-theme_override_fonts/font = SubResource("SystemFont_3chme")
+theme_override_fonts/font = ExtResource("3_0shwl")
 theme_override_font_sizes/font_size = 25
-text = "Nuevo niveles"
+text = "Nuevos niveles"
 
 [node name="Label3" type="Label" parent="Sprite2D"]
 layout_mode = 0
-offset_left = 873.0
-offset_top = 71.0
-offset_right = 1086.0
-offset_bottom = 103.0
+offset_left = 790.0
+offset_top = 55.0
+offset_right = 1132.0
+offset_bottom = 87.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
-theme_override_fonts/font = SubResource("SystemFont_3chme")
+theme_override_fonts/font = ExtResource("3_0shwl")
 theme_override_font_sizes/font_size = 25
 text = "Nuevas animaciones"
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(566, 240)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_tu8f8")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D2"]
+texture = ExtResource("4_mckxg")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D2"]
+position = Vector2(-175.127, 2.03636)
+texture = ExtResource("5_it2ll")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Sprite2D2"]
+position = Vector2(87.9999, -4.06901e-05)
+texture = ExtResource("6_u0pu4")
+
+[node name="PlayerIncoming" parent="." instance=ExtResource("3_ulspg")]
+position = Vector2(962, 231)
+scale = Vector2(1.5, 1.5)
+
+[node name="Enemy1Inc" parent="." instance=ExtResource("4_mtjm0")]
+position = Vector2(228, 240)
+scale = Vector2(1.5, 1.5)
+
+[node name="Enemy2Inc" parent="." instance=ExtResource("5_51oj0")]
+position = Vector2(207, 391)
+scale = Vector2(2.5, 2.5)
+
+[node name="IncSpell" parent="." instance=ExtResource("6_6d3h7")]
+position = Vector2(112, 190)
+scale = Vector2(1.5, 1.5)
 
 [connection signal="pressed" from="Sprite2D/Button" to="." method="_on_button_pressed"]

@@ -2,11 +2,8 @@
 
 [ext_resource type="Script" path="res://Register.cs" id="1_i344y"]
 [ext_resource type="Texture2D" uid="uid://dung7tk6ktu18" path="res://Menú/Menú.jpg" id="1_n4g4f"]
+[ext_resource type="FontFile" uid="uid://desfrp1c5ow8p" path="res://Menú/Pixel Emulator.otf" id="3_jr77u"]
 [ext_resource type="Script" path="res://ErrorPanel.cs" id="3_r0yxs"]
-
-[sub_resource type="SystemFont" id="SystemFont_xu3ag"]
-font_names = PackedStringArray("Impact")
-subpixel_positioning = 0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hth46"]
 draw_center = false
@@ -41,7 +38,7 @@ offset_bottom = 130.0
 grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
-theme_override_fonts/font = SubResource("SystemFont_xu3ag")
+theme_override_fonts/font = ExtResource("3_jr77u")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_hth46")
 text = "Regístrate
@@ -77,6 +74,10 @@ offset_left = 500.0
 offset_top = 431.0
 offset_right = 657.0
 offset_bottom = 469.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("3_jr77u")
+theme_override_font_sizes/font_size = 15
 text = "Regístrar"
 
 [node name="Back" type="Button" parent="."]
@@ -85,6 +86,9 @@ offset_left = 939.0
 offset_top = 30.0
 offset_right = 1125.0
 offset_bottom = 70.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_jr77u")
+theme_override_font_sizes/font_size = 15
 text = "Volver al login"
 
 [node name="ErrorPanel" type="PanelContainer" parent="."]

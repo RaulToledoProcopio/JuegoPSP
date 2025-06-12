@@ -1,0 +1,81 @@
+[gd_scene load_steps=18 format=3 uid="uid://cr6qm8vshx1uj"]
+
+[ext_resource type="Texture2D" uid="uid://bvn154v3m0gkq" path="res://Enemigos/EnemigosIncoming/Enemy1/Bringer-of-Death_Spell_1.png" id="1_xabm5"]
+[ext_resource type="Texture2D" uid="uid://d4jnwl4ubcoiq" path="res://Enemigos/EnemigosIncoming/Enemy1/Bringer-of-Death_Spell_2.png" id="2_8txin"]
+[ext_resource type="Texture2D" uid="uid://b2ndqxjada0u4" path="res://Enemigos/EnemigosIncoming/Enemy1/Bringer-of-Death_Spell_3.png" id="3_con4v"]
+[ext_resource type="Texture2D" uid="uid://bskwgecutdrp0" path="res://Enemigos/EnemigosIncoming/Enemy1/Bringer-of-Death_Spell_4.png" id="4_wj7e7"]
+[ext_resource type="Texture2D" uid="uid://yqumhc32df3w" path="res://Enemigos/EnemigosIncoming/Enemy1/Bringer-of-Death_Spell_5.png" id="5_cgnms"]
+[ext_resource type="Texture2D" uid="uid://c76liwgyo3inm" path="res://Enemigos/EnemigosIncoming/Enemy1/Bringer-of-Death_Spell_6.png" id="6_kbafu"]
+[ext_resource type="Texture2D" uid="uid://dgcwqnsgekoij" path="res://Enemigos/EnemigosIncoming/Enemy1/Bringer-of-Death_Spell_7.png" id="7_m5ili"]
+[ext_resource type="Texture2D" uid="uid://cbkb1kpljw5af" path="res://Enemigos/EnemigosIncoming/Enemy1/Bringer-of-Death_Spell_8.png" id="8_ny0qa"]
+[ext_resource type="Texture2D" uid="uid://cnld3qvojsour" path="res://Enemigos/EnemigosIncoming/Enemy1/Bringer-of-Death_Spell_9.png" id="9_5yx5y"]
+[ext_resource type="Texture2D" uid="uid://c3u17xsdw7x7r" path="res://Enemigos/EnemigosIncoming/Enemy1/Bringer-of-Death_Spell_10.png" id="10_kxysg"]
+[ext_resource type="Texture2D" uid="uid://cqv66wkixx1dd" path="res://Enemigos/EnemigosIncoming/Enemy1/Bringer-of-Death_Spell_11.png" id="11_ns1tv"]
+[ext_resource type="Texture2D" uid="uid://dowq6kd615ony" path="res://Enemigos/EnemigosIncoming/Enemy1/Bringer-of-Death_Spell_12.png" id="12_c2lmf"]
+[ext_resource type="Texture2D" uid="uid://b85vgut0amow" path="res://Enemigos/EnemigosIncoming/Enemy1/Bringer-of-Death_Spell_13.png" id="13_41pey"]
+[ext_resource type="Texture2D" uid="uid://dji87dfpo33v0" path="res://Enemigos/EnemigosIncoming/Enemy1/Bringer-of-Death_Spell_14.png" id="14_h2imj"]
+[ext_resource type="Texture2D" uid="uid://dtgadaophax8h" path="res://Enemigos/EnemigosIncoming/Enemy1/Bringer-of-Death_Spell_15.png" id="15_wlkae"]
+[ext_resource type="Texture2D" uid="uid://dw1wwbb46c6vl" path="res://Enemigos/EnemigosIncoming/Enemy1/Bringer-of-Death_Spell_16.png" id="16_5jke2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f6jl8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xabm5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_8txin")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_con4v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wj7e7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cgnms")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kbafu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_m5ili")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ny0qa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5yx5y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_kxysg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ns1tv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_c2lmf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_41pey")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_h2imj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_wlkae")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_5jke2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="IncSpell" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_f6jl8")
+autoplay = "default"
+frame_progress = 0.329745

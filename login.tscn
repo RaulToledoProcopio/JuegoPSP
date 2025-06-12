@@ -3,10 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dung7tk6ktu18" path="res://Menú/Menú.jpg" id="1_31y7h"]
 [ext_resource type="Script" path="res://Login.cs" id="1_e8mmp"]
 [ext_resource type="Script" path="res://ErrorPanel.cs" id="3_airb4"]
-
-[sub_resource type="SystemFont" id="SystemFont_1odf7"]
-font_names = PackedStringArray("Impact")
-subpixel_positioning = 0
+[ext_resource type="FontFile" uid="uid://desfrp1c5ow8p" path="res://Menú/Pixel Emulator.otf" id="3_cms3k"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7qcul"]
 draw_center = false
@@ -34,48 +31,55 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -130.0
-offset_top = 68.0
-offset_right = 110.0
-offset_bottom = 134.0
+offset_left = -129.0
+offset_top = 45.0
+offset_right = 111.0
+offset_bottom = 111.0
 grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
-theme_override_fonts/font = SubResource("SystemFont_1odf7")
+theme_override_fonts/font = ExtResource("3_cms3k")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_7qcul")
 text = "Identifícate"
 
 [node name="UsernameLineEdit" type="LineEdit" parent="."]
 layout_mode = 2
-offset_left = 448.0
-offset_top = 339.0
-offset_right = 698.0
-offset_bottom = 370.0
+offset_left = 442.0
+offset_top = 340.0
+offset_right = 692.0
+offset_bottom = 371.0
 placeholder_text = "Usuario"
 
 [node name="PasswordLineEdit" type="LineEdit" parent="."]
 layout_mode = 2
-offset_left = 448.0
+offset_left = 442.0
 offset_top = 380.0
-offset_right = 698.0
+offset_right = 692.0
 offset_bottom = 411.0
 placeholder_text = "Contraseña"
 
 [node name="LoginButton" type="Button" parent="."]
 layout_mode = 2
-offset_left = 500.0
-offset_top = 449.0
-offset_right = 657.0
-offset_bottom = 487.0
+offset_left = 488.0
+offset_top = 445.0
+offset_right = 645.0
+offset_bottom = 483.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("3_cms3k")
+theme_override_font_sizes/font_size = 15
 text = "Log in"
 
 [node name="RegisterButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 500.0
-offset_top = 494.0
-offset_right = 657.0
-offset_bottom = 532.0
+offset_left = 488.0
+offset_top = 492.0
+offset_right = 645.0
+offset_bottom = 530.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("3_cms3k")
 text = "Regístrate"
 
 [node name="ErrorPanel" type="PanelContainer" parent="."]

@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://bp7j6w7owsca0"]
+
+[ext_resource type="Texture2D" uid="uid://b2as2uq773hfj" path="res://Enemigos/EnemigosIncoming/Enemy2/_0000_Layer-1.png" id="1_w2vah"]
+[ext_resource type="Texture2D" uid="uid://8j73lwvb0yf8" path="res://Enemigos/EnemigosIncoming/Enemy2/_0001_Layer-2.png" id="2_31r4p"]
+[ext_resource type="Texture2D" uid="uid://bvsd7ny54xlws" path="res://Enemigos/EnemigosIncoming/Enemy2/_0002_Layer-3.png" id="3_koph0"]
+[ext_resource type="Texture2D" uid="uid://biw026aeyj8nf" path="res://Enemigos/EnemigosIncoming/Enemy2/_0003_Layer-4.png" id="4_sj8g7"]
+[ext_resource type="Texture2D" uid="uid://bejygry1j72ax" path="res://Enemigos/EnemigosIncoming/Enemy2/_0004_Layer-5.png" id="5_bsdbv"]
+[ext_resource type="Texture2D" uid="uid://d0eg5bxlghwmf" path="res://Enemigos/EnemigosIncoming/Enemy2/_0005_Layer-6.png" id="6_a0mdf"]
+[ext_resource type="Texture2D" uid="uid://cs0mbqt78x7vi" path="res://Enemigos/EnemigosIncoming/Enemy2/_0006_Layer-7.png" id="7_mqffp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4xype"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_w2vah")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_31r4p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_koph0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_sj8g7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bsdbv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_a0mdf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_mqffp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Enemy2Inc" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4xype")
+autoplay = "default"
+frame_progress = 0.14962

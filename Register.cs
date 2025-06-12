@@ -74,6 +74,6 @@ public partial class Register : Godot.Control
 
 	public void _on_back_pressed()
 	{
-		GetTree().ChangeSceneToFile("res://Login.tscn");
+		GetTree().ChangeSceneToFile("res://login.tscn");
 	}
 }

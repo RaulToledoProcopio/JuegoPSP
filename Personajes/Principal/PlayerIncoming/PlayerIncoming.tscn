@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://bxb0gbxkrsc3"]
+
+[ext_resource type="Texture2D" uid="uid://mtpuwnn3k2r0" path="res://Personajes/Principal/PlayerIncoming/MainChar - ladderclimb.png" id="1_wbl1q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilvh5"]
+atlas = ExtResource("1_wbl1q")
+region = Rect2(0, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hayh0"]
+atlas = ExtResource("1_wbl1q")
+region = Rect2(192, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4s6ji"]
+atlas = ExtResource("1_wbl1q")
+region = Rect2(384, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aouuq"]
+atlas = ExtResource("1_wbl1q")
+region = Rect2(576, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vn7c"]
+atlas = ExtResource("1_wbl1q")
+region = Rect2(768, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klvtm"]
+atlas = ExtResource("1_wbl1q")
+region = Rect2(960, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgt77"]
+atlas = ExtResource("1_wbl1q")
+region = Rect2(1152, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6v0oq"]
+atlas = ExtResource("1_wbl1q")
+region = Rect2(1344, 0, 192, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2sx3j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilvh5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hayh0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4s6ji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aouuq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vn7c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klvtm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgt77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6v0oq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="PlayerIncoming" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2sx3j")
+autoplay = "default"

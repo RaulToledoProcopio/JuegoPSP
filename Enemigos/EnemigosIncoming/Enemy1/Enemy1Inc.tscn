@@ -1,0 +1,53 @@
+[gd_scene load_steps=11 format=3 uid="uid://dn5umck1w5ht1"]
+
+[ext_resource type="Texture2D" uid="uid://rrnyno0jraqd" path="res://Enemigos/EnemigosIncoming/Enemy1/Bringer-of-Death_Cast_1.png" id="1_24838"]
+[ext_resource type="Texture2D" uid="uid://va3wiouvha00" path="res://Enemigos/EnemigosIncoming/Enemy1/Bringer-of-Death_Cast_2.png" id="2_sawmr"]
+[ext_resource type="Texture2D" uid="uid://bciwr0p0s5o2q" path="res://Enemigos/EnemigosIncoming/Enemy1/Bringer-of-Death_Cast_3.png" id="3_1iide"]
+[ext_resource type="Texture2D" uid="uid://ebrta35123fj" path="res://Enemigos/EnemigosIncoming/Enemy1/Bringer-of-Death_Cast_4.png" id="4_l1ujw"]
+[ext_resource type="Texture2D" uid="uid://cbe2nw57vvndh" path="res://Enemigos/EnemigosIncoming/Enemy1/Bringer-of-Death_Cast_5.png" id="5_73gd0"]
+[ext_resource type="Texture2D" uid="uid://br08x7p5fmw1e" path="res://Enemigos/EnemigosIncoming/Enemy1/Bringer-of-Death_Cast_6.png" id="6_beup2"]
+[ext_resource type="Texture2D" uid="uid://c3nsj5163qsc8" path="res://Enemigos/EnemigosIncoming/Enemy1/Bringer-of-Death_Cast_7.png" id="7_kc24y"]
+[ext_resource type="Texture2D" uid="uid://dy6vnvqsetdmv" path="res://Enemigos/EnemigosIncoming/Enemy1/Bringer-of-Death_Cast_8.png" id="8_jkg7k"]
+[ext_resource type="Texture2D" uid="uid://b7pyvfuw17oqg" path="res://Enemigos/EnemigosIncoming/Enemy1/Bringer-of-Death_Cast_9.png" id="9_7rg0m"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fupgc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_24838")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_sawmr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1iide")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_l1ujw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_73gd0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_beup2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_kc24y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_jkg7k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_7rg0m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Enemy1Inc" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_fupgc")
+autoplay = "default"
+frame_progress = 0.691685
