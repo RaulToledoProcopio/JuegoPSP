@@ -28,7 +28,7 @@ public partial class Intro : Control
 		texts.Add("Era una noche tranquila, nuestro héroe dormía placidamente");
 		texts.Add("Cuando ¡Un ogro apareció de un portal!");
 		texts.Add("El ogro lo agarró con brusquedad");
-		texts.Add("¡Y se lo llevó a un mundo desconocido");
+		texts.Add("¡Y se lo llevó a un mundo desconocido!");
 
 		// Mostrar primera imagen y texto
 		ShowFrame(currentIndex);

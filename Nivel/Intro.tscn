@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://2ryy1w4hppf7"]
+[gd_scene load_steps=3 format=3 uid="uid://2ryy1w4hppf7"]
 
 [ext_resource type="Script" path="res://Nivel/Intro.cs" id="1_74jti"]
+[ext_resource type="FontFile" uid="uid://desfrp1c5ow8p" path="res://Menú/Pixel Emulator.otf" id="2_fde81"]
 
 [node name="Intro" type="Control"]
 layout_mode = 3
@@ -21,6 +22,8 @@ offset_left = -1.0
 offset_top = 534.0
 offset_right = 1151.0
 offset_bottom = 644.0
+theme_override_fonts/font = ExtResource("2_fde81")
+theme_override_font_sizes/font_size = 20
 horizontal_alignment = 1
 
 [node name="Timer" type="Timer" parent="."]
