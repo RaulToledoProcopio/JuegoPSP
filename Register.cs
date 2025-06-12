@@ -9,6 +9,7 @@ public partial class Register : Godot.Control
 {
 	// Instancia de HttpClient
 	private readonly System.Net.Http.HttpClient _client = new System.Net.Http.HttpClient();
+	private Button continueButton;
 	
 	// URL del endpoint de registro
 	private const string RegisterUrl = "https://api-psp-2.onrender.com/api/auth/register";
@@ -24,9 +25,12 @@ public partial class Register : Godot.Control
 		_passwordField = GetNode<LineEdit>("PasswordLineEdit");
 		_emailField = GetNode<LineEdit>("EmailLineEdit");
 		_errorPanel = GetNode<ErrorPanel>("ErrorPanel");
+		continueButton = GetNode<Button>("RegisterButton");
 
 		var audioManager = GetNode<AudioManager>("/root/AudioManager");
 		audioManager.PlayForLevel(0);
+		
+		continueButton.GrabFocus();
 	}
 
 	public async void _on_register_button_pressed()

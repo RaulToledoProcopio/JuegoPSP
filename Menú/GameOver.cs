@@ -3,6 +3,15 @@ using System;
 
 public partial class GameOver : Control
 {
+	private Button continueButton;
+	
+	public override void _Ready()
+	{
+		
+		continueButton = GetNode<Button>("VBoxContainer/Button");
+		continueButton.GrabFocus();
+	}
+	
 	// Cambiar de escena al pulsar el primer botón del menú
 	private void _on_button_pressed(){
 		var crono = GetNode<Crono>("/root/Crono");

@@ -550,7 +550,7 @@ rotation = -1.57397
 shape = SubResource("RectangleShape2D_ej0xh")
 
 [node name="Columna2" type="CollisionShape2D" parent="PlayerCollision"]
-position = Vector2(508, 429)
+position = Vector2(508, 424)
 shape = SubResource("RectangleShape2D_t8lpu")
 
 [node name="Columna3" type="CollisionShape2D" parent="PlayerCollision"]

@@ -26,6 +26,7 @@ public partial class Player : CharacterBody2D
 	private int jumpCount = 0;                   // Contador de saltos para doble salto.
 	private CollisionShape2D _idleCollisionShape;   // Collision para "idle"
 	private CollisionShape2D _crouchCollisionShape; // Collision para "crouch"
+	private int facingDirection = 1; // Para que no se gira al saltar con el mando
 	
 	//Sonidos
 	private AudioStreamPlayer jumpSoundPlayer; // Salto
@@ -125,9 +126,17 @@ public partial class Player : CharacterBody2D
 			jumpCount++;  // Incrementa contador de saltos.
 			jumpSoundPlayer.Play();
 		}
+		
+		float inputX = 0;
+		if (Input.IsActionPressed("ui_left")) inputX -= 1;
+		if (Input.IsActionPressed("ui_right")) inputX += 1;
+		velocity.X = inputX * (isCrouching ? CrouchSpeed : Speed);
+		if (inputX != 0)
+		{
+			facingDirection = (int)Mathf.Sign(inputX);
+			animation.FlipH = facingDirection < 0;
+		}
 
-		// Ajusta velocidad horizontal según input y agachar
-		velocity.X = direction.X * (isCrouching ? CrouchSpeed : Speed);
 
 		// Aplica movimiento al cuerpo
 		Velocity = velocity;
@@ -163,7 +172,7 @@ public partial class Player : CharacterBody2D
 			state = PlayerState.Jump;
 		// Agachado
 		else if (isCrouching)
-			state = direction.X != 0 ? PlayerState.CrouchWalk : PlayerState.Crouch;
+			state = Mathf.Abs(Velocity.X) > 0.1f ? PlayerState.CrouchWalk : PlayerState.Crouch;
 		// Corriendo
 		else if (direction.X != 0)
 			state = PlayerState.Run;
@@ -172,8 +181,8 @@ public partial class Player : CharacterBody2D
 			state = PlayerState.Idle;
 
 		// Voltea sprite según dirección
-		if (direction.X != 0)
-			animation.FlipH = direction.X < 0;
+		//if (direction.X != 0)
+			//animation.FlipH = direction.X < 0;
 
 		// Ajusta posición de la espada
 		_espada.Position = animation.FlipH ? new Vector2(-70, 0) : Vector2.Zero;

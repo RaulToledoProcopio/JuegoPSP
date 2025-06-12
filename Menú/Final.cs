@@ -10,6 +10,7 @@ public partial class Final : Godot.Control
 	
 	// Cliente HTTP
 	private readonly System.Net.Http.HttpClient _http = new System.Net.Http.HttpClient();
+	private Button continueButton;
 
 	// URL del endpoint TOP10
 	private const string LeaderboardUrl = "https://api-psp-2.onrender.com/api/scores/top10";
@@ -25,6 +26,9 @@ public partial class Final : Godot.Control
 			_leaderboardLabel.Visible = false;
 			_leaderboardPanel = GetNode<Panel>("PanelLeaderBoard");
 			_leaderboardPanel.Visible = false;
+			continueButton = GetNode<Button>("VBoxContainer/Button");
+			
+			continueButton.GrabFocus();
 	}
 
 	// Cambiar de escena al pulsar el primer botón del menú
@@ -54,6 +58,7 @@ public partial class Final : Godot.Control
 	{
 	_leaderboardPanel.Visible = false;
 	_leaderboardLabel.Visible = false;
+	continueButton.GrabFocus();
 	}
 
 	private async Task LoadAndShowLeaderboardAsync()

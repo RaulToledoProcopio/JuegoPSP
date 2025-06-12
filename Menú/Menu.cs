@@ -19,6 +19,7 @@ public partial class Menu : Godot.Control
 		continueButton.Disabled = true;
 		GD.Print("No hay partida guardada para este usuario.");
 	}
+	continueButton.GrabFocus();
 }
 
 	
