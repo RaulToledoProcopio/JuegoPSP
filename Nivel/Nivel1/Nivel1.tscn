@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bp4tt6e0rjtg"]
+[gd_scene load_steps=18 format=3 uid="uid://bp4tt6e0rjtg"]
 
 [ext_resource type="Script" path="res://Nivel/Nivel1/Nivel1.cs" id="1_6bqxs"]
 [ext_resource type="Texture2D" uid="uid://bkirxmiie2juk" path="res://Nivel/Nivel1/Fondo.png" id="2_122u4"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bklwa8odkkth1" path="res://Portales/Portal.tscn" id="9_y1daf"]
 [ext_resource type="Script" path="res://Portales/Portal1.cs" id="10_gn1hk"]
 [ext_resource type="PackedScene" uid="uid://csppkcqr7hyuq" path="res://dummy.tscn" id="11_i5nmg"]
+[ext_resource type="FontFile" uid="uid://desfrp1c5ow8p" path="res://Menú/Pixel Emulator.otf" id="11_vj7yl"]
 
 [sub_resource type="TileSet" id="TileSet_u75e0"]
 
@@ -99,32 +100,35 @@ script = ExtResource("10_gn1hk")
 
 [node name="Label2" type="RichTextLabel" parent="."]
 offset_left = 32.0
-offset_top = 100.0
-offset_right = 276.0
+offset_top = 78.0
+offset_right = 317.0
 offset_bottom = 362.0
-text = "F - Ataque con espada
+theme_override_fonts/normal_font = ExtResource("11_vj7yl")
+text = "F/△ - Ataque con espada
 
-R  - Lanzamiento de daga
+R/▢  - Lanzamiento de daga
 
-Space - Salto/Doble Salto
+Space/X - Salto/Doble Salto
 
-S - Agacharse/Caminar agachado
+S/↓ - Agacharse/Caminar agachado
 
-A/D - Caminar Izquierda/derecha
+A/D/←/→ - Caminar Izquierda/derecha
 "
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 offset_left = 385.0
 offset_top = 121.0
 offset_right = 731.0
-offset_bottom = 171.0
+offset_bottom = 183.0
+theme_override_fonts/normal_font = ExtResource("11_vj7yl")
 text = "Objetivo: Matar a todos los enemigos para activar los portales."
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="."]
-offset_left = 427.0
-offset_top = 35.0
-offset_right = 671.0
-offset_bottom = 112.0
+offset_left = 400.0
+offset_top = 27.0
+offset_right = 701.0
+offset_bottom = 104.0
+theme_override_fonts/normal_font = ExtResource("11_vj7yl")
 theme_override_font_sizes/normal_font_size = 50
 text = "TUTORIAL"
 

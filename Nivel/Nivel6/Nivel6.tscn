@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://d4cr6he8gmis1"]
+[gd_scene load_steps=25 format=4 uid="uid://d4cr6he8gmis1"]
 
 [ext_resource type="Script" path="res://Nivel/Nivel6/Nivel6.cs" id="1_g44dp"]
 [ext_resource type="Texture2D" uid="uid://cndc0urlvouka" path="res://Nivel/Nivel6/old-dark-castle-interior-background.png" id="3_jdo5p"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Portales/Portal6.cs" id="9_qvph0"]
 [ext_resource type="PackedScene" uid="uid://721xb3icdf46" path="res://Enemigos/Enemy7 - Ghost/Enemy7.tscn" id="12_abdxh"]
 [ext_resource type="Script" path="res://Nivel/Nivel3/Water2.cs" id="12_qkuaq"]
+[ext_resource type="PackedScene" uid="uid://cyi6y3m1marje" path="res://Proyectiles/ItemAmmo/Item_ammo.tscn" id="13_xwo16"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_18hjg"]
 texture = ExtResource("4_qbodp")
@@ -489,6 +490,9 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathFloor"]
 position = Vector2(879, 701)
 shape = SubResource("RectangleShape2D_k5qqg")
+
+[node name="ItemAmmo" parent="." instance=ExtResource("13_xwo16")]
+position = Vector2(813, 515)
 
 [connection signal="body_entered" from="Water2" to="Water2" method="OnBodyEntered"]
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]
