@@ -1971,10 +1971,10 @@ tile_map_data = PackedByteArray("AABGABAAAAA8AAEAAABGABEAAAA8AAIAAABGABIAAAA8AAM
 tile_set = SubResource("TileSet_4vc7q")
 
 [node name="Pause" parent="." instance=ExtResource("10_erbcc")]
-offset_left = 580.0
-offset_top = 339.0
-offset_right = 580.0
-offset_bottom = 339.0
+offset_left = -1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = 1.0
 
 [node name="Portal" parent="." instance=ExtResource("8_k6d67")]
 position = Vector2(1140, 293)

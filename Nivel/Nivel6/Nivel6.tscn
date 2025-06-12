@@ -440,10 +440,8 @@ position = Vector2(877, 629)
 shape = SubResource("RectangleShape2D_14pm3")
 
 [node name="Pause" parent="." instance=ExtResource("8_oa3g0")]
-offset_left = 562.0
-offset_top = 122.0
-offset_right = 562.0
-offset_bottom = 122.0
+offset_top = 2.0
+offset_bottom = 2.0
 
 [node name="Portal" parent="." instance=ExtResource("8_mubfr")]
 position = Vector2(927, 598)

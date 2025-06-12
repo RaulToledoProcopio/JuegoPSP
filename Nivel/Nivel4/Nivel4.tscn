@@ -544,10 +544,10 @@ collision_layer = 16
 script = ExtResource("6_5dr8r")
 
 [node name="Pause" parent="." instance=ExtResource("3_nmu3l")]
-offset_left = 567.0
-offset_top = 329.0
-offset_right = 567.0
-offset_bottom = 329.0
+offset_left = -1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = 1.0
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 collision_layer = 16384

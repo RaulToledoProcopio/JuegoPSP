@@ -39,10 +39,10 @@ texture = ExtResource("2_122u4")
 position = Vector2(11, 6)
 
 [node name="Pause" parent="." instance=ExtResource("4_k5mg2")]
-offset_left = 555.0
-offset_top = 291.0
-offset_right = 555.0
-offset_bottom = 291.0
+offset_left = -6.0
+offset_top = 153.0
+offset_right = -6.0
+offset_bottom = 153.0
 
 [node name="Wall" type="StaticBody2D" parent="."]
 collision_mask = 255

@@ -3572,10 +3572,10 @@ autoplay = "default"
 frame_progress = 0.847327
 
 [node name="Pause" parent="." instance=ExtResource("12_nu2hv")]
-offset_left = 547.0
-offset_top = 333.0
-offset_right = 547.0
-offset_bottom = 333.0
+offset_left = -2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 2.0
 
 [node name="Enemy5" parent="." groups=["Enemies"] instance=ExtResource("14_xhu2x")]
 position = Vector2(1166, 508)

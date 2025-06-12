@@ -73,4 +73,16 @@ public partial class AudioManager : Node2D
 
 		return 0;
 	}
+	
+	public float VolumeDb
+	{
+		get => _player.VolumeDb;
+		set => _player.VolumeDb = value;
+	}
+
+	public bool Muted
+	{
+		get => _player.VolumeDb <= -80f;
+		set => _player.VolumeDb = value ? -80f : 0f;
+	}
 }

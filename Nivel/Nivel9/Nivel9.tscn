@@ -1781,10 +1781,10 @@ collision_layer = 16
 script = ExtResource("10_0ajpl")
 
 [node name="Pause" parent="." instance=ExtResource("4_04gva")]
-offset_left = 579.0
-offset_top = 338.0
-offset_right = 579.0
-offset_bottom = 338.0
+offset_left = -2.0
+offset_top = 1.0
+offset_right = -2.0
+offset_bottom = 1.0
 
 [node name="Enemy4" parent="." groups=["Enemies"] instance=ExtResource("12_otkrx")]
 position = Vector2(535, 445)
@@ -1802,12 +1802,8 @@ visibility_layer = 16
 position = Vector2(746, 444)
 shape = SubResource("RectangleShape2D_2pyyr")
 
-[node name="Enemy5" parent="." groups=["Enemies"] instance=ExtResource("13_r31pu")]
-position = Vector2(1158, 498)
-scale = Vector2(2, 2)
-
 [node name="Enemy6" parent="." groups=["Enemies"] instance=ExtResource("13_r31pu")]
-position = Vector2(39, 125)
+position = Vector2(16, 134)
 scale = Vector2(2, 2)
 startFlipped = true
 
@@ -1833,6 +1829,11 @@ position = Vector2(159, 143)
 
 [node name="ItemAmmo" parent="." instance=ExtResource("16_8rj3v")]
 position = Vector2(109, 144)
+
+[node name="Enemy5" parent="." groups=["Enemies"] instance=ExtResource("13_r31pu")]
+position = Vector2(1169, 503)
+scale = Vector2(2, 2)
+slide_on_ceiling = false
 
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]
 [connection signal="body_entered" from="Water2" to="Water2" method="OnBodyEntered"]

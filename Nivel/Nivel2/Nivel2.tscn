@@ -508,10 +508,8 @@ tile_set = SubResource("TileSet_w05ug")
 [node name="UI" parent="." instance=ExtResource("2_ko36k")]
 
 [node name="Pause" parent="." instance=ExtResource("3_7d3d7")]
-offset_left = 555.0
-offset_top = 291.0
-offset_right = 555.0
-offset_bottom = 291.0
+offset_top = 2.0
+offset_bottom = 2.0
 
 [node name="Player" parent="." instance=ExtResource("4_st8vl")]
 position = Vector2(44, 511)

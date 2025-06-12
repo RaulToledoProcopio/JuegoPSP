@@ -821,10 +821,10 @@ tile_set = SubResource("TileSet_fenjv")
 [node name="UI" parent="." instance=ExtResource("14_juooh")]
 
 [node name="Pause" parent="." instance=ExtResource("4_xmvyu")]
-offset_left = 624.0
-offset_top = 354.0
-offset_right = 624.0
-offset_bottom = 354.0
+offset_left = -1.0
+offset_top = 2.0
+offset_right = -1.0
+offset_bottom = 2.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

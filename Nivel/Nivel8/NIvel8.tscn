@@ -7223,10 +7223,8 @@ collision_layer = 16
 script = ExtResource("11_onvqr")
 
 [node name="Pause" parent="." instance=ExtResource("10_v3thc")]
-offset_left = 619.0
-offset_top = 327.0
-offset_right = 619.0
-offset_bottom = 327.0
+offset_top = 1.0
+offset_bottom = 1.0
 
 [node name="Enemy2" parent="." groups=["Enemies"] instance=ExtResource("13_h6amv")]
 position = Vector2(1111, 524)
