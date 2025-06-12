@@ -6,14 +6,13 @@ public partial class Credits : Control
 	[Export] public float ScrollSpeed = 50f;
 
 	private Label _creditsLabel;
-	private AudioStreamPlayer _musicPlayer;
 	private float _startY;
 
 	public override void _Ready()
 	{
 		_creditsLabel = GetNode<Label>("CreditsContainer/Label");
-		_musicPlayer = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
-		_musicPlayer.Play();
+		var audioManager = GetNode<AudioManager>("/root/AudioManager");
+		audioManager.PlayForLevel(99);
 	}
 
 	public override void _Process(double delta)

@@ -12,6 +12,7 @@ public partial class AudioManager : Node2D
 		{ 5, ResourceLoader.Load<AudioStream>("res://BSO/4-Fase3.mp3")! },
 		{ 6, ResourceLoader.Load<AudioStream>("res://BSO/10-Fase9.mp3")! },
 		{ 7, ResourceLoader.Load<AudioStream>("res://BSO/12-Créditos.mp3")! },
+		{ 8, ResourceLoader.Load<AudioStream>("res://BSO/Cinemática.mp3")! },
 		
 	};
 
@@ -63,6 +64,9 @@ public partial class AudioManager : Node2D
 
 		if (level == 10)
 		return 6;
+		
+		if (level == 98)
+		return 8;
 		
 		if (level == 99)
 		return 7;

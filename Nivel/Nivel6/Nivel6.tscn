@@ -468,6 +468,10 @@ shape = SubResource("RectangleShape2D_81ryb")
 position = Vector2(738, 553)
 shape = SubResource("RectangleShape2D_lojv7")
 
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="GhostWall"]
+position = Vector2(1012, 557)
+shape = SubResource("RectangleShape2D_lojv7")
+
 [node name="Enemy7" parent="." groups=["Enemies"] instance=ExtResource("12_abdxh")]
 position = Vector2(505, 526)
 scale = Vector2(2, 2)

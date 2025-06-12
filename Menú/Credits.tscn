@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlly5yfpu3pt7"]
+[gd_scene load_steps=3 format=3 uid="uid://dlly5yfpu3pt7"]
 
 [ext_resource type="Script" path="res://Menú/Credits.cs" id="1_aam0n"]
-[ext_resource type="AudioStream" uid="uid://bptj0ekba7wdy" path="res://BSO/12-Créditos.mp3" id="2_fro3o"]
 [ext_resource type="FontFile" uid="uid://desfrp1c5ow8p" path="res://Menú/Pixel Emulator.otf" id="3_30dc3"]
 
 [node name="Credits" type="Control"]
@@ -15,9 +14,6 @@ offset_top = 4.0
 offset_right = 1151.0
 offset_bottom = 645.0
 color = Color(0, 0, 0, 1)
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_fro3o")
 
 [node name="CreditsContainer" type="Control" parent="."]
 anchors_preset = 0
