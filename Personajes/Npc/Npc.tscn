@@ -49,9 +49,8 @@ frame = 2
 frame_progress = 0.552368
 
 [node name="Label" type="RichTextLabel" parent="AnimatedSprite2D"]
-visible = false
 offset_left = -75.0
-offset_top = -110.0
+offset_top = -123.0
 offset_right = 85.0
 offset_bottom = -38.0
 theme_override_font_sizes/normal_font_size = 10
