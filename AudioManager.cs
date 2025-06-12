@@ -1,4 +1,5 @@
 using Godot;
+using System;
 using System.Collections.Generic;
 
 public partial class AudioManager : Node2D
@@ -22,6 +23,7 @@ public partial class AudioManager : Node2D
 	public override void _Ready()
 	{
 		_player = GetNode<AudioStreamPlayer>("Audio");
+		LoadVolumeSettings();
 	}
 
 	public void PlayForLevel(int level)
@@ -84,5 +86,19 @@ public partial class AudioManager : Node2D
 	{
 		get => _player.VolumeDb <= -50f;
 		set => _player.VolumeDb = value ? -50f : 0f;
+	}
+	
+	private void LoadVolumeSettings()
+	{
+	// Volumen guardado (entre 0 y 100)
+	float sliderValue = (float)ProjectSettings.GetSetting("audio/volume", 50.0);
+	float linear = sliderValue / 100f;
+	float db = linear <= 0f ? -50f : 20f * (float)Math.Log10(linear);
+	_player.VolumeDb = db;
+
+	// Mute guardado
+	bool muted = (bool)ProjectSettings.GetSetting("audio/muted", false);
+	if (muted)
+		_player.VolumeDb = -50f;
 	}
 }

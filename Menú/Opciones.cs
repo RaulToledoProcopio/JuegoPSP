@@ -9,21 +9,32 @@ public partial class Opciones : Control
 	[Export] public CheckBox CheckBox { get; set; }
 
 	private AudioManager _audioManager;
+	private Button continueButton;
 
 	public override void _Ready()
 	{
 		_audioManager = GetNode<AudioManager>("/root/AudioManager");
+		continueButton = GetNode<Button>("VBoxContainer/Button");
 
 		// Ocultamos el panel
 		Panel.Visible = false;
 
-		// Aplicamos el volumen inicial basado en el slider
-		ApplySliderVolume((float)HSlider.Value);
+		// Leer valores guardados desde ProjectSettings
+		float savedVolume = (float)ProjectSettings.GetSetting("audio/volume", 50.0);
+		bool savedMuted = (bool)ProjectSettings.GetSetting("audio/muted", false);
 
-		// Inicializamos el mute
-		CheckBox.ButtonPressed = _audioManager.Muted;
+		// Actualizar los controles visuales con los valores guardados
+		HSlider.Value = savedVolume;
+		CheckBox.ButtonPressed = savedMuted;
+
+		// Aplicar configuración al audio
+		if (!savedMuted)
+			ApplySliderVolume(savedVolume);
+		else
+			_audioManager.Muted = true;
+			
+		continueButton.GrabFocus();
 	}
-
 	// Cuando movemos el slider
 	public void OnVolumeChanged(double value)
 	{
@@ -37,21 +48,32 @@ public partial class Opciones : Control
 	{
 		_audioManager.Muted = isMuted;
 
+		ProjectSettings.SetSetting("audio/muted", isMuted);
+		ProjectSettings.Save();
+
 		if (!isMuted)
 		{
-			// si desmuteamos, volvemos a aplicar el volumen actual del slider
 			ApplySliderVolume((float)HSlider.Value);
 		}
 	}
 
+
 	private void ApplySliderVolume(float sliderValue)
 	{
 		float linear = sliderValue / 100f;
-		// convertir lineal a dB
 		float db = linear <= 0f ? -50f : 20f * (float)Math.Log10(linear);
 		_audioManager.VolumeDb = db;
+	// Guardar volumen en ProjectSettings
+	ProjectSettings.SetSetting("audio/volume", sliderValue);
+	ProjectSettings.Save(); // Importante para que persista
 	}
+
 	public void _on_button_pressed()     => Panel.Visible = true;
 	public void _on_button_2_pressed()   => GetTree().ChangeSceneToFile("res://Menú/Menu.tscn");
-	public void _on_button_3_pressed()   => Panel.Visible = false;
+	public void _on_button_3_pressed()
+	{
+	
+		Panel.Visible = false;
+		continueButton.GrabFocus();
+	}   
 }
