@@ -3,7 +3,7 @@ using System;
 
 public partial class Daga : Area2D
 {
-	[Export] public float speedDagger = 300.0f; // Velocidad horizontal de la daga.
+	[Export] public float speedDagger = 500f; // Velocidad horizontal de la daga.
 	[Export] public int damage = 25; // Cantidad de daño que inflige.
 	
 

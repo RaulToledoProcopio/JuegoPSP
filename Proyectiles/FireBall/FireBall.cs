@@ -3,7 +3,7 @@ using System;
 
 public partial class FireBall : Area2D
 {
-	[Export] public float speedDagger = 150.0f;  // Velocidad de la bola de fuego.
+	[Export] public float speedDagger = 500f;  // Velocidad de la bola de fuego.
 	[Export] public int damage = 25;  // Daño que inflige la bola de fuego.
 
 	private Vector2 velocity = new Vector2(1, 0);  // Dirección de movimiento de la bola de fuego.

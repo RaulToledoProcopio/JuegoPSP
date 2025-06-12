@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://c3ued12af1an5"]
+[gd_scene load_steps=38 format=4 uid="uid://c3ued12af1an5"]
 
 [ext_resource type="Script" path="res://Nivel/Nivel8/Nivel8.cs" id="1_m0eu4"]
 [ext_resource type="Texture2D" uid="uid://c2jga6bi1dk30" path="res://Nivel/Nivel8/Assets.png" id="3_553of"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://Nivel/Nivel3/Water2.cs" id="14_jil3c"]
 [ext_resource type="PackedScene" uid="uid://ck7us3a1jjgky" path="res://Proyectiles/ItemHeal/Item_heal.tscn" id="14_t60uv"]
 [ext_resource type="PackedScene" uid="uid://cyi6y3m1marje" path="res://Proyectiles/ItemAmmo/Item_ammo.tscn" id="15_ts71y"]
+[ext_resource type="PackedScene" uid="uid://cti1tjlhq85kt" path="res://Enemigos/Enemy5 - Archer/Enemy5.tscn" id="16_eyntn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6mkui"]
 texture = ExtResource("3_553of")
@@ -7155,6 +7156,7 @@ tile_set = SubResource("TileSet_oo4pp")
 position = Vector2(28, 377)
 scale = Vector2(1.5, 1.5)
 collision_mask = 198416
+speedDagger = 1000.0
 
 [node name="Water" type="Sprite2D" parent="."]
 
@@ -7244,6 +7246,14 @@ position = Vector2(904, 397)
 
 [node name="ItemAmmo" parent="." instance=ExtResource("15_ts71y")]
 position = Vector2(522, 176)
+
+[node name="ItemAmmo2" parent="." instance=ExtResource("15_ts71y")]
+position = Vector2(539, 176)
+
+[node name="Enemy5" parent="." groups=["Enemies"] instance=ExtResource("16_eyntn")]
+position = Vector2(532, 160)
+scale = Vector2(2, 2)
+startFlipped = true
 
 [connection signal="body_entered" from="Water2" to="Water2" method="OnBodyEntered"]
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]

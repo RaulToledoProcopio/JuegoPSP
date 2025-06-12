@@ -59,7 +59,7 @@ shape = SubResource("RectangleShape2D_chsjy")
 [node name="Player" parent="." instance=ExtResource("5_bx623")]
 position = Vector2(57, 587)
 scale = Vector2(2, 2)
-speedDagger = 300.0
+speedDagger = 1000.0
 
 [node name="ItemAmmo" parent="." instance=ExtResource("6_lf3wu")]
 position = Vector2(251, 605)

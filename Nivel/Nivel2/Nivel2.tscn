@@ -513,17 +513,10 @@ offset_top = 291.0
 offset_right = 555.0
 offset_bottom = 291.0
 
-[node name="Wall" type="StaticBody2D" parent="."]
-collision_mask = 255
-
-[node name="RightWall" type="CollisionShape2D" parent="Wall"]
-position = Vector2(1156.49, 294.501)
-rotation = -1.57397
-shape = SubResource("RectangleShape2D_ej0xh")
-
 [node name="Player" parent="." instance=ExtResource("4_st8vl")]
 position = Vector2(44, 511)
 scale = Vector2(2, 2)
+speedDagger = 1000.0
 
 [node name="Enemy1" parent="." groups=["Enemies"] instance=ExtResource("5_cg1w5")]
 position = Vector2(867, 512)
@@ -552,6 +545,11 @@ position = Vector2(176, 261)
 [node name="PlayerCollision" type="StaticBody2D" parent="."]
 collision_layer = 320
 collision_mask = 2
+
+[node name="RightWall" type="CollisionShape2D" parent="PlayerCollision"]
+position = Vector2(1156.49, 294.501)
+rotation = -1.57397
+shape = SubResource("RectangleShape2D_ej0xh")
 
 [node name="Columna2" type="CollisionShape2D" parent="PlayerCollision"]
 position = Vector2(508, 429)

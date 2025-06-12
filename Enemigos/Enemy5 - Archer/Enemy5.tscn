@@ -264,6 +264,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h8lwd"]
+height = 28.0
 
 [node name="Enemy5" type="CharacterBody2D"]
 collision_layer = 16
@@ -272,8 +273,10 @@ FireBallScene = ExtResource("2_74ves")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sdbh1")
-animation = &"Attack"
+animation = &"Dead"
 autoplay = "Idle"
+frame = 23
+frame_progress = 1.0
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -3387,6 +3387,7 @@ texture = ExtResource("1_vk6kc")
 position = Vector2(66, 487)
 scale = Vector2(1.5, 1.5)
 collision_mask = 198480
+speedDagger = 1000.0
 
 [node name="Water" type="Sprite2D" parent="."]
 
@@ -3593,6 +3594,11 @@ position = Vector2(317, 406)
 
 [node name="ItemHeal" parent="." instance=ExtResource("17_4b0qk")]
 position = Vector2(224, 286)
+
+[node name="Enemy7" parent="." groups=["Enemies"] instance=ExtResource("14_xhu2x")]
+position = Vector2(-14, 156)
+scale = Vector2(2, 2)
+startFlipped = true
 
 [connection signal="body_entered" from="Water2" to="Water2" method="OnBodyEntered"]
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]

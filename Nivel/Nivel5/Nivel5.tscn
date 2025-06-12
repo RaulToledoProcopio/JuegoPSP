@@ -841,6 +841,7 @@ shape = SubResource("RectangleShape2D_eikwd")
 [node name="Player" parent="." instance=ExtResource("13_8hhp7")]
 position = Vector2(64, 589)
 scale = Vector2(1.5, 1.5)
+speedDagger = 1000.0
 
 [node name="Enemy2" parent="." groups=["Enemies"] instance=ExtResource("6_ya1lc")]
 position = Vector2(1063, 586)

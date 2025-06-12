@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://d1xnvgw4qk3h1"]
+[gd_scene load_steps=37 format=4 uid="uid://d1xnvgw4qk3h1"]
 
 [ext_resource type="Script" path="res://Nivel/Nivel4/Nivel4.cs" id="1_25k44"]
 [ext_resource type="PackedScene" uid="uid://yun2gfbkemxv" path="res://Personajes/Principal/Character.tscn" id="2_n08te"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://e6sde8i44lih" path="res://Nivel/Nivel2/Torch Animated.png" id="11_22hdf"]
 [ext_resource type="PackedScene" uid="uid://ct8nqyalqxost" path="res://Enemigos/Enemy6 - Esqueleto2/Enemy6.tscn" id="13_qf5xd"]
 [ext_resource type="Script" path="res://Nivel/Nivel4/Fall.cs" id="14_cj85r"]
+[ext_resource type="PackedScene" uid="uid://m8qxwcp7e0a7" path="res://Enemigos/Enemy3 - Esqueleto/Enemy_3.tscn" id="15_1fos0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hxuhu"]
 texture = ExtResource("5_jtvcu")
@@ -516,6 +517,7 @@ autoplay = "default"
 position = Vector2(45, 479)
 scale = Vector2(1.5, 1.5)
 collision_mask = 198480
+speedDagger = 1000.0
 
 [node name="Tower" type="TileMapLayer" parent="."]
 scale = Vector2(2, 2)
@@ -581,6 +583,14 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathFloor"]
 position = Vector2(578, 766)
 shape = SubResource("RectangleShape2D_po2hx")
+
+[node name="Enemy3" parent="." groups=["Enemies"] instance=ExtResource("15_1fos0")]
+position = Vector2(722, 479)
+collision_mask = 16400
+
+[node name="Enemy4" parent="." groups=["Enemies"] instance=ExtResource("15_1fos0")]
+position = Vector2(1090, 480)
+collision_mask = 16400
 
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]
 [connection signal="body_entered" from="FallLane" to="FallLane" method="OnBodyEntered"]

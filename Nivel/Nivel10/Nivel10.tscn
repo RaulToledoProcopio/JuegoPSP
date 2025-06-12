@@ -218,6 +218,7 @@ offset_bottom = 320.0
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("9_mgo1x")]
 position = Vector2(187, 479)
 scale = Vector2(1.5, 1.5)
+speedDagger = 1000.0
 
 [node name="UI" parent="." instance=ExtResource("10_e605w")]
 

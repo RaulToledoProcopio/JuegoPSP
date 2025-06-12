@@ -1701,6 +1701,7 @@ tile_set = SubResource("TileSet_yp5x3")
 position = Vector2(75, 478)
 scale = Vector2(1.5, 1.5)
 collision_mask = 198416
+speedDagger = 1000.0
 
 [node name="Water" type="Sprite2D" parent="."]
 
