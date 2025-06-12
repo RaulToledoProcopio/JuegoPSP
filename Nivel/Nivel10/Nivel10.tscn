@@ -227,11 +227,11 @@ collision_layer = 16384
 collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 320.5)
+position = Vector2(-500, 320.5)
 shape = SubResource("RectangleShape2D_1nnbc")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1157, 322)
+position = Vector2(1650, 322)
 shape = SubResource("RectangleShape2D_1nnbc")
 
 [node name="Area2D" type="Area2D" parent="."]

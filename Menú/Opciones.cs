@@ -48,7 +48,7 @@ public partial class Opciones : Control
 	{
 		float linear = sliderValue / 100f;
 		// convertir lineal a dB
-		float db = linear <= 0f ? -80f : 20f * (float)Math.Log10(linear);
+		float db = linear <= 0f ? -50f : 20f * (float)Math.Log10(linear);
 		_audioManager.VolumeDb = db;
 	}
 	public void _on_button_pressed()     => Panel.Visible = true;

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dn8fgwlel6wj5"
+path="res://.godot/imported/Pesadilla de Risa.mp3-26f096521c148c120f59b7244150c3ae.mp3str"
+
+[deps]
+
+source_file="res://BSO/Pesadilla de Risa.mp3"
+dest_files=["res://.godot/imported/Pesadilla de Risa.mp3-26f096521c148c120f59b7244150c3ae.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

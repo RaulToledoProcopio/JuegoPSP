@@ -31,7 +31,7 @@ public partial class Portal10 : Area2D
 				GD.PrintErr("No hay usuario logueado, no se pudo borrar la partida.");
 				}
 			
-			GetTree().CallDeferred("change_scene_to_file", "res://Menú/Credits.tscn");
+			GetTree().CallDeferred("change_scene_to_file", "res://Nivel/Outro.tscn");
 		}
 	}
 }

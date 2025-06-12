@@ -82,7 +82,7 @@ public partial class AudioManager : Node2D
 
 	public bool Muted
 	{
-		get => _player.VolumeDb <= -80f;
-		set => _player.VolumeDb = value ? -80f : 0f;
+		get => _player.VolumeDb <= -50f;
+		set => _player.VolumeDb = value ? -50f : 0f;
 	}
 }

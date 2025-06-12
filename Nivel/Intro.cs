@@ -23,10 +23,12 @@ public partial class Intro : Control
 		images.Add(GD.Load<Texture2D>("res://Menú/frame1.png"));
 		images.Add(GD.Load<Texture2D>("res://Menú/frame2.png"));
 		images.Add(GD.Load<Texture2D>("res://Menú/frame3.png"));
+		images.Add(GD.Load<Texture2D>("res://Menú/frame4.png"));
 
 		texts.Add("Era una noche tranquila, nuestro héroe dormía placidamente");
 		texts.Add("Cuando ¡Un ogro apareció de un portal!");
-		texts.Add("¡Y lo arrojó sin piedad al abismo!");
+		texts.Add("El ogro lo agarró con brusquedad");
+		texts.Add("¡Y se lo llevó a un mundo desconocido");
 
 		// Mostrar primera imagen y texto
 		ShowFrame(currentIndex);

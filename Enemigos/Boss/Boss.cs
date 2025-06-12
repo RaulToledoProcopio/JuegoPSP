@@ -8,8 +8,8 @@ public partial class Boss : CharacterBody2D
 
 	[Export] public float Speed = 300f;
 	[Export] public float VerticalSpeed = 400f;
-	[Export] public float HighPatrolDuration = 15f;
-	[Export] public float LowPatrolDuration = 5f;
+	[Export] public float HighPatrolDuration = 17f;
+	[Export] public float LowPatrolDuration = 15f;
 	[Export] public float LowY = 450f;
 	[Export] public PackedScene LightningScene;
 	[Export] public Vector2 LightningOffset = new Vector2(-100, 175);
@@ -37,7 +37,7 @@ public partial class Boss : CharacterBody2D
 		
 		deathSound = GetNode<AudioStreamPlayer>("Dead");
 		_lightningTimer = new Timer();
-		_lightningTimer.WaitTime = 2f;
+		_lightningTimer.WaitTime = 1f;
 		_lightningTimer.OneShot = false;
 		_lightningTimer.Timeout += () => FireLightning();
 		AddChild(_lightningTimer);
