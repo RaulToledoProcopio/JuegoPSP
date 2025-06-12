@@ -2023,6 +2023,6 @@ position = Vector2(203, 590)
 position = Vector2(240, 600)
 
 [node name="BossHealthBar" parent="." instance=ExtResource("14_p6qcr")]
-position = Vector2(0, 579)
+position = Vector2(0, 555)
 
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]

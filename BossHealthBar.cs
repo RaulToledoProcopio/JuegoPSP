@@ -8,8 +8,17 @@ public partial class BossHealthBar : Node2D
 	public override void _Ready()
 	{
 		healthBar = GetNode<ProgressBar>("ProgressBar");
-		StyleBoxFlat redStyle = new StyleBoxFlat();
-		redStyle.BgColor = new Color(1, 0, 0); // Color de la barra
+		var redStyle = new StyleBoxFlat();
+		redStyle.BgColor = new Color(0.525f, 0.114f, 0.114f);
+		
+		redStyle.CornerRadiusTopLeft = 8;
+		redStyle.CornerRadiusTopRight = 8;
+		redStyle.CornerRadiusBottomLeft = 8;
+		redStyle.CornerRadiusBottomRight = 8;
+		
+		redStyle.ShadowSize = 3;
+		redStyle.ShadowColor = new Color(0, 0, 0, 0.5f);
+		
 		healthBar.AddThemeStyleboxOverride("fill", redStyle);
 	}
 
